@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34407.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mock Up Agregasi", "Mock Up Agregasi\Mock Up Agregasi.csproj", "{B4F54AFA-9EF1-4779-9695-6724E450E81C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B4F54AFA-9EF1-4779-9695-6724E450E81C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4F54AFA-9EF1-4779-9695-6724E450E81C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4F54AFA-9EF1-4779-9695-6724E450E81C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4F54AFA-9EF1-4779-9695-6724E450E81C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD2FB51C-BBE5-42EA-AC97-D340D2EFFA5D}
+	EndGlobalSection
+EndGlobal
