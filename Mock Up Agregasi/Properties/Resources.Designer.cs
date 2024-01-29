@@ -63,6 +63,26 @@ namespace Mock_Up_Agregasi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bgtanabe {
+            get {
+                object obj = ResourceManager.GetObject("bgtanabe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LIGHT_TRANSPARAN {
+            get {
+                object obj = ResourceManager.GetObject("LIGHT TRANSPARAN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tanabetr {
             get {
                 object obj = ResourceManager.GetObject("tanabetr", resourceCulture);
