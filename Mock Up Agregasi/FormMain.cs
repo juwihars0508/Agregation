@@ -44,6 +44,15 @@ namespace Mock_Up_Agregasi
             panel2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel2.Width, panel2.Height, 20, 20));
             panel3.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel3.Width, panel3.Height, 20, 20));
             btn_LogOut.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btn_LogOut.Width, btn_LogOut.Height, 20, 20));
+            btn_MenuAggregation.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btn_MenuAggregation.Width, btn_MenuAggregation.Height, 20, 20));
+            btn_EditData.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btn_EditData.Width, btn_EditData.Height, 20, 20));
+            btn_Setting.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btn_Setting.Width, btn_Setting.Height, 20, 20));
+            btn_MenuReport.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btn_MenuReport.Width, btn_MenuReport.Height, 20, 20));
+        }
+
+        private void btn_MenuAggregation_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
