@@ -16,7 +16,7 @@ namespace Mock_Up_Agregasi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DataEditAgg());
+            Application.Run(new Login());
         }
     }
 }

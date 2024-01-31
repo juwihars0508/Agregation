@@ -63,6 +63,16 @@ namespace Mock_Up_Agregasi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BC_1 {
+            get {
+                object obj = ResourceManager.GetObject("BC_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bgtanabe {
             get {
                 object obj = ResourceManager.GetObject("bgtanabe", resourceCulture);
@@ -73,9 +83,29 @@ namespace Mock_Up_Agregasi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CloseDark {
+            get {
+                object obj = ResourceManager.GetObject("CloseDark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LIGHT_TRANSPARAN {
             get {
                 object obj = ResourceManager.GetObject("LIGHT TRANSPARAN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minimize_button_icon {
+            get {
+                object obj = ResourceManager.GetObject("minimize-button-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

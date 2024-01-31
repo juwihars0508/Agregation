@@ -27,22 +27,28 @@ public Login()
            int nWidthEllipse, // height of ellipse
            int nHeightEllipse // width of ellipse
        );
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-        }
+        
 
         private void Login_Load(object sender, EventArgs e)
         {
-            button1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, button1.Width, button1.Height, 20, 20));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            btnIN.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnIN.Width, btnIN.Height, 10, 10));
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        
+        private void btnMin_Click(object sender, EventArgs e)
         {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to close appliaction?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }
