@@ -35,12 +35,12 @@ namespace Mock_Up_Agregasi
             this.btn_LogOut = new System.Windows.Forms.Button();
             this.lblTime = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_MenuReport = new System.Windows.Forms.Button();
             this.btn_Setting = new System.Windows.Forms.Button();
             this.btn_EditData = new System.Windows.Forms.Button();
             this.btn_MenuAggregation = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btn_MenuReport = new System.Windows.Forms.Button();
             this.btnMin = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -98,6 +98,7 @@ namespace Mock_Up_Agregasi
             this.btn_LogOut.TabIndex = 37;
             this.btn_LogOut.Text = "Log Out";
             this.btn_LogOut.UseVisualStyleBackColor = false;
+            this.btn_LogOut.Click += new System.EventHandler(this.btn_LogOut_Click);
             // 
             // lblTime
             // 
@@ -120,20 +121,6 @@ namespace Mock_Up_Agregasi
             this.label1.Size = new System.Drawing.Size(113, 29);
             this.label1.TabIndex = 36;
             this.label1.Text = "Main Menu";
-            // 
-            // btn_MenuReport
-            // 
-            this.btn_MenuReport.BackColor = System.Drawing.Color.White;
-            this.btn_MenuReport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_MenuReport.FlatAppearance.BorderSize = 0;
-            this.btn_MenuReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_MenuReport.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_MenuReport.Location = new System.Drawing.Point(20, 154);
-            this.btn_MenuReport.Name = "btn_MenuReport";
-            this.btn_MenuReport.Size = new System.Drawing.Size(192, 38);
-            this.btn_MenuReport.TabIndex = 17;
-            this.btn_MenuReport.Text = "Report";
-            this.btn_MenuReport.UseVisualStyleBackColor = false;
             // 
             // btn_Setting
             // 
@@ -196,6 +183,20 @@ namespace Mock_Up_Agregasi
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(230, 217);
             this.panel3.TabIndex = 37;
+            // 
+            // btn_MenuReport
+            // 
+            this.btn_MenuReport.BackColor = System.Drawing.Color.White;
+            this.btn_MenuReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_MenuReport.FlatAppearance.BorderSize = 0;
+            this.btn_MenuReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_MenuReport.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_MenuReport.Location = new System.Drawing.Point(20, 154);
+            this.btn_MenuReport.Name = "btn_MenuReport";
+            this.btn_MenuReport.Size = new System.Drawing.Size(192, 38);
+            this.btn_MenuReport.TabIndex = 17;
+            this.btn_MenuReport.Text = "Report";
+            this.btn_MenuReport.UseVisualStyleBackColor = false;
             // 
             // btnMin
             // 

@@ -1,7 +1,7 @@
 ﻿
 namespace Mock_Up_Agregasi
 {
-    partial class Form1
+    partial class FormData
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,13 @@ namespace Mock_Up_Agregasi
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.btnPause = new System.Windows.Forms.Button();
+            this.btnCloseWO = new System.Windows.Forms.Button();
+            this.btnHistoryLabel = new System.Windows.Forms.Button();
             this.btnDataEdit = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -61,7 +62,7 @@ namespace Mock_Up_Agregasi
             this.panel4 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbWO = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -69,9 +70,22 @@ namespace Mock_Up_Agregasi
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbLotNo = new System.Windows.Forms.Label();
+            this.lbProductName = new System.Windows.Forms.Label();
+            this.lbActualTarget = new System.Windows.Forms.Label();
+            this.lbTargetQty = new System.Windows.Forms.Label();
+            this.lbLastReadCodeScan = new System.Windows.Forms.Label();
+            this.lbBoxGood = new System.Windows.Forms.Label();
+            this.lbBoxNG = new System.Windows.Forms.Label();
+            this.lbTotalCase = new System.Windows.Forms.Label();
+            this.lbWeight = new System.Windows.Forms.Label();
+            this.lbCartonSuccesfull = new System.Windows.Forms.Label();
+            this.lbLastReadCodeRealese = new System.Windows.Forms.Label();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.panel1.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel13.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -88,11 +102,11 @@ namespace Mock_Up_Agregasi
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnStart);
+            this.panel1.Controls.Add(this.btnStop);
+            this.panel1.Controls.Add(this.btnPause);
+            this.panel1.Controls.Add(this.btnCloseWO);
+            this.panel1.Controls.Add(this.btnHistoryLabel);
             this.panel1.Controls.Add(this.btnDataEdit);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.panel14);
@@ -118,71 +132,74 @@ namespace Mock_Up_Agregasi
             this.panel1.Size = new System.Drawing.Size(1114, 609);
             this.panel1.TabIndex = 0;
             // 
-            // button6
+            // btnStart
             // 
-            this.button6.BackColor = System.Drawing.Color.DarkGray;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(207, 487);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(82, 47);
-            this.button6.TabIndex = 15;
-            this.button6.Text = "Start";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btnStart.BackColor = System.Drawing.Color.DarkGray;
+            this.btnStart.FlatAppearance.BorderSize = 0;
+            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStart.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStart.Location = new System.Drawing.Point(207, 487);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(82, 47);
+            this.btnStart.TabIndex = 15;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = false;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // button5
+            // btnStop
             // 
-            this.button5.BackColor = System.Drawing.Color.DarkGray;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(376, 487);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(82, 47);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "Stop";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnStop.BackColor = System.Drawing.Color.DarkGray;
+            this.btnStop.FlatAppearance.BorderSize = 0;
+            this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStop.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStop.Location = new System.Drawing.Point(376, 487);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(82, 47);
+            this.btnStop.TabIndex = 14;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = false;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
-            // button4
+            // btnPause
             // 
-            this.button4.BackColor = System.Drawing.Color.DarkGray;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(295, 487);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 47);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "Pause";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnPause.BackColor = System.Drawing.Color.DarkGray;
+            this.btnPause.FlatAppearance.BorderSize = 0;
+            this.btnPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPause.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPause.Location = new System.Drawing.Point(295, 487);
+            this.btnPause.Name = "btnPause";
+            this.btnPause.Size = new System.Drawing.Size(75, 47);
+            this.btnPause.TabIndex = 13;
+            this.btnPause.Text = "Pause";
+            this.btnPause.UseVisualStyleBackColor = false;
+            this.btnPause.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button3
+            // btnCloseWO
             // 
-            this.button3.BackColor = System.Drawing.Color.DarkGray;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(601, 487);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(85, 47);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "Close WO";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnCloseWO.BackColor = System.Drawing.Color.DarkGray;
+            this.btnCloseWO.FlatAppearance.BorderSize = 0;
+            this.btnCloseWO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCloseWO.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCloseWO.Location = new System.Drawing.Point(601, 487);
+            this.btnCloseWO.Name = "btnCloseWO";
+            this.btnCloseWO.Size = new System.Drawing.Size(85, 47);
+            this.btnCloseWO.TabIndex = 12;
+            this.btnCloseWO.Text = "Close WO";
+            this.btnCloseWO.UseVisualStyleBackColor = false;
+            this.btnCloseWO.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            // btnHistoryLabel
             // 
-            this.button2.BackColor = System.Drawing.Color.DarkGray;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(692, 487);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(91, 47);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "History Gen.\r\nLabel";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnHistoryLabel.BackColor = System.Drawing.Color.DarkGray;
+            this.btnHistoryLabel.FlatAppearance.BorderSize = 0;
+            this.btnHistoryLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistoryLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistoryLabel.Location = new System.Drawing.Point(692, 487);
+            this.btnHistoryLabel.Name = "btnHistoryLabel";
+            this.btnHistoryLabel.Size = new System.Drawing.Size(91, 47);
+            this.btnHistoryLabel.TabIndex = 11;
+            this.btnHistoryLabel.Text = "History Gen.\r\nLabel";
+            this.btnHistoryLabel.UseVisualStyleBackColor = false;
             // 
             // btnDataEdit
             // 
@@ -211,6 +228,7 @@ namespace Mock_Up_Agregasi
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel14.Controls.Add(this.lbLastReadCodeRealese);
             this.panel14.Controls.Add(this.label17);
             this.panel14.Location = new System.Drawing.Point(881, 198);
             this.panel14.Name = "panel14";
@@ -223,7 +241,7 @@ namespace Mock_Up_Agregasi
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.SystemColors.Control;
-            this.label17.Location = new System.Drawing.Point(22, 18);
+            this.label17.Location = new System.Drawing.Point(11, 18);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(108, 16);
             this.label17.TabIndex = 1;
@@ -233,6 +251,7 @@ namespace Mock_Up_Agregasi
             // panel13
             // 
             this.panel13.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel13.Controls.Add(this.lbCartonSuccesfull);
             this.panel13.Controls.Add(this.label16);
             this.panel13.Location = new System.Drawing.Point(879, 122);
             this.panel13.Name = "panel13";
@@ -254,6 +273,7 @@ namespace Mock_Up_Agregasi
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.LightGreen;
+            this.panel12.Controls.Add(this.lbWeight);
             this.panel12.Location = new System.Drawing.Point(633, 414);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(150, 51);
@@ -263,6 +283,7 @@ namespace Mock_Up_Agregasi
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel11.Controls.Add(this.lbBoxNG);
             this.panel11.Controls.Add(this.label15);
             this.panel11.Location = new System.Drawing.Point(419, 414);
             this.panel11.Name = "panel11";
@@ -284,6 +305,7 @@ namespace Mock_Up_Agregasi
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel10.Controls.Add(this.lbBoxGood);
             this.panel10.Controls.Add(this.label14);
             this.panel10.Location = new System.Drawing.Point(207, 414);
             this.panel10.Name = "panel10";
@@ -305,6 +327,7 @@ namespace Mock_Up_Agregasi
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel9.Controls.Add(this.lbLastReadCodeScan);
             this.panel9.Controls.Add(this.label12);
             this.panel9.Location = new System.Drawing.Point(207, 333);
             this.panel9.Name = "panel9";
@@ -317,7 +340,7 @@ namespace Mock_Up_Agregasi
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.SystemColors.Control;
-            this.label12.Location = new System.Drawing.Point(9, 11);
+            this.label12.Location = new System.Drawing.Point(9, 4);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(108, 16);
             this.label12.TabIndex = 5;
@@ -326,6 +349,7 @@ namespace Mock_Up_Agregasi
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel8.Controls.Add(this.lbTargetQty);
             this.panel8.Controls.Add(this.progressBar2);
             this.panel8.Controls.Add(this.label11);
             this.panel8.Location = new System.Drawing.Point(207, 264);
@@ -347,15 +371,16 @@ namespace Mock_Up_Agregasi
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.Control;
-            this.label11.Location = new System.Drawing.Point(9, 11);
+            this.label11.Location = new System.Drawing.Point(9, 7);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(204, 16);
+            this.label11.Size = new System.Drawing.Size(108, 16);
             this.label11.TabIndex = 4;
-            this.label11.Text = "Target Qty WO: 1000 (Example)";
+            this.label11.Text = "Target Qty WO: ";
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.LightGreen;
+            this.panel7.Controls.Add(this.lbTotalCase);
             this.panel7.Controls.Add(this.label10);
             this.panel7.Location = new System.Drawing.Point(633, 194);
             this.panel7.Name = "panel7";
@@ -377,6 +402,7 @@ namespace Mock_Up_Agregasi
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel6.Controls.Add(this.lbActualTarget);
             this.panel6.Controls.Add(this.progressBar1);
             this.panel6.Controls.Add(this.label9);
             this.panel6.Location = new System.Drawing.Point(207, 194);
@@ -400,13 +426,14 @@ namespace Mock_Up_Agregasi
             this.label9.ForeColor = System.Drawing.SystemColors.Control;
             this.label9.Location = new System.Drawing.Point(9, 17);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(242, 16);
+            this.label9.Size = new System.Drawing.Size(160, 16);
             this.label9.TabIndex = 2;
-            this.label9.Text = "Actual Target Qty/Case: 40 (Example)";
+            this.label9.Text = "Actual Target Qty/Case: ";
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel5.Controls.Add(this.lbProductName);
             this.panel5.Controls.Add(this.label8);
             this.panel5.Location = new System.Drawing.Point(413, 122);
             this.panel5.Name = "panel5";
@@ -428,6 +455,7 @@ namespace Mock_Up_Agregasi
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel4.Controls.Add(this.lbLotNo);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Location = new System.Drawing.Point(207, 122);
             this.panel4.Name = "panel4";
@@ -442,27 +470,28 @@ namespace Mock_Up_Agregasi
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
             this.label7.Location = new System.Drawing.Point(9, 13);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 16);
+            this.label7.Size = new System.Drawing.Size(69, 16);
             this.label7.TabIndex = 0;
-            this.label7.Text = "Lot No.";
+            this.label7.Text = "Batch No.";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.cbWO);
             this.panel3.Location = new System.Drawing.Point(12, 121);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(180, 67);
             this.panel3.TabIndex = 6;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
-            // comboBox1
+            // cbWO
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(9, 23);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(155, 21);
-            this.comboBox1.TabIndex = 7;
+            this.cbWO.FormattingEnabled = true;
+            this.cbWO.Location = new System.Drawing.Point(9, 23);
+            this.cbWO.Name = "cbWO";
+            this.cbWO.Size = new System.Drawing.Size(155, 21);
+            this.cbWO.TabIndex = 7;
+            this.cbWO.SelectedValueChanged += new System.EventHandler(this.cbWO_SelectedValueChanged);
             // 
             // label6
             // 
@@ -538,13 +567,139 @@ namespace Mock_Up_Agregasi
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // Form1
+            // lbLotNo
+            // 
+            this.lbLotNo.AutoSize = true;
+            this.lbLotNo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLotNo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbLotNo.Location = new System.Drawing.Point(12, 40);
+            this.lbLotNo.Name = "lbLotNo";
+            this.lbLotNo.Size = new System.Drawing.Size(12, 16);
+            this.lbLotNo.TabIndex = 1;
+            this.lbLotNo.Text = "-";
+            // 
+            // lbProductName
+            // 
+            this.lbProductName.AutoSize = true;
+            this.lbProductName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbProductName.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbProductName.Location = new System.Drawing.Point(18, 40);
+            this.lbProductName.Name = "lbProductName";
+            this.lbProductName.Size = new System.Drawing.Size(12, 16);
+            this.lbProductName.TabIndex = 16;
+            this.lbProductName.Text = "-";
+            // 
+            // lbActualTarget
+            // 
+            this.lbActualTarget.AutoSize = true;
+            this.lbActualTarget.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbActualTarget.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbActualTarget.Location = new System.Drawing.Point(182, 17);
+            this.lbActualTarget.Name = "lbActualTarget";
+            this.lbActualTarget.Size = new System.Drawing.Size(12, 16);
+            this.lbActualTarget.TabIndex = 17;
+            this.lbActualTarget.Text = "-";
+            // 
+            // lbTargetQty
+            // 
+            this.lbTargetQty.AutoSize = true;
+            this.lbTargetQty.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTargetQty.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbTargetQty.Location = new System.Drawing.Point(150, 7);
+            this.lbTargetQty.Name = "lbTargetQty";
+            this.lbTargetQty.Size = new System.Drawing.Size(12, 16);
+            this.lbTargetQty.TabIndex = 17;
+            this.lbTargetQty.Text = "-";
+            // 
+            // lbLastReadCodeScan
+            // 
+            this.lbLastReadCodeScan.AutoSize = true;
+            this.lbLastReadCodeScan.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLastReadCodeScan.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbLastReadCodeScan.Location = new System.Drawing.Point(12, 26);
+            this.lbLastReadCodeScan.Name = "lbLastReadCodeScan";
+            this.lbLastReadCodeScan.Size = new System.Drawing.Size(12, 16);
+            this.lbLastReadCodeScan.TabIndex = 18;
+            this.lbLastReadCodeScan.Text = "-";
+            this.lbLastReadCodeScan.TextChanged += new System.EventHandler(this.lbLastReadCodeScan_TextChanged);
+            // 
+            // lbBoxGood
+            // 
+            this.lbBoxGood.AutoSize = true;
+            this.lbBoxGood.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBoxGood.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbBoxGood.Location = new System.Drawing.Point(93, 16);
+            this.lbBoxGood.Name = "lbBoxGood";
+            this.lbBoxGood.Size = new System.Drawing.Size(12, 16);
+            this.lbBoxGood.TabIndex = 18;
+            this.lbBoxGood.Text = "-";
+            // 
+            // lbBoxNG
+            // 
+            this.lbBoxNG.AutoSize = true;
+            this.lbBoxNG.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBoxNG.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbBoxNG.Location = new System.Drawing.Point(79, 16);
+            this.lbBoxNG.Name = "lbBoxNG";
+            this.lbBoxNG.Size = new System.Drawing.Size(12, 16);
+            this.lbBoxNG.TabIndex = 18;
+            this.lbBoxNG.Text = "-";
+            // 
+            // lbTotalCase
+            // 
+            this.lbTotalCase.AutoSize = true;
+            this.lbTotalCase.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalCase.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbTotalCase.Location = new System.Drawing.Point(10, 41);
+            this.lbTotalCase.Name = "lbTotalCase";
+            this.lbTotalCase.Size = new System.Drawing.Size(12, 16);
+            this.lbTotalCase.TabIndex = 18;
+            this.lbTotalCase.Text = "-";
+            // 
+            // lbWeight
+            // 
+            this.lbWeight.AutoSize = true;
+            this.lbWeight.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbWeight.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbWeight.Location = new System.Drawing.Point(10, 16);
+            this.lbWeight.Name = "lbWeight";
+            this.lbWeight.Size = new System.Drawing.Size(12, 16);
+            this.lbWeight.TabIndex = 18;
+            this.lbWeight.Text = "-";
+            // 
+            // lbCartonSuccesfull
+            // 
+            this.lbCartonSuccesfull.AutoSize = true;
+            this.lbCartonSuccesfull.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCartonSuccesfull.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbCartonSuccesfull.Location = new System.Drawing.Point(19, 45);
+            this.lbCartonSuccesfull.Name = "lbCartonSuccesfull";
+            this.lbCartonSuccesfull.Size = new System.Drawing.Size(12, 16);
+            this.lbCartonSuccesfull.TabIndex = 18;
+            this.lbCartonSuccesfull.Text = "-";
+            // 
+            // lbLastReadCodeRealese
+            // 
+            this.lbLastReadCodeRealese.AutoSize = true;
+            this.lbLastReadCodeRealese.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLastReadCodeRealese.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbLastReadCodeRealese.Location = new System.Drawing.Point(9, 44);
+            this.lbLastReadCodeRealese.Name = "lbLastReadCodeRealese";
+            this.lbLastReadCodeRealese.Size = new System.Drawing.Size(12, 16);
+            this.lbLastReadCodeRealese.TabIndex = 18;
+            this.lbLastReadCodeRealese.Text = "-";
+            // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
+            // FormData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1114, 609);
             this.Controls.Add(this.panel1);
-            this.Name = "Form1";
+            this.Name = "FormData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -554,6 +709,8 @@ namespace Mock_Up_Agregasi
             this.panel14.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.panel10.ResumeLayout(false);
@@ -586,7 +743,7 @@ namespace Mock_Up_Agregasi
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbWO;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -614,12 +771,24 @@ namespace Mock_Up_Agregasi
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ProgressBar progressBar2;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnPause;
+        private System.Windows.Forms.Button btnCloseWO;
+        private System.Windows.Forms.Button btnHistoryLabel;
         private System.Windows.Forms.Button btnDataEdit;
+        private System.Windows.Forms.Label lbLastReadCodeScan;
+        private System.Windows.Forms.Label lbTargetQty;
+        private System.Windows.Forms.Label lbActualTarget;
+        private System.Windows.Forms.Label lbProductName;
+        private System.Windows.Forms.Label lbLotNo;
+        private System.Windows.Forms.Label lbLastReadCodeRealese;
+        private System.Windows.Forms.Label lbCartonSuccesfull;
+        private System.Windows.Forms.Label lbWeight;
+        private System.Windows.Forms.Label lbBoxNG;
+        private System.Windows.Forms.Label lbBoxGood;
+        private System.Windows.Forms.Label lbTotalCase;
+        private System.IO.Ports.SerialPort serialPort1;
     }
 }
 

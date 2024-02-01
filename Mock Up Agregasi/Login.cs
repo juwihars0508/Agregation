@@ -34,6 +34,21 @@ public Login()
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             btnIN.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnIN.Width, btnIN.Height, 10, 10));
+
+            CB_User.Items.Clear();
+
+            //init Data
+            List<varDataState> list = new List<varDataState>();
+            list.Add(new varDataState() { ID = "01", Name = "Administrator" });
+            list.Add(new varDataState() { ID = "02", Name = "Supervisor" });
+            list.Add(new varDataState() { ID = "03", Name = "Operator 1" });
+            list.Add(new varDataState() { ID = "04", Name = "Operator 2" });
+
+            //set display member and value member for combobox
+            CB_User.DataSource = list;
+            CB_User.ValueMember = "ID";
+            CB_User.DisplayMember = "Name";
+
         }
 
         
@@ -48,6 +63,43 @@ public Login()
             if (result == DialogResult.Yes)
             {
                 Application.Exit();
+            }
+        }
+
+        private void btnIN_Click(object sender, EventArgs e)
+        {
+            if (CB_User.Text == "Administrator" && tbPass.Text == "admin123")
+            {
+                varGlobal.Username = CB_User.Text;
+                FormMain mainMenu = new FormMain();
+                mainMenu.Show();
+                this.Hide();
+
+            }
+            else if (CB_User.Text == "Supervisor" && tbPass.Text == "spv123")
+            {
+                varGlobal.Username = CB_User.Text;
+                FormMain mainMenu = new FormMain();
+                mainMenu.Show();
+                this.Hide();
+            }
+            else if (CB_User.Text == "Operator 1" && tbPass.Text == "opt123")
+            {
+                varGlobal.Username = CB_User.Text;
+                FormMain mainMenu = new FormMain();
+                mainMenu.Show();
+                this.Hide();
+            }
+            else if (CB_User.Text == "Operator 2" && tbPass.Text == "opt321")
+            {
+                varGlobal.Username = CB_User.Text;
+                FormMain mainMenu = new FormMain();
+                mainMenu.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Username or Password NotFound", "Perhatian..", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
     }

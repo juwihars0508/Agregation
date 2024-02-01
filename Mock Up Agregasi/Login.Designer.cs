@@ -30,11 +30,12 @@ namespace Mock_Up_Agregasi
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.cb_User = new System.Windows.Forms.ComboBox();
+            this.CB_User = new System.Windows.Forms.ComboBox();
             this.btnIN = new System.Windows.Forms.Button();
             this.tbPass = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,7 +44,6 @@ namespace Mock_Up_Agregasi
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnMin = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -57,7 +57,7 @@ namespace Mock_Up_Agregasi
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.cb_User);
+            this.panel1.Controls.Add(this.CB_User);
             this.panel1.Controls.Add(this.btnIN);
             this.panel1.Controls.Add(this.tbPass);
             this.panel1.Controls.Add(this.label1);
@@ -67,6 +67,14 @@ namespace Mock_Up_Agregasi
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(580, 397);
             this.panel1.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.panel4.Location = new System.Drawing.Point(119, 123);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(320, 5);
+            this.panel4.TabIndex = 19;
             // 
             // label4
             // 
@@ -107,14 +115,14 @@ namespace Mock_Up_Agregasi
             this.label5.TabIndex = 13;
             this.label5.Text = ":";
             // 
-            // cb_User
+            // CB_User
             // 
-            this.cb_User.BackColor = System.Drawing.Color.White;
-            this.cb_User.FormattingEnabled = true;
-            this.cb_User.Location = new System.Drawing.Point(318, 128);
-            this.cb_User.Name = "cb_User";
-            this.cb_User.Size = new System.Drawing.Size(121, 21);
-            this.cb_User.TabIndex = 6;
+            this.CB_User.BackColor = System.Drawing.Color.White;
+            this.CB_User.FormattingEnabled = true;
+            this.CB_User.Location = new System.Drawing.Point(318, 128);
+            this.CB_User.Name = "CB_User";
+            this.CB_User.Size = new System.Drawing.Size(121, 21);
+            this.CB_User.TabIndex = 6;
             // 
             // btnIN
             // 
@@ -128,12 +136,14 @@ namespace Mock_Up_Agregasi
             this.btnIN.TabIndex = 7;
             this.btnIN.Text = "IN";
             this.btnIN.UseVisualStyleBackColor = false;
+            this.btnIN.Click += new System.EventHandler(this.btnIN_Click);
             // 
             // tbPass
             // 
             this.tbPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbPass.Location = new System.Drawing.Point(317, 155);
             this.tbPass.Name = "tbPass";
+            this.tbPass.PasswordChar = '*';
             this.tbPass.Size = new System.Drawing.Size(121, 20);
             this.tbPass.TabIndex = 6;
             // 
@@ -203,14 +213,6 @@ namespace Mock_Up_Agregasi
             this.btnMin.UseVisualStyleBackColor = false;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panel4.Location = new System.Drawing.Point(119, 123);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(320, 5);
-            this.panel4.TabIndex = 19;
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,7 +247,7 @@ namespace Mock_Up_Agregasi
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox tbPass;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox cb_User;
+        private System.Windows.Forms.ComboBox CB_User;
         private System.Windows.Forms.Button btnIN;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label4;

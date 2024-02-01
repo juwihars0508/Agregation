@@ -52,7 +52,16 @@ namespace Mock_Up_Agregasi
 
         private void btn_MenuAggregation_Click(object sender, EventArgs e)
         {
+            FormData formData = new FormData();
+            formData.Show();
+            this.Hide();
+        }
 
+        private void btn_LogOut_Click(object sender, EventArgs e)
+        {
+            Login frmLogin = new Login();
+            frmLogin.Show();
+            this.Hide();
         }
     }
 }
