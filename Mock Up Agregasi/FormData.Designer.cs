@@ -82,6 +82,8 @@ namespace Mock_Up_Agregasi
             this.lbCartonSuccesfull = new System.Windows.Forms.Label();
             this.lbLastReadCodeRealese = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.serialTimbangan = new System.IO.Ports.SerialPort(this.components);
+            this.serialTowerLamp = new System.IO.Ports.SerialPort(this.components);
             this.panel1.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel13.SuspendLayout();
@@ -135,6 +137,7 @@ namespace Mock_Up_Agregasi
             // btnStart
             // 
             this.btnStart.BackColor = System.Drawing.Color.DarkGray;
+            this.btnStart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStart.FlatAppearance.BorderSize = 0;
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStart.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -149,6 +152,7 @@ namespace Mock_Up_Agregasi
             // btnStop
             // 
             this.btnStop.BackColor = System.Drawing.Color.DarkGray;
+            this.btnStop.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStop.FlatAppearance.BorderSize = 0;
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStop.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -163,6 +167,7 @@ namespace Mock_Up_Agregasi
             // btnPause
             // 
             this.btnPause.BackColor = System.Drawing.Color.DarkGray;
+            this.btnPause.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPause.FlatAppearance.BorderSize = 0;
             this.btnPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPause.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -177,6 +182,7 @@ namespace Mock_Up_Agregasi
             // btnCloseWO
             // 
             this.btnCloseWO.BackColor = System.Drawing.Color.DarkGray;
+            this.btnCloseWO.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCloseWO.FlatAppearance.BorderSize = 0;
             this.btnCloseWO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCloseWO.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -191,6 +197,7 @@ namespace Mock_Up_Agregasi
             // btnHistoryLabel
             // 
             this.btnHistoryLabel.BackColor = System.Drawing.Color.DarkGray;
+            this.btnHistoryLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHistoryLabel.FlatAppearance.BorderSize = 0;
             this.btnHistoryLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHistoryLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -204,6 +211,7 @@ namespace Mock_Up_Agregasi
             // btnDataEdit
             // 
             this.btnDataEdit.BackColor = System.Drawing.Color.DarkGray;
+            this.btnDataEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDataEdit.FlatAppearance.BorderSize = 0;
             this.btnDataEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDataEdit.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -213,7 +221,7 @@ namespace Mock_Up_Agregasi
             this.btnDataEdit.TabIndex = 10;
             this.btnDataEdit.Text = "Data Edit";
             this.btnDataEdit.UseVisualStyleBackColor = false;
-            this.btnDataEdit.Click += new System.EventHandler(this.button1_Click);
+            this.btnDataEdit.Click += new System.EventHandler(this.btnDataEdit_Click);
             // 
             // label13
             // 
@@ -789,6 +797,8 @@ namespace Mock_Up_Agregasi
         private System.Windows.Forms.Label lbBoxGood;
         private System.Windows.Forms.Label lbTotalCase;
         private System.IO.Ports.SerialPort serialPort1;
+        private System.IO.Ports.SerialPort serialTimbangan;
+        private System.IO.Ports.SerialPort serialTowerLamp;
     }
 }
 

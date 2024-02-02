@@ -33,6 +33,8 @@ public Login()
         {
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             btnIN.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnIN.Width, btnIN.Height, 10, 10));
 
             CB_User.Items.Clear();

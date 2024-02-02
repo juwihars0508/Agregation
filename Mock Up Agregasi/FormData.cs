@@ -38,6 +38,20 @@ namespace Mock_Up_Agregasi
         public string Vdata_GTINCodeMatrix;
         public string VdataKodeRecipe;
 
+        //Variable Data COM Timbangan
+        public string vCOMportTimbangan;
+        public string vBaudRateTimbangan;
+        public string vDataBitsTimbangan;
+        public string vStopBitsTimbangan;
+        public string vParityTimbangan;
+
+        //Variable Data COM CB
+        public string vCOMportCB;
+        public string vBaudRateCB;
+        public string vDataBitsCB;
+        public string vStopBitsCB;
+        public string vParityCB;
+
         //variable COM Port Setting
         public string VCOMPort;
         public string VBaudrate;
@@ -82,6 +96,11 @@ namespace Mock_Up_Agregasi
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+
             btnDataEdit.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnDataEdit.Width, btnDataEdit.Height, 20, 20));
             btnHistoryLabel.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnHistoryLabel.Width, btnHistoryLabel.Height, 20, 20));
             btnCloseWO.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnCloseWO.Width, btnCloseWO.Height, 20, 20));
@@ -258,8 +277,16 @@ namespace Mock_Up_Agregasi
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            Connect_COM();
-            enab();
+            if (cbWO.Text.Length != 0 )
+            {
+                Connect_COM();
+                enab();
+            }
+            else
+            {
+                MessageBox.Show("Silahkan Pilih WO terlebih dahulu", "Perhatian", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
             
         }
 
@@ -292,6 +319,29 @@ namespace Mock_Up_Agregasi
             {
                 serialPort1.Close();
             }
+            disab();
+        }
+
+        private void GetData_ComSettingTimbangan()
+        {
+            varGlobal.GetValues(varUtility.fileComSettingTimbangan);
+            vCOMportTimbangan = Values.StringCOM;
+            vBaudRateTimbangan = Values.IntBaudRate;
+            vDataBitsTimbangan = Values.IntDataBits;
+            vStopBitsTimbangan = Values.IntStopBits;
+            vParityTimbangan = Values.IntParity;
+
+        }
+
+        private void GetData_ComSettingCB()
+        {
+            varGlobal.GetValues(varUtility.fileComSettingCB);
+            vCOMportCB = Values.StringCOM;
+            vBaudRateCB = Values.IntBaudRate;
+            vDataBitsCB = Values.IntDataBits;
+            vStopBitsCB = Values.IntStopBits;
+            vParityCB = Values.IntParity;
+
         }
 
         private void GetCOMSetting()
@@ -303,6 +353,56 @@ namespace Mock_Up_Agregasi
             VStopBits = Values.IntStopBits;
             VParity = Values.IntParity;
 
+        }
+
+        public void connect_Tower()
+        {
+            GetData_ComSettingCB();
+            serialTowerLamp.PortName = vCOMportCB;
+            serialTowerLamp.BaudRate = Convert.ToInt32(vBaudRateCB);
+            serialTowerLamp.DataBits = Convert.ToInt32(vDataBitsCB);
+            serialTowerLamp.StopBits = (StopBits)Enum.Parse(typeof(StopBits), vStopBitsCB);
+            serialTowerLamp.Parity = (Parity)Enum.Parse(typeof(Parity), vParityCB);
+
+            //tmrReaderSerialData.Interval = 1000;
+            //tmrReaderSerialData.Enabled = true;
+
+            if (!serialTowerLamp.IsOpen == true)
+            {
+                serialTowerLamp.Open();
+                //P_Connected();
+
+            }
+            else
+            {
+                //P_Disconnected();
+                MessageBox.Show("Error opening to serial port :: ", "Error!");
+            }
+        }
+
+        public void connect_Timbangan()
+        {
+            GetData_ComSettingTimbangan();
+            serialTimbangan.PortName = vCOMportTimbangan;
+            serialTimbangan.BaudRate = Convert.ToInt32(vBaudRateTimbangan);
+            serialTimbangan.DataBits = Convert.ToInt32(vDataBitsTimbangan);
+            serialTimbangan.StopBits = (StopBits)Enum.Parse(typeof(StopBits), vStopBitsTimbangan);
+            serialTimbangan.Parity = (Parity)Enum.Parse(typeof(Parity), vParityTimbangan);
+
+            //tmrReaderSerialData.Interval = 1000;
+            //tmrReaderSerialData.Enabled = true;
+
+            if (!serialTimbangan.IsOpen == true)
+            {
+                serialTimbangan.Open();
+                //T_Connected();
+
+            }
+            else
+            {
+                //T_Disconneted();
+                MessageBox.Show("Error opening to serial port :: ", "Error!");
+            }
         }
 
         private void Connect_COM()
@@ -340,6 +440,13 @@ namespace Mock_Up_Agregasi
             //ReadData2 = ReadData.Substring(7, 4);
             //ReadData2 = ReadData.Substring(6, 6);
             SetLabelText(lbLastReadCodeScan, ReadData);
+        }
+
+        private void btnDataEdit_Click(object sender, EventArgs e)
+        {
+            DataEditAgg dataEditAgg = new DataEditAgg();
+            dataEditAgg.Show();
+            this.Hide();
         }
     }
 }

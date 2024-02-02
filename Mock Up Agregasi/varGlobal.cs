@@ -19,6 +19,8 @@ namespace Mock_Up_Agregasi
         public static string filePortCamera = @"Data\PortCamera_String.txt";
         public static string filePrefixString = @"Data\DataPrefix_String.txt";
         public static string fileComSetting = @"Data\ComSetting.txt";
+        public static string fileComSettingTimbangan = @"Data\ComSettingTimbangan.txt";
+        public static string fileComSettingCB = @"Data\ComSettingCB.txt";
         //public static string fileLineProcess = @"Data\Flag_String.txt";
         //public static string fileBulanProduksi = @"Data\BulanProduksi.txt";
         //public static string fileBulan10 = @"Data\Bulan10.txt";
@@ -65,8 +67,15 @@ namespace Mock_Up_Agregasi
         public static string terimapesandariserver;
         public static string terimapesandiserver;
         public static string pesankoneksi;
-        public static string statuskoneksi;
+        public static string statuskoneksi;        
         public static string Username;
+        public static string product;
+        public static string dataPrint;
+        public static string qtyCase;
+        public static string qtyTargetInner;
+        public static string stdWieght;
+        public static string minWeight;
+        public static string maxWeight;
 
         public static Nilai GetNilai(string path)
         {
