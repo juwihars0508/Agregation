@@ -149,6 +149,7 @@ namespace Mock_Up_Agregasi
             this.btn_EditData.TabIndex = 15;
             this.btn_EditData.Text = "Edit Data";
             this.btn_EditData.UseVisualStyleBackColor = false;
+            this.btn_EditData.Click += new System.EventHandler(this.btn_EditData_Click);
             // 
             // btn_MenuAggregation
             // 
@@ -197,6 +198,7 @@ namespace Mock_Up_Agregasi
             this.btn_MenuReport.TabIndex = 17;
             this.btn_MenuReport.Text = "Report";
             this.btn_MenuReport.UseVisualStyleBackColor = false;
+            this.btn_MenuReport.Click += new System.EventHandler(this.btn_MenuReport_Click);
             // 
             // btnMin
             // 

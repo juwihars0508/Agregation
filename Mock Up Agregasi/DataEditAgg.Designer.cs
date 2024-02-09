@@ -30,6 +30,7 @@ namespace Mock_Up_Agregasi
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
             this.tbMaxWeight = new System.Windows.Forms.TextBox();
@@ -39,8 +40,6 @@ namespace Mock_Up_Agregasi
             this.tbDataPrint = new System.Windows.Forms.TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.tbSTDWeight = new System.Windows.Forms.TextBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.tbQtyTargetInBox = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tbQtyCase = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -50,7 +49,6 @@ namespace Mock_Up_Agregasi
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -59,13 +57,12 @@ namespace Mock_Up_Agregasi
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnBack = new System.Windows.Forms.Button();
+            this.cbLastBatch = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -75,13 +72,13 @@ namespace Mock_Up_Agregasi
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.cbLastBatch);
             this.panel1.Controls.Add(this.btnBack);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.panel10);
             this.panel1.Controls.Add(this.panel9);
             this.panel1.Controls.Add(this.panel8);
             this.panel1.Controls.Add(this.panel7);
-            this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.label11);
@@ -89,7 +86,6 @@ namespace Mock_Up_Agregasi
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.panel3);
@@ -101,17 +97,31 @@ namespace Mock_Up_Agregasi
             this.panel1.Size = new System.Drawing.Size(800, 437);
             this.panel1.TabIndex = 0;
             // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.DarkGray;
+            this.btnBack.FlatAppearance.BorderSize = 0;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(706, 384);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(71, 41);
+            this.btnBack.TabIndex = 17;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.DarkGray;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(329, 328);
+            this.btnSave.Location = new System.Drawing.Point(329, 347);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(71, 41);
             this.btnSave.TabIndex = 16;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Set";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -119,7 +129,7 @@ namespace Mock_Up_Agregasi
             // 
             this.panel10.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panel10.Controls.Add(this.tbMaxWeight);
-            this.panel10.Location = new System.Drawing.Point(357, 233);
+            this.panel10.Location = new System.Drawing.Point(357, 204);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(43, 26);
             this.panel10.TabIndex = 15;
@@ -128,7 +138,7 @@ namespace Mock_Up_Agregasi
             // tbMaxWeight
             // 
             this.tbMaxWeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbMaxWeight.Location = new System.Drawing.Point(4, 3);
+            this.tbMaxWeight.Location = new System.Drawing.Point(3, 3);
             this.tbMaxWeight.Name = "tbMaxWeight";
             this.tbMaxWeight.Size = new System.Drawing.Size(36, 20);
             this.tbMaxWeight.TabIndex = 20;
@@ -137,7 +147,7 @@ namespace Mock_Up_Agregasi
             // 
             this.panel9.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panel9.Controls.Add(this.tbMinWeight);
-            this.panel9.Location = new System.Drawing.Point(284, 233);
+            this.panel9.Location = new System.Drawing.Point(284, 204);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(43, 26);
             this.panel9.TabIndex = 15;
@@ -146,7 +156,7 @@ namespace Mock_Up_Agregasi
             // tbMinWeight
             // 
             this.tbMinWeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbMinWeight.Location = new System.Drawing.Point(3, 3);
+            this.tbMinWeight.Location = new System.Drawing.Point(4, 3);
             this.tbMinWeight.Name = "tbMinWeight";
             this.tbMinWeight.Size = new System.Drawing.Size(36, 20);
             this.tbMinWeight.TabIndex = 19;
@@ -155,7 +165,7 @@ namespace Mock_Up_Agregasi
             // 
             this.panel8.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panel8.Controls.Add(this.tbDataPrint);
-            this.panel8.Location = new System.Drawing.Point(207, 282);
+            this.panel8.Location = new System.Drawing.Point(207, 253);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(271, 26);
             this.panel8.TabIndex = 14;
@@ -174,7 +184,7 @@ namespace Mock_Up_Agregasi
             // 
             this.panel7.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panel7.Controls.Add(this.tbSTDWeight);
-            this.panel7.Location = new System.Drawing.Point(207, 233);
+            this.panel7.Location = new System.Drawing.Point(207, 204);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(43, 26);
             this.panel7.TabIndex = 14;
@@ -183,28 +193,10 @@ namespace Mock_Up_Agregasi
             // tbSTDWeight
             // 
             this.tbSTDWeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbSTDWeight.Location = new System.Drawing.Point(4, 3);
+            this.tbSTDWeight.Location = new System.Drawing.Point(3, 3);
             this.tbSTDWeight.Name = "tbSTDWeight";
             this.tbSTDWeight.Size = new System.Drawing.Size(36, 20);
             this.tbSTDWeight.TabIndex = 18;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panel6.Controls.Add(this.tbQtyTargetInBox);
-            this.panel6.Location = new System.Drawing.Point(207, 201);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(130, 26);
-            this.panel6.TabIndex = 14;
-            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
-            // 
-            // tbQtyTargetInBox
-            // 
-            this.tbQtyTargetInBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbQtyTargetInBox.Location = new System.Drawing.Point(4, 3);
-            this.tbQtyTargetInBox.Name = "tbQtyTargetInBox";
-            this.tbQtyTargetInBox.Size = new System.Drawing.Size(121, 20);
-            this.tbQtyTargetInBox.TabIndex = 17;
             // 
             // panel5
             // 
@@ -247,7 +239,7 @@ namespace Mock_Up_Agregasi
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(354, 262);
+            this.label11.Location = new System.Drawing.Point(354, 233);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(29, 14);
             this.label11.TabIndex = 11;
@@ -257,7 +249,7 @@ namespace Mock_Up_Agregasi
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(281, 262);
+            this.label10.Location = new System.Drawing.Point(281, 233);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(27, 14);
             this.label10.TabIndex = 10;
@@ -267,7 +259,7 @@ namespace Mock_Up_Agregasi
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(204, 262);
+            this.label9.Location = new System.Drawing.Point(204, 233);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(66, 14);
             this.label9.TabIndex = 9;
@@ -277,7 +269,7 @@ namespace Mock_Up_Agregasi
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(91, 292);
+            this.label8.Location = new System.Drawing.Point(91, 263);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(54, 16);
             this.label8.TabIndex = 8;
@@ -287,21 +279,11 @@ namespace Mock_Up_Agregasi
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(13, 243);
+            this.label7.Location = new System.Drawing.Point(13, 214);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(135, 16);
             this.label7.TabIndex = 7;
             this.label7.Text = "Weight prod. Range";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(9, 211);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(139, 16);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Qty Target Inner Box";
             // 
             // label5
             // 
@@ -386,19 +368,17 @@ namespace Mock_Up_Agregasi
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // btnBack
+            // cbLastBatch
             // 
-            this.btnBack.BackColor = System.Drawing.Color.DarkGray;
-            this.btnBack.FlatAppearance.BorderSize = 0;
-            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBack.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(706, 384);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(71, 41);
-            this.btnBack.TabIndex = 17;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.cbLastBatch.AutoSize = true;
+            this.cbLastBatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbLastBatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLastBatch.Location = new System.Drawing.Point(210, 303);
+            this.cbLastBatch.Name = "cbLastBatch";
+            this.cbLastBatch.Size = new System.Drawing.Size(84, 17);
+            this.cbLastBatch.TabIndex = 18;
+            this.cbLastBatch.Text = "Last Batch";
+            this.cbLastBatch.UseVisualStyleBackColor = true;
             // 
             // DataEditAgg
             // 
@@ -420,8 +400,6 @@ namespace Mock_Up_Agregasi
             this.panel8.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -449,8 +427,6 @@ namespace Mock_Up_Agregasi
         private System.Windows.Forms.TextBox tbDataPrint;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.TextBox tbSTDWeight;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TextBox tbQtyTargetInBox;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox tbQtyCase;
         private System.Windows.Forms.Panel panel4;
@@ -460,10 +436,10 @@ namespace Mock_Up_Agregasi
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.CheckBox cbLastBatch;
     }
 }

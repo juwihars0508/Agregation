@@ -31,6 +31,14 @@ namespace Mock_Up_Agregasi
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.tbLastReadCodeTemp = new System.Windows.Forms.TextBox();
+            this.tbtimbang2 = new System.Windows.Forms.TextBox();
+            this.lbTimbang = new System.Windows.Forms.Label();
+            this.pnlOK = new System.Windows.Forms.Panel();
+            this.pnlNG = new System.Windows.Forms.Panel();
+            this.lbStatusEcer = new System.Windows.Forms.Label();
+            this.tbTimbang = new System.Windows.Forms.TextBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
@@ -39,27 +47,38 @@ namespace Mock_Up_Agregasi
             this.btnDataEdit = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
+            this.lbLastReadCodeRealese = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.lbCartonSuccesfull = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.panel12 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.lbBoxNG = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.lbBoxGood = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.lbLastReadCodeScan = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.lbTargetQty = new System.Windows.Forms.Label();
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.label11 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.lbTotalCase = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.lbActualQtyCase = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbQtyCaseTarget = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label9 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lbProductName = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lbLotNo = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.cbWO = new System.Windows.Forms.ComboBox();
@@ -69,25 +88,19 @@ namespace Mock_Up_Agregasi
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lbLotNo = new System.Windows.Forms.Label();
-            this.lbProductName = new System.Windows.Forms.Label();
-            this.lbActualTarget = new System.Windows.Forms.Label();
-            this.lbTargetQty = new System.Windows.Forms.Label();
-            this.lbLastReadCodeScan = new System.Windows.Forms.Label();
-            this.lbBoxGood = new System.Windows.Forms.Label();
-            this.lbBoxNG = new System.Windows.Forms.Label();
-            this.lbTotalCase = new System.Windows.Forms.Label();
-            this.lbWeight = new System.Windows.Forms.Label();
-            this.lbCartonSuccesfull = new System.Windows.Forms.Label();
-            this.lbLastReadCodeRealese = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.serialTimbangan = new System.IO.Ports.SerialPort(this.components);
             this.serialTowerLamp = new System.IO.Ports.SerialPort(this.components);
+            this.tbScanBarcode = new System.Windows.Forms.TextBox();
+            this.tbTemp = new System.Windows.Forms.TextBox();
+            this.lbWeight = new System.Windows.Forms.Label();
+            this.lb_idCarton = new System.Windows.Forms.Label();
+            this.lbLastReadCodeRealeseTemp = new System.Windows.Forms.Label();
+            this.PB_Warning = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel13.SuspendLayout();
-            this.panel12.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -98,12 +111,27 @@ namespace Mock_Up_Agregasi
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_Warning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.lbLastReadCodeRealeseTemp);
+            this.panel1.Controls.Add(this.lb_idCarton);
+            this.panel1.Controls.Add(this.lbWeight);
+            this.panel1.Controls.Add(this.PB_Warning);
+            this.panel1.Controls.Add(this.tbTemp);
+            this.panel1.Controls.Add(this.tbScanBarcode);
+            this.panel1.Controls.Add(this.btnBack);
+            this.panel1.Controls.Add(this.tbLastReadCodeTemp);
+            this.panel1.Controls.Add(this.tbtimbang2);
+            this.panel1.Controls.Add(this.lbTimbang);
+            this.panel1.Controls.Add(this.pnlOK);
+            this.panel1.Controls.Add(this.pnlNG);
+            this.panel1.Controls.Add(this.lbStatusEcer);
+            this.panel1.Controls.Add(this.tbTimbang);
             this.panel1.Controls.Add(this.btnStart);
             this.panel1.Controls.Add(this.btnStop);
             this.panel1.Controls.Add(this.btnPause);
@@ -113,7 +141,6 @@ namespace Mock_Up_Agregasi
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.panel14);
             this.panel1.Controls.Add(this.panel13);
-            this.panel1.Controls.Add(this.panel12);
             this.panel1.Controls.Add(this.panel11);
             this.panel1.Controls.Add(this.panel10);
             this.panel1.Controls.Add(this.panel9);
@@ -131,8 +158,97 @@ namespace Mock_Up_Agregasi
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1114, 609);
+            this.panel1.Size = new System.Drawing.Size(984, 609);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.DarkGray;
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.FlatAppearance.BorderSize = 0;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(653, 487);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(85, 47);
+            this.btnBack.TabIndex = 61;
+            this.btnBack.Text = "Back Menu";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // tbLastReadCodeTemp
+            // 
+            this.tbLastReadCodeTemp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbLastReadCodeTemp.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbLastReadCodeTemp.Location = new System.Drawing.Point(207, 574);
+            this.tbLastReadCodeTemp.Name = "tbLastReadCodeTemp";
+            this.tbLastReadCodeTemp.Size = new System.Drawing.Size(576, 26);
+            this.tbLastReadCodeTemp.TabIndex = 60;
+            this.tbLastReadCodeTemp.Visible = false;
+            this.tbLastReadCodeTemp.TextChanged += new System.EventHandler(this.tbLastReadCodeTemp_TextChanged);
+            // 
+            // tbtimbang2
+            // 
+            this.tbtimbang2.Location = new System.Drawing.Point(12, 418);
+            this.tbtimbang2.Name = "tbtimbang2";
+            this.tbtimbang2.Size = new System.Drawing.Size(100, 20);
+            this.tbtimbang2.TabIndex = 59;
+            this.tbtimbang2.Text = "-";
+            this.tbtimbang2.Visible = false;
+            this.tbtimbang2.TextChanged += new System.EventHandler(this.tbtimbang2_TextChanged);
+            // 
+            // lbTimbang
+            // 
+            this.lbTimbang.AutoSize = true;
+            this.lbTimbang.Location = new System.Drawing.Point(18, 556);
+            this.lbTimbang.Name = "lbTimbang";
+            this.lbTimbang.Size = new System.Drawing.Size(10, 13);
+            this.lbTimbang.TabIndex = 58;
+            this.lbTimbang.Text = "-";
+            this.lbTimbang.TextChanged += new System.EventHandler(this.lbTimbang_TextChanged_1);
+            // 
+            // pnlOK
+            // 
+            this.pnlOK.BackColor = System.Drawing.Color.Green;
+            this.pnlOK.Location = new System.Drawing.Point(652, 397);
+            this.pnlOK.Name = "pnlOK";
+            this.pnlOK.Size = new System.Drawing.Size(22, 73);
+            this.pnlOK.TabIndex = 48;
+            this.pnlOK.Visible = false;
+            // 
+            // pnlNG
+            // 
+            this.pnlNG.BackColor = System.Drawing.Color.Red;
+            this.pnlNG.Location = new System.Drawing.Point(652, 397);
+            this.pnlNG.Name = "pnlNG";
+            this.pnlNG.Size = new System.Drawing.Size(22, 73);
+            this.pnlNG.TabIndex = 47;
+            this.pnlNG.Visible = false;
+            // 
+            // lbStatusEcer
+            // 
+            this.lbStatusEcer.AutoSize = true;
+            this.lbStatusEcer.BackColor = System.Drawing.Color.White;
+            this.lbStatusEcer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbStatusEcer.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbStatusEcer.Location = new System.Drawing.Point(14, 474);
+            this.lbStatusEcer.Name = "lbStatusEcer";
+            this.lbStatusEcer.Size = new System.Drawing.Size(14, 15);
+            this.lbStatusEcer.TabIndex = 57;
+            this.lbStatusEcer.Text = "0";
+            this.lbStatusEcer.Visible = false;
+            // 
+            // tbTimbang
+            // 
+            this.tbTimbang.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbTimbang.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTimbang.Location = new System.Drawing.Point(12, 508);
+            this.tbTimbang.Name = "tbTimbang";
+            this.tbTimbang.Size = new System.Drawing.Size(111, 26);
+            this.tbTimbang.TabIndex = 47;
+            this.tbTimbang.Visible = false;
+            this.tbTimbang.TextChanged += new System.EventHandler(this.tbTimbang_TextChanged);
             // 
             // btnStart
             // 
@@ -177,7 +293,7 @@ namespace Mock_Up_Agregasi
             this.btnPause.TabIndex = 13;
             this.btnPause.Text = "Pause";
             this.btnPause.UseVisualStyleBackColor = false;
-            this.btnPause.Click += new System.EventHandler(this.button4_Click);
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
             // btnCloseWO
             // 
@@ -186,7 +302,7 @@ namespace Mock_Up_Agregasi
             this.btnCloseWO.FlatAppearance.BorderSize = 0;
             this.btnCloseWO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCloseWO.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCloseWO.Location = new System.Drawing.Point(601, 487);
+            this.btnCloseWO.Location = new System.Drawing.Point(465, 487);
             this.btnCloseWO.Name = "btnCloseWO";
             this.btnCloseWO.Size = new System.Drawing.Size(85, 47);
             this.btnCloseWO.TabIndex = 12;
@@ -201,7 +317,7 @@ namespace Mock_Up_Agregasi
             this.btnHistoryLabel.FlatAppearance.BorderSize = 0;
             this.btnHistoryLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHistoryLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHistoryLabel.Location = new System.Drawing.Point(692, 487);
+            this.btnHistoryLabel.Location = new System.Drawing.Point(556, 487);
             this.btnHistoryLabel.Name = "btnHistoryLabel";
             this.btnHistoryLabel.Size = new System.Drawing.Size(91, 47);
             this.btnHistoryLabel.TabIndex = 11;
@@ -215,12 +331,13 @@ namespace Mock_Up_Agregasi
             this.btnDataEdit.FlatAppearance.BorderSize = 0;
             this.btnDataEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDataEdit.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDataEdit.Location = new System.Drawing.Point(505, 487);
+            this.btnDataEdit.Location = new System.Drawing.Point(102, 545);
             this.btnDataEdit.Name = "btnDataEdit";
             this.btnDataEdit.Size = new System.Drawing.Size(90, 47);
             this.btnDataEdit.TabIndex = 10;
             this.btnDataEdit.Text = "Data Edit";
             this.btnDataEdit.UseVisualStyleBackColor = false;
+            this.btnDataEdit.Visible = false;
             this.btnDataEdit.Click += new System.EventHandler(this.btnDataEdit_Click);
             // 
             // label13
@@ -238,20 +355,32 @@ namespace Mock_Up_Agregasi
             this.panel14.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panel14.Controls.Add(this.lbLastReadCodeRealese);
             this.panel14.Controls.Add(this.label17);
-            this.panel14.Location = new System.Drawing.Point(881, 198);
+            this.panel14.Location = new System.Drawing.Point(624, 198);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(165, 74);
+            this.panel14.Size = new System.Drawing.Size(349, 60);
             this.panel14.TabIndex = 8;
             this.panel14.Paint += new System.Windows.Forms.PaintEventHandler(this.panel14_Paint);
+            // 
+            // lbLastReadCodeRealese
+            // 
+            this.lbLastReadCodeRealese.AutoSize = true;
+            this.lbLastReadCodeRealese.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLastReadCodeRealese.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbLastReadCodeRealese.Location = new System.Drawing.Point(13, 35);
+            this.lbLastReadCodeRealese.Name = "lbLastReadCodeRealese";
+            this.lbLastReadCodeRealese.Size = new System.Drawing.Size(13, 18);
+            this.lbLastReadCodeRealese.TabIndex = 18;
+            this.lbLastReadCodeRealese.Text = "-";
+            this.lbLastReadCodeRealese.TextChanged += new System.EventHandler(this.lbLastReadCodeRealese_TextChanged);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.SystemColors.Control;
-            this.label17.Location = new System.Drawing.Point(11, 18);
+            this.label17.Location = new System.Drawing.Point(11, 6);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(108, 16);
+            this.label17.Size = new System.Drawing.Size(121, 18);
             this.label17.TabIndex = 1;
             this.label17.Text = "Last Read Code";
             this.label17.Click += new System.EventHandler(this.label17_Click);
@@ -261,32 +390,33 @@ namespace Mock_Up_Agregasi
             this.panel13.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panel13.Controls.Add(this.lbCartonSuccesfull);
             this.panel13.Controls.Add(this.label16);
-            this.panel13.Location = new System.Drawing.Point(879, 122);
+            this.panel13.Location = new System.Drawing.Point(806, 122);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(167, 70);
             this.panel13.TabIndex = 8;
             this.panel13.Paint += new System.Windows.Forms.PaintEventHandler(this.panel13_Paint);
             // 
+            // lbCartonSuccesfull
+            // 
+            this.lbCartonSuccesfull.AutoSize = true;
+            this.lbCartonSuccesfull.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCartonSuccesfull.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbCartonSuccesfull.Location = new System.Drawing.Point(19, 45);
+            this.lbCartonSuccesfull.Name = "lbCartonSuccesfull";
+            this.lbCartonSuccesfull.Size = new System.Drawing.Size(14, 19);
+            this.lbCartonSuccesfull.TabIndex = 18;
+            this.lbCartonSuccesfull.Text = "-";
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.SystemColors.Control;
             this.label16.Location = new System.Drawing.Point(15, 10);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(126, 32);
+            this.label16.Size = new System.Drawing.Size(141, 36);
             this.label16.TabIndex = 1;
             this.label16.Text = "Carton Succesfully\r\nRegistered";
-            // 
-            // panel12
-            // 
-            this.panel12.BackColor = System.Drawing.Color.LightGreen;
-            this.panel12.Controls.Add(this.lbWeight);
-            this.panel12.Location = new System.Drawing.Point(633, 414);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(150, 51);
-            this.panel12.TabIndex = 8;
-            this.panel12.Paint += new System.Windows.Forms.PaintEventHandler(this.panel12_Paint);
             // 
             // panel11
             // 
@@ -299,14 +429,25 @@ namespace Mock_Up_Agregasi
             this.panel11.TabIndex = 8;
             this.panel11.Paint += new System.Windows.Forms.PaintEventHandler(this.panel11_Paint);
             // 
+            // lbBoxNG
+            // 
+            this.lbBoxNG.AutoSize = true;
+            this.lbBoxNG.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBoxNG.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbBoxNG.Location = new System.Drawing.Point(89, 16);
+            this.lbBoxNG.Name = "lbBoxNG";
+            this.lbBoxNG.Size = new System.Drawing.Size(14, 19);
+            this.lbBoxNG.TabIndex = 18;
+            this.lbBoxNG.Text = "-";
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.SystemColors.Control;
             this.label15.Location = new System.Drawing.Point(12, 16);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(56, 16);
+            this.label15.Size = new System.Drawing.Size(68, 19);
             this.label15.TabIndex = 8;
             this.label15.Text = "Box NG";
             // 
@@ -321,14 +462,25 @@ namespace Mock_Up_Agregasi
             this.panel10.TabIndex = 8;
             this.panel10.Paint += new System.Windows.Forms.PaintEventHandler(this.panel10_Paint);
             // 
+            // lbBoxGood
+            // 
+            this.lbBoxGood.AutoSize = true;
+            this.lbBoxGood.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbBoxGood.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbBoxGood.Location = new System.Drawing.Point(106, 16);
+            this.lbBoxGood.Name = "lbBoxGood";
+            this.lbBoxGood.Size = new System.Drawing.Size(14, 19);
+            this.lbBoxGood.TabIndex = 18;
+            this.lbBoxGood.Text = "-";
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.SystemColors.Control;
             this.label14.Location = new System.Drawing.Point(8, 16);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(71, 16);
+            this.label14.Size = new System.Drawing.Size(86, 19);
             this.label14.TabIndex = 7;
             this.label14.Text = "Box Good";
             // 
@@ -343,14 +495,26 @@ namespace Mock_Up_Agregasi
             this.panel9.TabIndex = 8;
             this.panel9.Paint += new System.Windows.Forms.PaintEventHandler(this.panel9_Paint);
             // 
+            // lbLastReadCodeScan
+            // 
+            this.lbLastReadCodeScan.AutoSize = true;
+            this.lbLastReadCodeScan.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLastReadCodeScan.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbLastReadCodeScan.Location = new System.Drawing.Point(12, 26);
+            this.lbLastReadCodeScan.Name = "lbLastReadCodeScan";
+            this.lbLastReadCodeScan.Size = new System.Drawing.Size(14, 19);
+            this.lbLastReadCodeScan.TabIndex = 18;
+            this.lbLastReadCodeScan.Text = "-";
+            this.lbLastReadCodeScan.TextChanged += new System.EventHandler(this.lbLastReadCodeScan_TextChanged);
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.SystemColors.Control;
             this.label12.Location = new System.Drawing.Point(9, 4);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(108, 16);
+            this.label12.Size = new System.Drawing.Size(131, 19);
             this.label12.TabIndex = 5;
             this.label12.Text = "Last Read Code";
             // 
@@ -366,6 +530,17 @@ namespace Mock_Up_Agregasi
             this.panel8.TabIndex = 8;
             this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
             // 
+            // lbTargetQty
+            // 
+            this.lbTargetQty.AutoSize = true;
+            this.lbTargetQty.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTargetQty.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbTargetQty.Location = new System.Drawing.Point(228, 7);
+            this.lbTargetQty.Name = "lbTargetQty";
+            this.lbTargetQty.Size = new System.Drawing.Size(14, 19);
+            this.lbTargetQty.TabIndex = 17;
+            this.lbTargetQty.Text = "-";
+            // 
             // progressBar2
             // 
             this.progressBar2.Location = new System.Drawing.Point(11, 30);
@@ -377,40 +552,53 @@ namespace Mock_Up_Agregasi
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.SystemColors.Control;
             this.label11.Location = new System.Drawing.Point(9, 7);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(108, 16);
+            this.label11.Size = new System.Drawing.Size(207, 19);
             this.label11.TabIndex = 4;
-            this.label11.Text = "Target Qty WO: ";
+            this.label11.Text = "Data Serialisasi Available :";
             // 
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.LightGreen;
             this.panel7.Controls.Add(this.lbTotalCase);
             this.panel7.Controls.Add(this.label10);
-            this.panel7.Location = new System.Drawing.Point(633, 194);
+            this.panel7.Location = new System.Drawing.Point(624, 264);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(150, 64);
+            this.panel7.Size = new System.Drawing.Size(178, 64);
             this.panel7.TabIndex = 8;
             this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
+            // 
+            // lbTotalCase
+            // 
+            this.lbTotalCase.AutoSize = true;
+            this.lbTotalCase.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalCase.ForeColor = System.Drawing.Color.Black;
+            this.lbTotalCase.Location = new System.Drawing.Point(10, 41);
+            this.lbTotalCase.Name = "lbTotalCase";
+            this.lbTotalCase.Size = new System.Drawing.Size(14, 19);
+            this.lbTotalCase.TabIndex = 18;
+            this.lbTotalCase.Text = "-";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.Control;
+            this.label10.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(3, 17);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(139, 16);
+            this.label10.Size = new System.Drawing.Size(166, 19);
             this.label10.TabIndex = 3;
             this.label10.Text = "Total Case Complete";
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panel6.Controls.Add(this.lbActualTarget);
+            this.panel6.Controls.Add(this.lbActualQtyCase);
+            this.panel6.Controls.Add(this.label1);
+            this.panel6.Controls.Add(this.lbQtyCaseTarget);
             this.panel6.Controls.Add(this.progressBar1);
             this.panel6.Controls.Add(this.label9);
             this.panel6.Location = new System.Drawing.Point(207, 194);
@@ -418,6 +606,40 @@ namespace Mock_Up_Agregasi
             this.panel6.Size = new System.Drawing.Size(406, 64);
             this.panel6.TabIndex = 9;
             this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
+            // 
+            // lbActualQtyCase
+            // 
+            this.lbActualQtyCase.AutoSize = true;
+            this.lbActualQtyCase.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbActualQtyCase.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbActualQtyCase.Location = new System.Drawing.Point(352, 15);
+            this.lbActualQtyCase.Name = "lbActualQtyCase";
+            this.lbActualQtyCase.Size = new System.Drawing.Size(18, 19);
+            this.lbActualQtyCase.TabIndex = 19;
+            this.lbActualQtyCase.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(241, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(111, 19);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Actual Read: ";
+            // 
+            // lbQtyCaseTarget
+            // 
+            this.lbQtyCaseTarget.AutoSize = true;
+            this.lbQtyCaseTarget.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbQtyCaseTarget.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbQtyCaseTarget.Location = new System.Drawing.Point(148, 16);
+            this.lbQtyCaseTarget.Name = "lbQtyCaseTarget";
+            this.lbQtyCaseTarget.Size = new System.Drawing.Size(14, 19);
+            this.lbQtyCaseTarget.TabIndex = 17;
+            this.lbQtyCaseTarget.Text = "-";
             // 
             // progressBar1
             // 
@@ -430,13 +652,14 @@ namespace Mock_Up_Agregasi
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.label9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.Control;
             this.label9.Location = new System.Drawing.Point(9, 17);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(160, 16);
+            this.label9.Size = new System.Drawing.Size(140, 19);
             this.label9.TabIndex = 2;
-            this.label9.Text = "Actual Target Qty/Case: ";
+            this.label9.Text = "Target Qty/Case: ";
             // 
             // panel5
             // 
@@ -449,14 +672,25 @@ namespace Mock_Up_Agregasi
             this.panel5.TabIndex = 8;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
+            // lbProductName
+            // 
+            this.lbProductName.AutoSize = true;
+            this.lbProductName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbProductName.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbProductName.Location = new System.Drawing.Point(18, 40);
+            this.lbProductName.Name = "lbProductName";
+            this.lbProductName.Size = new System.Drawing.Size(14, 19);
+            this.lbProductName.TabIndex = 16;
+            this.lbProductName.Text = "-";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.Control;
             this.label8.Location = new System.Drawing.Point(13, 13);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(98, 16);
+            this.label8.Size = new System.Drawing.Size(118, 19);
             this.label8.TabIndex = 1;
             this.label8.Text = "Product Name";
             // 
@@ -471,14 +705,25 @@ namespace Mock_Up_Agregasi
             this.panel4.TabIndex = 7;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
+            // lbLotNo
+            // 
+            this.lbLotNo.AutoSize = true;
+            this.lbLotNo.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLotNo.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbLotNo.Location = new System.Drawing.Point(12, 40);
+            this.lbLotNo.Name = "lbLotNo";
+            this.lbLotNo.Size = new System.Drawing.Size(14, 19);
+            this.lbLotNo.TabIndex = 1;
+            this.lbLotNo.Text = "-";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
             this.label7.Location = new System.Drawing.Point(9, 13);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 16);
+            this.label7.Size = new System.Drawing.Size(84, 19);
             this.label7.TabIndex = 0;
             this.label7.Text = "Batch No.";
             // 
@@ -505,7 +750,7 @@ namespace Mock_Up_Agregasi
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(876, 96);
+            this.label6.Location = new System.Drawing.Point(803, 96);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(158, 18);
             this.label6.TabIndex = 5;
@@ -547,7 +792,7 @@ namespace Mock_Up_Agregasi
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(631, 7);
+            this.label3.Location = new System.Drawing.Point(530, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(278, 16);
             this.label3.TabIndex = 3;
@@ -565,6 +810,82 @@ namespace Mock_Up_Agregasi
             this.label2.TabIndex = 2;
             this.label2.Text = "AGGREGATION STATION";
             // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
+            // 
+            // serialTimbangan
+            // 
+            this.serialTimbangan.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialTimbangan_DataReceived);
+            // 
+            // tbScanBarcode
+            // 
+            this.tbScanBarcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbScanBarcode.Location = new System.Drawing.Point(808, 267);
+            this.tbScanBarcode.Name = "tbScanBarcode";
+            this.tbScanBarcode.Size = new System.Drawing.Size(164, 20);
+            this.tbScanBarcode.TabIndex = 62;
+            this.tbScanBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbScanBarcode_KeyPress_1);
+            // 
+            // tbTemp
+            // 
+            this.tbTemp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbTemp.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTemp.Location = new System.Drawing.Point(207, 540);
+            this.tbTemp.Name = "tbTemp";
+            this.tbTemp.Size = new System.Drawing.Size(576, 26);
+            this.tbTemp.TabIndex = 63;
+            this.tbTemp.Visible = false;
+            this.tbTemp.TextChanged += new System.EventHandler(this.tbTemp_TextChanged_1);
+            this.tbTemp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTemp_KeyPress);
+            // 
+            // lbWeight
+            // 
+            this.lbWeight.AutoSize = true;
+            this.lbWeight.BackColor = System.Drawing.Color.White;
+            this.lbWeight.Font = new System.Drawing.Font("Arial", 46F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbWeight.ForeColor = System.Drawing.Color.Black;
+            this.lbWeight.Location = new System.Drawing.Point(689, 397);
+            this.lbWeight.Name = "lbWeight";
+            this.lbWeight.Size = new System.Drawing.Size(51, 72);
+            this.lbWeight.TabIndex = 18;
+            this.lbWeight.Text = "-";
+            // 
+            // lb_idCarton
+            // 
+            this.lb_idCarton.AutoSize = true;
+            this.lb_idCarton.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_idCarton.Location = new System.Drawing.Point(16, 392);
+            this.lb_idCarton.Name = "lb_idCarton";
+            this.lb_idCarton.Size = new System.Drawing.Size(13, 18);
+            this.lb_idCarton.TabIndex = 65;
+            this.lb_idCarton.Text = "-";
+            this.lb_idCarton.Visible = false;
+            // 
+            // lbLastReadCodeRealeseTemp
+            // 
+            this.lbLastReadCodeRealeseTemp.AutoSize = true;
+            this.lbLastReadCodeRealeseTemp.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLastReadCodeRealeseTemp.ForeColor = System.Drawing.Color.Black;
+            this.lbLastReadCodeRealeseTemp.Location = new System.Drawing.Point(813, 295);
+            this.lbLastReadCodeRealeseTemp.Name = "lbLastReadCodeRealeseTemp";
+            this.lbLastReadCodeRealeseTemp.Size = new System.Drawing.Size(13, 18);
+            this.lbLastReadCodeRealeseTemp.TabIndex = 66;
+            this.lbLastReadCodeRealeseTemp.Text = "-";
+            this.lbLastReadCodeRealeseTemp.Visible = false;
+            this.lbLastReadCodeRealeseTemp.TextChanged += new System.EventHandler(this.lbLastReadCodeRealeseTemp_TextChanged_1);
+            // 
+            // PB_Warning
+            // 
+            this.PB_Warning.Image = global::Mock_Up_Agregasi.Properties.Resources.OK;
+            this.PB_Warning.Location = new System.Drawing.Point(283, 285);
+            this.PB_Warning.Name = "PB_Warning";
+            this.PB_Warning.Size = new System.Drawing.Size(209, 111);
+            this.PB_Warning.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PB_Warning.TabIndex = 64;
+            this.PB_Warning.TabStop = false;
+            this.PB_Warning.Visible = false;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Mock_Up_Agregasi.Properties.Resources.LIGHT_TRANSPARAN;
@@ -575,137 +896,11 @@ namespace Mock_Up_Agregasi
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // lbLotNo
-            // 
-            this.lbLotNo.AutoSize = true;
-            this.lbLotNo.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLotNo.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbLotNo.Location = new System.Drawing.Point(12, 40);
-            this.lbLotNo.Name = "lbLotNo";
-            this.lbLotNo.Size = new System.Drawing.Size(12, 16);
-            this.lbLotNo.TabIndex = 1;
-            this.lbLotNo.Text = "-";
-            // 
-            // lbProductName
-            // 
-            this.lbProductName.AutoSize = true;
-            this.lbProductName.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProductName.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbProductName.Location = new System.Drawing.Point(18, 40);
-            this.lbProductName.Name = "lbProductName";
-            this.lbProductName.Size = new System.Drawing.Size(12, 16);
-            this.lbProductName.TabIndex = 16;
-            this.lbProductName.Text = "-";
-            // 
-            // lbActualTarget
-            // 
-            this.lbActualTarget.AutoSize = true;
-            this.lbActualTarget.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbActualTarget.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbActualTarget.Location = new System.Drawing.Point(182, 17);
-            this.lbActualTarget.Name = "lbActualTarget";
-            this.lbActualTarget.Size = new System.Drawing.Size(12, 16);
-            this.lbActualTarget.TabIndex = 17;
-            this.lbActualTarget.Text = "-";
-            // 
-            // lbTargetQty
-            // 
-            this.lbTargetQty.AutoSize = true;
-            this.lbTargetQty.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTargetQty.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbTargetQty.Location = new System.Drawing.Point(150, 7);
-            this.lbTargetQty.Name = "lbTargetQty";
-            this.lbTargetQty.Size = new System.Drawing.Size(12, 16);
-            this.lbTargetQty.TabIndex = 17;
-            this.lbTargetQty.Text = "-";
-            // 
-            // lbLastReadCodeScan
-            // 
-            this.lbLastReadCodeScan.AutoSize = true;
-            this.lbLastReadCodeScan.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLastReadCodeScan.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbLastReadCodeScan.Location = new System.Drawing.Point(12, 26);
-            this.lbLastReadCodeScan.Name = "lbLastReadCodeScan";
-            this.lbLastReadCodeScan.Size = new System.Drawing.Size(12, 16);
-            this.lbLastReadCodeScan.TabIndex = 18;
-            this.lbLastReadCodeScan.Text = "-";
-            this.lbLastReadCodeScan.TextChanged += new System.EventHandler(this.lbLastReadCodeScan_TextChanged);
-            // 
-            // lbBoxGood
-            // 
-            this.lbBoxGood.AutoSize = true;
-            this.lbBoxGood.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBoxGood.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbBoxGood.Location = new System.Drawing.Point(93, 16);
-            this.lbBoxGood.Name = "lbBoxGood";
-            this.lbBoxGood.Size = new System.Drawing.Size(12, 16);
-            this.lbBoxGood.TabIndex = 18;
-            this.lbBoxGood.Text = "-";
-            // 
-            // lbBoxNG
-            // 
-            this.lbBoxNG.AutoSize = true;
-            this.lbBoxNG.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbBoxNG.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbBoxNG.Location = new System.Drawing.Point(79, 16);
-            this.lbBoxNG.Name = "lbBoxNG";
-            this.lbBoxNG.Size = new System.Drawing.Size(12, 16);
-            this.lbBoxNG.TabIndex = 18;
-            this.lbBoxNG.Text = "-";
-            // 
-            // lbTotalCase
-            // 
-            this.lbTotalCase.AutoSize = true;
-            this.lbTotalCase.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalCase.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbTotalCase.Location = new System.Drawing.Point(10, 41);
-            this.lbTotalCase.Name = "lbTotalCase";
-            this.lbTotalCase.Size = new System.Drawing.Size(12, 16);
-            this.lbTotalCase.TabIndex = 18;
-            this.lbTotalCase.Text = "-";
-            // 
-            // lbWeight
-            // 
-            this.lbWeight.AutoSize = true;
-            this.lbWeight.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbWeight.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbWeight.Location = new System.Drawing.Point(10, 16);
-            this.lbWeight.Name = "lbWeight";
-            this.lbWeight.Size = new System.Drawing.Size(12, 16);
-            this.lbWeight.TabIndex = 18;
-            this.lbWeight.Text = "-";
-            // 
-            // lbCartonSuccesfull
-            // 
-            this.lbCartonSuccesfull.AutoSize = true;
-            this.lbCartonSuccesfull.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCartonSuccesfull.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbCartonSuccesfull.Location = new System.Drawing.Point(19, 45);
-            this.lbCartonSuccesfull.Name = "lbCartonSuccesfull";
-            this.lbCartonSuccesfull.Size = new System.Drawing.Size(12, 16);
-            this.lbCartonSuccesfull.TabIndex = 18;
-            this.lbCartonSuccesfull.Text = "-";
-            // 
-            // lbLastReadCodeRealese
-            // 
-            this.lbLastReadCodeRealese.AutoSize = true;
-            this.lbLastReadCodeRealese.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLastReadCodeRealese.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbLastReadCodeRealese.Location = new System.Drawing.Point(9, 44);
-            this.lbLastReadCodeRealese.Name = "lbLastReadCodeRealese";
-            this.lbLastReadCodeRealese.Size = new System.Drawing.Size(12, 16);
-            this.lbLastReadCodeRealese.TabIndex = 18;
-            this.lbLastReadCodeRealese.Text = "-";
-            // 
-            // serialPort1
-            // 
-            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
-            // 
             // FormData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1114, 609);
+            this.ClientSize = new System.Drawing.Size(984, 609);
             this.Controls.Add(this.panel1);
             this.Name = "FormData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -717,8 +912,6 @@ namespace Mock_Up_Agregasi
             this.panel14.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.panel10.ResumeLayout(false);
@@ -738,6 +931,7 @@ namespace Mock_Up_Agregasi
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_Warning)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -757,7 +951,6 @@ namespace Mock_Up_Agregasi
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel9;
@@ -787,18 +980,33 @@ namespace Mock_Up_Agregasi
         private System.Windows.Forms.Button btnDataEdit;
         private System.Windows.Forms.Label lbLastReadCodeScan;
         private System.Windows.Forms.Label lbTargetQty;
-        private System.Windows.Forms.Label lbActualTarget;
+        private System.Windows.Forms.Label lbQtyCaseTarget;
         private System.Windows.Forms.Label lbProductName;
         private System.Windows.Forms.Label lbLotNo;
         private System.Windows.Forms.Label lbLastReadCodeRealese;
         private System.Windows.Forms.Label lbCartonSuccesfull;
-        private System.Windows.Forms.Label lbWeight;
         private System.Windows.Forms.Label lbBoxNG;
         private System.Windows.Forms.Label lbBoxGood;
         private System.Windows.Forms.Label lbTotalCase;
         private System.IO.Ports.SerialPort serialPort1;
         private System.IO.Ports.SerialPort serialTimbangan;
         private System.IO.Ports.SerialPort serialTowerLamp;
+        private System.Windows.Forms.TextBox tbTimbang;
+        private System.Windows.Forms.Label lbStatusEcer;
+        internal System.Windows.Forms.Panel pnlOK;
+        internal System.Windows.Forms.Panel pnlNG;
+        private System.Windows.Forms.Label lbTimbang;
+        private System.Windows.Forms.TextBox tbtimbang2;
+        private System.Windows.Forms.TextBox tbLastReadCodeTemp;
+        private System.Windows.Forms.Label lbActualQtyCase;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.TextBox tbScanBarcode;
+        private System.Windows.Forms.TextBox tbTemp;
+        private System.Windows.Forms.PictureBox PB_Warning;
+        private System.Windows.Forms.Label lbWeight;
+        private System.Windows.Forms.Label lb_idCarton;
+        private System.Windows.Forms.Label lbLastReadCodeRealeseTemp;
     }
 }
 

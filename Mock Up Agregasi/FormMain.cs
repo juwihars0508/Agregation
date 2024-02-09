@@ -63,5 +63,19 @@ namespace Mock_Up_Agregasi
             frmLogin.Show();
             this.Hide();
         }
+
+        private void btn_EditData_Click(object sender, EventArgs e)
+        {
+            DataEditAgg dataEditAgg = new DataEditAgg();
+            dataEditAgg.Show();
+            this.Hide();
+        }
+
+        private void btn_MenuReport_Click(object sender, EventArgs e)
+        {
+            FormDataReport formDataReport = new FormDataReport();
+            formDataReport.Show();
+            this.Hide(); 
+        }
     }
 }

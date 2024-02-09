@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO.Ports;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -26,6 +27,10 @@ namespace Mock_Up_Agregasi
             int nWidthEllipse, // height of ellipse
             int nHeightEllipse // width of ellipse
         );
+
+        public string CR = System.Char.ConvertFromUtf32(13);
+        public string LF = System.Char.ConvertFromUtf32(10);
+
         public FormData()
         {
             InitializeComponent();
@@ -34,9 +39,8 @@ namespace Mock_Up_Agregasi
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
-        public string VDataTarget;
-        public string Vdata_GTINCodeMatrix;
-        public string VdataKodeRecipe;
+        
+
 
         //Variable Data COM Timbangan
         public string vCOMportTimbangan;
@@ -59,11 +63,53 @@ namespace Mock_Up_Agregasi
         public string VStopBits;
         public string VParity;
 
+        //General variable
         public string ReadData;
         public string ReadData2;
+        public string ReadDataTimbang;
+        public string ReadDataTimbang2;
+        public string dataStatus;
+        public string VDataTarget;
+        public string Vdata_GTINCodeMatrix;
+        public string VdataKodeRecipe;
+        public string Vdata_minRange;
+        public string Vdata_maxRange;
+        public string VdataNoBatch;
+        public string VdataProductKode;
+        public string VdataProductName;
+        public string VdataWoNo;
+        public string VdataExpDate;
+        public string VdataQty;
+        public string VdataWeight;
+        public string VdataPrint;
+        public int vCounterOK;
+        public int vCounterNG;
+        public int vCounterLastReadCode;
+        public int vCounterQtyWO;
+
 
         SQLConfig config = new SQLConfig();
         usableFunction UsableFunction = new usableFunction();
+
+        delegate void SetLabel(string msg);
+
+        void SetLabelMethod(string msg)
+        {
+            lbTimbang.Text = msg;
+
+        }
+
+
+        private void SetLabelText1(Label label, string text)
+        {
+            if (label.InvokeRequired)
+            {
+                label.Invoke((Action)(() => SetLabelText1(label, text)));
+                return;
+            }
+
+            label.Text = text;
+        }
 
         delegate void SetLabelDelegate(Label label, string text);
         private void SetLabelText(Label label, string text)
@@ -78,7 +124,27 @@ namespace Mock_Up_Agregasi
             }
 
             label.Text = text;
+        
         }
+
+        delegate void SetTextCallback(string text);
+        private void SetText(string text)
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (tbTemp.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetText);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                tbTemp.Text = text;
+            }
+
+        }
+
         private void label3_Click(object sender, EventArgs e)
         {
 
@@ -107,9 +173,83 @@ namespace Mock_Up_Agregasi
             btnPause.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnPause.Width, btnPause.Height, 20, 20));
             btnStop.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnStop.Width, btnStop.Height, 20, 20));
             btnStart.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnStart.Width, btnStart.Height, 20, 20));
-
+            btnBack.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnBack.Width, btnBack.Height, 20, 20));
+            
             load_DatacbWO();
             disab();
+            varGlobal.GetNilai(varUtility.fileQtyCase);
+            lbQtyCaseTarget.Text = Nilai.StringNilai;
+            varGlobal.GetNilai(varUtility.fileLastData);
+            lbTotalCase.Text = Nilai.StringNilai;
+            
+            //lbStatusEcer.Text = varGlobal.vStatusEcer;
+            vCounterOK = 0;
+            vCounterNG = 0;
+            vCounterLastReadCode = 0;
+            vCounterQtyWO = 0;
+        }
+
+        private void countDataAgregate()
+        {
+            config.Init_Con();
+            config.con.Open();
+            string sql = "SELECT COUNT(id) FROM tblhistory_print WHERE wo_no='" + cbWO.Text + "' and kodeRecipe='" + VdataKodeRecipe + "' and STATUS=1 and status_agregation=1";
+            MySqlCommand cmd = new MySqlCommand(sql, config.con);
+            MySqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+
+                lbTargetQty.Text = dr[0].ToString();
+                VDataTarget = dr[0].ToString();
+
+
+            }
+
+            dr.Close();
+
+            config.con.Close();
+        }
+        private void loadCountDataAvailable()
+        {
+            config.Init_Con();
+            config.con.Open();
+            string sql = "SELECT COUNT(id) FROM tblhistory_print WHERE wo_no='" + cbWO.Text + "' and kodeRecipe='" + VdataKodeRecipe + "' and STATUS=1 and status_agregation=1";
+            MySqlCommand cmd = new MySqlCommand(sql, config.con);
+            MySqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+
+                lbTargetQty.Text = dr[0].ToString();
+                VDataTarget = dr[0].ToString();
+
+
+            }
+
+            dr.Close();
+            config.con.Close();
+        }
+
+        private void loadCountDataPrint()
+        {
+            config.Init_Con();
+            config.con.Open();
+            string sql = "SELECT COUNT(id) FROM tblhistory_print WHERE wo_no='" + cbWO.Text + "' and kodeRecipe='"+ VdataKodeRecipe + "' and STATUS=1 and status_agregation=0";
+            MySqlCommand cmd = new MySqlCommand(sql, config.con);
+            MySqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+
+                lbTargetQty.Text = dr[0].ToString();
+                VDataTarget = dr[0].ToString();
+
+
+            }
+
+            dr.Close();
+            config.con.Close();
         }
 
         private void load_DatacbWO()
@@ -169,7 +309,7 @@ namespace Mock_Up_Agregasi
         {
             panel8.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel8.Width, panel8.Height, 20, 20));
         }
-
+        
         private void panel9_Paint(object sender, PaintEventArgs e)
         {
             panel9.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel9.Width, panel9.Height, 20, 20));
@@ -182,7 +322,7 @@ namespace Mock_Up_Agregasi
 
         private void panel12_Paint(object sender, PaintEventArgs e)
         {
-            panel12.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel12.Width, panel12.Height, 20, 20));
+            //panel12.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, panel12.Width, panel12.Height, 20, 20));
         }
 
         private void panel13_Paint(object sender, PaintEventArgs e)
@@ -228,9 +368,9 @@ namespace Mock_Up_Agregasi
 
                 lbLotNo.Text = dr[5].ToString();
                 lbProductName.Text = dr[4].ToString();
-                lbTargetQty.Text = dr[8].ToString();
-                VDataTarget = dr[8].ToString();
-                //Vdata_GTINCodeMatrix = dr[5].ToString();
+                //lbTargetQty.Text = dr[8].ToString();
+                //VDataTarget = dr[8].ToString();
+                Vdata_GTINCodeMatrix = dr[9].ToString();
 
 
 
@@ -239,34 +379,40 @@ namespace Mock_Up_Agregasi
             config.con.Close();
         }
 
-        private void loadDataTarget()
+        private void loadDataForPrint()
         {
             config.Init_Con();
             config.con.Open();
-            string sql = "select DISTINCT * from  tblworkorder where wo_no='" + cbWO.Text + "'";
+            string sql = "select * from  viewdatawo where kodeRecipe='" + VdataKodeRecipe + "'";
             MySqlCommand cmd = new MySqlCommand(sql, config.con);
             MySqlDataReader dr;
             dr = cmd.ExecuteReader();
             while (dr.Read())
             {
 
-                lbLotNo.Text = dr[3].ToString();
-                lbProductName.Text = dr[4].ToString();
-                //lbTargetQty.Text = dr[8].ToString();
-                //VDataTarget = dr[8].ToString();
-                Vdata_GTINCodeMatrix = dr[5].ToString();
+                VdataProductKode = dr[2].ToString();
+                VdataProductName = dr[3].ToString();
+                VdataNoBatch = dr[4].ToString();
+                VdataExpDate = dr[5].ToString();
+                
 
 
 
             }
             dr.Close();
             config.con.Close();
+            VdataQty = lbQtyCaseTarget.Text;
+            VdataWoNo = cbWO.Text;
+            VdataPrint = varGlobal.dataPrint;
         }
 
         private void cbWO_SelectedValueChanged(object sender, EventArgs e)
         {
 
             loadDataWO();
+            loadCountDataPrint();
+            loadDataForPrint();
+            kodeotomatis();
            
         }
 
@@ -280,6 +426,8 @@ namespace Mock_Up_Agregasi
             if (cbWO.Text.Length != 0 )
             {
                 Connect_COM();
+                //connect_Timbangan();
+                //connect_Tower();
                 enab();
             }
             else
@@ -308,17 +456,42 @@ namespace Mock_Up_Agregasi
             btnStop.Enabled = true;
             btnPause.Enabled = true;
             btnStart.BackColor = Color.Green;
-            btnPause.BackColor = Color.Yellow;
-            btnStop.BackColor = Color.Red;
+            btnPause.BackColor = Color.Gray;
+            btnStop.BackColor = Color.Gray;
             cbWO.Enabled = false;
         }
 
-        private void btnStop_Click(object sender, EventArgs e)
+        private void closeTimbangan()
+        {
+            if (serialTimbangan.IsOpen == true)
+            {
+                serialTimbangan.Close();
+            }
+        }
+
+        private void closeTowerLamp()
+        {
+            if (serialTowerLamp.IsOpen == true)
+            {
+                serialTowerLamp.Close();
+            }
+        }
+
+
+        private void closeScanner()
         {
             if (serialPort1.IsOpen == true)
             {
                 serialPort1.Close();
             }
+
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            closeTimbangan();
+            closeScanner();
+            closeTowerLamp();
             disab();
         }
 
@@ -431,6 +604,7 @@ namespace Mock_Up_Agregasi
         private void lbLastReadCodeScan_TextChanged(object sender, EventArgs e)
         {
 
+            
         }
 
         private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -440,13 +614,586 @@ namespace Mock_Up_Agregasi
             //ReadData2 = ReadData.Substring(7, 4);
             //ReadData2 = ReadData.Substring(6, 6);
             SetLabelText(lbLastReadCodeScan, ReadData);
+            SetText(ReadData);
+        }
+
+        private void printLabel()
+        {
+            varGlobal.GetNilai(varUtility.filePrinterName);
+            string vPrinterName = Nilai.StringNilai;
+            varGlobal.GetNilai(varUtility.fileFileNamePrn);
+            string vDataPrint = Nilai.StringNilai;
+
+            string fileprn = @"Data\" + vDataPrint + ".prn";
+            string s = "^XA" +
+                      "^FH\"^FDVdatamatrix123456789012asddasdad^FS" +
+                        "^ FT270,284 ^ A0N,28,28 ^ FH\"^CI28 ^ FDVProduct Name1 ^ FS ^ CI27" +
+                        "^ FT270,340 ^ A0N,28,28 ^ FH\"^CI28 ^ FDVProduct Code ^ FS ^ CI27" +
+                        "^ FT274,384 ^ A0N,28,28 ^ FH\"^CI28 ^ FDVBatch No ^ FS ^ CI27" +
+                        "^ FT274,435 ^ A0N,28,28 ^ FH\"^CI28 ^ FDVExp Date ^ FS ^ CI27" +
+                        "^ FT270,485 ^ A0N,28,28 ^ FH\"^CI28 ^ FDVQty ^ FS ^ CI27" +
+                        "^ FT275,543 ^ A0N,28,28 ^ FH\"^CI28 ^ FDVWeight ^ FS ^ CI27" +
+                        "^XZ";
+
+            string SC = "^XA" +
+                        "^MMT" +
+                        "^PW831" +
+                        "^LL806" +
+                        "^LS0" +
+                        "^FT29,101 ^A0N,51,51 ^FH\"^CI28 ^FDVProduct Name ^FS ^CI27" +
+                        "^FO5,5 ^GB820,790,8 ^FS" +
+                        "^FT29,156 ^A0N,42,43 ^FH\"^CI28 ^FDVWo Number ^FS ^CI27" +
+                        "^FT46,284 ^A0N,28,28 ^FH\"^CI28 ^FDProduct Name ^FS ^CI27" +
+                        "^FT46,340 ^A0N,28,28 ^FH\"^CI28 ^FDProduct Code ^FS ^CI27" +
+                        "^FT46,384 ^A0N,28,28 ^FH\"^CI28 ^FDBatch No ^FS ^CI27" +
+                        "^FT46,435 ^A0N,28,28 ^FH\"^CI28 ^FDExp Date ^FS ^CI27" +
+                        "^FT46,485 ^A0N,28,28 ^FH\"^CI28 ^FDQty ^FS ^CI27" +
+                        "^FT51,543 ^A0N,28,28 ^FH\"^CI28 ^FDWeight ^FS ^CI27" +
+                        "^FT234,284 ^A0N,28,28 ^FH\"^CI28 ^FD:^FS ^CI27" +
+                        "^FT234,340 ^A0N,28,28 ^FH\"^CI28 ^FD:^FS ^CI27" +
+                        "^FT234,384 ^A0N,28,28 ^FH\"^CI28 ^FD:^FS ^CI27" +
+                        "^FT234,433 A0N,28,28 ^FH\"^CI28 ^FD:^FS ^CI27" +
+                        "^FT234,485 ^A0N,28,28 ^FH\"^CI28 ^FD:^FS ^CI27" +
+                        "^FT234,543 ^A0N,28,28 ^FH\"^CI28 ^FD:^FS ^CI27" +
+                        "^FT641,717 ^BXN,3,200,0,0,1,_,1" +
+                        "^FH\"^FDVdatamatrix123456789012asddasdad ^FS" +
+                        "^FT270,284^A0N,28,28^FH\"^CI28^FDVProduct Name1 ^FS^CI27" +
+                        "^FT270,340 ^A0N,28,28 ^FH\"^CI28 ^FDVProduct Code ^FS ^CI27" +
+                        "^FT274,384 ^A0N,28,28 ^FH\"^CI28 ^FDVBatch No ^FS ^CI27" +
+                        "^FT274,435 ^A0N,28,28 ^FH\"^CI28 ^FDVExp Date ^FS ^CI27" +
+                        "^FT270,485 ^A0N,28,28 ^FH\"^CI28 ^FDVQty ^FS ^CI27" +
+                        "^FT275,543 ^A0N,28,28 ^FH\"^CI28 ^FDVWeight ^FS ^CI27" +
+                        "^XZ";
+
+            string SC1 = "^XA" +
+                         "~TA000" +
+                         "~JSN" +
+                         "^LT0" +
+                         "^MNW" +
+                         "^MTD" +
+                         "^PON" +
+                         "^PMN" +
+                         "^LH0,0" +
+                         "^JMA" +
+                         "^PR6,6" +
+                         "~SD15" +
+                         "^JUS" +
+                         "^LRN" +
+                         "^CI27" +
+                         "^PA0,1,1,0" +
+                         "^XZ" +
+                         "^XA" +
+                         "^MMT" +
+                         "^PW831" +
+                         "^LL799" +
+                         "^LS0" +
+                         "^FO20,14^GB804,777,8^FS" +
+                         "^FT68,292^A0N,28,28^FH\"^CI28^FDProduct Name^FS^CI27" +
+                         "^FT68,348^A0N,28,28^FH\"^CI28^FDProduct Code^FS^CI27" +
+                         "^FT68,393^A0N,28,28^FH\"^CI28^FDBatch No^FS^CI27" +
+                         "^FT68,444^A0N,28,28^FH\"^CI28^FDExp Date^FS^CI27" +
+                         "^FT68,494^A0N,28,28^FH\"^CI28^FDQty^FS^CI27" +
+                         "^FT73,552^A0N,28,28^FH\"^CI28^FDWeight^FS^CI27" +
+                         "^FT256,292^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT256,348^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT256,393^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT256,442^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT256,494^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT256,552^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT284,292^A0N,28,28^FH\"^CI28^FD" + VdataProductName + "^FS^CI27" +
+                         "^FT284,348^A0N,28,28^FH\"^CI28^FD" + VdataProductKode + "^FS^CI27" +
+                         "^FT284,401^A0N,28,28^FH\"^CI28^FD" + VdataNoBatch + "^FS^CI27" +
+                         "^FT284,444^A0N,28,28^FH\"^CI28^FD" + VdataExpDate + "^FS^CI27" +
+                         "^FT284,494^A0N,28,28^FH\"^CI28^FD" + VdataQty + "^FS^CI27" +
+                         "^FT284,552^A0N,28,28^FH\"^CI28^FD" + lbWeight.Text + "^FS^CI27" +
+                         "^FT579,753^BXN,6,200,0,0,1,_,1" +
+                         "^FH\"^FD" + VdataPrint + lb_idCarton.Text + "^FS" +
+                         "^FT51,110^A0N,51,51^FH\"^CI28^FD" + VdataProductName + "^FS^CI27" +
+                         "^FT51,165^A0N,42,43^FH\"^CI28^FD" + VdataWoNo + "^FS^CI27" +
+                         "^FT68,607^A0N,28,28^FH\"^CI28^FDCarton No.^FS^CI27" +
+                         "^FT256,607^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT290,607^A0N,28,28^FH\"^CI28^FD" + lbTotalCase.Text + "^FS^CI27" +
+                         "^PQ1,,,Y" +
+                         "^XZ";
+
+            //RawPrinterHelper.SendFileToPrinter(vPrinterName, fileprn);
+            RawPrinterHelper.SendStringToPrinter(vPrinterName, SC1);
+            //}
+            //}
         }
 
         private void btnDataEdit_Click(object sender, EventArgs e)
         {
-            DataEditAgg dataEditAgg = new DataEditAgg();
-            dataEditAgg.Show();
+            varGlobal.GetNilai(varUtility.filePrinterName);
+            string vPrinterName = Nilai.StringNilai;
+            varGlobal.GetNilai(varUtility.fileFileNamePrn);
+            string vDataPrint = Nilai.StringNilai;
+
+            string fileprn = @"Data\" + vDataPrint + ".prn";
+            string s = "^XA" +
+                      "^FH\"^FDVdatamatrix123456789012asddasdad^FS" +
+                        "^ FT270,284 ^ A0N,28,28 ^ FH\"^CI28 ^ FDVProduct Name1 ^ FS ^ CI27" +
+                        "^ FT270,340 ^ A0N,28,28 ^ FH\"^CI28 ^ FDVProduct Code ^ FS ^ CI27" +
+                        "^ FT274,384 ^ A0N,28,28 ^ FH\"^CI28 ^ FDVBatch No ^ FS ^ CI27" +
+                        "^ FT274,435 ^ A0N,28,28 ^ FH\"^CI28 ^ FDVExp Date ^ FS ^ CI27" +
+                        "^ FT270,485 ^ A0N,28,28 ^ FH\"^CI28 ^ FDVQty ^ FS ^ CI27" +
+                        "^ FT275,543 ^ A0N,28,28 ^ FH\"^CI28 ^ FDVWeight ^ FS ^ CI27" +
+                        "^XZ";
+
+            string SC = "^XA" +
+                        "^CI27" +
+                        "^XZ" +
+                        "^XA" +
+                        "^FT284,292^A0N,28,28^FH\"^CI28^FDVProduct Name^FS^CI27" +
+                        "^FT284,348^A0N,28,28^FH\"^CI28^FDVProduct Code^FS^CI27" +
+                        "^FT284,401^A0N,28,28^FH\"^CI28^FDVBatch No^FS^CI27" +
+                        "^FT284,444^A0N,28,28^FH\"^CI28^FDVExp Date^FS^CI27" +
+                        "^FT284,494^A0N,28,28^FH\"^CI28^FDVQty^FS^CI27" +
+                        "^FT284,552^A0N,28,28^FH\"^CI28^FDVWeight^FS^CI27" +
+                        "^FT594,760^BXN,10,200,0,0,1,_,1" +
+                        "^FH\"^FD90GKL0323406501A110B12321726011221585665D643844^FS" +
+                        "^FT51,110^A0N,51,51^FH\"^CI28^FDVProduct Name^FS^CI27" +
+                        "^FT51,165^A0N,42,43^FH\"^CI28^FDVWo Number^FS^CI27" +
+                        "^PQ0,,,Y" +
+                         "^XZ";
+
+            string SC1 = "^XA" +
+                         "~TA000" +
+                         "~JSN" +
+                         "^LT0" +
+                         "^MNW" +
+                         "^MTD" +
+                         "^PON" +
+                         "^PMN" +
+                         "^LH0,0" +
+                         "^JMA" +
+                         "^PR6,6" +
+                         "~SD15" +
+                         "^JUS" +
+                         "^LRN" +
+                         "^CI27" +
+                         "^PA0,1,1,0" +
+                         "^XZ" +
+                         "^XA" +
+                         "^MMT" +
+                         "^PW831" +
+                         "^LL799" +
+                         "^LS0" +
+                         "^FO20,14^GB804,777,8^FS" +
+                         "^FT68,292^A0N,28,28^FH\"^CI28^FDProduct Name^FS^CI27" +
+                         "^FT68,348^A0N,28,28^FH\"^CI28^FDProduct Code^FS^CI27" +
+                         "^FT68,393^A0N,28,28^FH\"^CI28^FDBatch No^FS^CI27" +
+                         "^FT68,444^A0N,28,28^FH\"^CI28^FDExp Date^FS^CI27" +
+                         "^FT68,494^A0N,28,28^FH\"^CI28^FDQty^FS^CI27" +
+                         "^FT73,552^A0N,28,28^FH\"^CI28^FDWeight^FS^CI27" +
+                         "^FT256,292^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT256,348^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT256,393^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT256,442^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT256,494^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT256,552^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT284,292^A0N,28,28^FH\"^CI28^FD" + VdataProductName + "^FS^CI27" +
+                         "^FT284,348^A0N,28,28^FH\"^CI28^FD" + VdataProductKode + "^FS^CI27" +
+                         "^FT284,401^A0N,28,28^FH\"^CI28^FD" + VdataNoBatch + "^FS^CI27" +
+                         "^FT284,444^A0N,28,28^FH\"^CI28^FD" + VdataExpDate + "^FS^CI27" +
+                         "^FT284,494^A0N,28,28^FH\"^CI28^FD"+ VdataQty +"^FS^CI27" +
+                         "^FT284,552^A0N,28,28^FH\"^CI28^FD" + lbWeight.Text + "^FS^CI27" +
+                         "^FT579,753^BXN,6,200,0,0,1,_,1" +
+                         "^FH\"^FD"+ VdataPrint +"^FS" +
+                         "^FT51,110^A0N,51,51^FH\"^CI28^FD"+ VdataProductName +"^FS^CI27" +
+                         "^FT51,165^A0N,42,43^FH\"^CI28^FD" + VdataWoNo + "^FS^CI27" +
+                         "^PQ1,,,Y" +
+                         "^XZ";
+            
+            RawPrinterHelper.SendStringToPrinter(vPrinterName, SC1);
+            //RawPrinterHelper.SendFileToPrinter(vPrinterName, fileprn);
+            //}
+            //}
+        }
+
+        private void serialTimbangan_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            ReadData = serialTimbangan.ReadLine();
+            //SetText(ReadData);
+            ReadData2 = ReadData.Substring(7, 4);
+            //ReadData2 = ReadData.Substring(6, 6);
+            SetLabelText1(lbTimbang , ReadData2);
+            
+            //SetLabelText(tbtimbang2, ReadData2);
+        }
+
+        private void lbTimbang_TextChanged(object sender, EventArgs e)
+        {
+            tbTimbang.Text = ReadData;
+        }
+
+        private void tbTimbang_TextChanged(object sender, EventArgs e)
+        {
+            //if (tbTimbang.Text != "")
+            //{
+            //    //lbTimbang.Text = tbTimbang.Text.Substring(8,6);
+            //    //tbTimbang.Text = lbTimbang.Text;
+            //    lbWeight.Text = ReadData2 + " KG";
+            //    //lbWeight.Text = textBox1.Text + " KG";
+            //    timbangan();
+            //    lbTimbang.Text = "";
+
+
+            //}
+
+            //tbTimbang.Clear();
+        }
+
+        private void timbangan()
+        {
+            int vCounter;
+            
+            if (lbStatusEcer.Text == "true")
+            {
+                //getLastDataCount();
+                dataStatus = "MS";
+                vCounter = Convert.ToInt32(lbTotalCase.Text);
+                vCounter = vCounter + 1;
+
+                lbTotalCase.Text = (vCounter).ToString().PadLeft(3, '0');
+                lbCartonSuccesfull.Text = lbTotalCase.Text;
+
+                //dataCounter = lbCount.Text;
+                //cetak_OK();
+                lampu_Hijau();
+                //dataSimpan();
+                //loadData();
+                //saveLastDataCount();
+            }
+            else
+            {
+                ValidasiBerat();
+                if (pnlOK.Visible == true)
+                {
+                    //getLastDataCount();
+                    dataStatus = "MS";
+                    //vCounterOK = Convert.ToInt32(lbBoxGood.Text);
+                    //vCounterOK = vCounterOK + 1;
+                    vCounterOK++;
+                    lbBoxGood.Text = (vCounterOK).ToString().PadLeft(3, '0');
+                    lbBoxGood.Text = lbBoxGood.Text;
+                    //lbCount1.ForeColor = Color.Green;
+                    //Thread.Sleep(3000);
+                    //lbCount1.ForeColor = Color.Black;
+                    //dataCounter = lbCount.Text;
+                    //cetak_OK();
+                    lampu_Hijau();
+                    //dataSimpan();
+                    //loadData();
+                    //saveLastDataCount();
+                    printLabel();
+                    tbScanBarcode.Focus();
+                    vCounter = Convert.ToInt32(lbTotalCase.Text);
+                    vCounter = vCounter + 1;
+
+                    lbTotalCase.Text = (vCounter).ToString().PadLeft(3, '0');
+                    
+                    //closeTimbangan();
+                }
+                else
+                {
+                    //getLastDataCount();
+                    dataStatus = "TMS";
+                    //vCounterNG = Convert.ToInt32(lbBoxNG.Text);
+                    //vCounterNG = vCounterNG + 1;
+
+                    vCounterNG++;
+                    lbBoxNG.Text = (vCounterNG).ToString().PadLeft(3, '0');
+                    lbBoxNG.Text = lbBoxNG.Text;
+                    //cetak_NG();
+                    lampu_Merah();
+                    //dataSimpan();
+                    //loadData();
+
+
+                }
+
+                
+            }
+
+        }
+
+        //========================== Validate Berat =======///
+        private void ValidasiBerat()
+        {
+            varGlobal.GetNilai(varUtility.fileMinRange);
+            Vdata_minRange = Nilai.StringNilai;
+            varGlobal.GetNilai(varUtility.fileMaxRange);
+            Vdata_maxRange = Nilai.StringNilai;
+            string Vweight = lbWeight.Text.Substring(0, 4);
+            double weight = Convert.ToDouble(Vweight);
+            if (Convert.ToDouble(Vdata_minRange) < weight && Convert.ToDouble(Vdata_maxRange) > weight)
+            {
+                pnlOK.Visible = true;
+                pnlNG.Visible = false;
+                //lbCount1.ForeColor = Color.Green;
+                //Thread.Sleep(3000);
+                //lbCount1.ForeColor = Color.Black;
+            }
+            else
+            {
+                pnlOK.Visible = false;
+                pnlNG.Visible = true;
+            }
+
+
+        }
+
+        private void lbTimbang_TextChanged_1(object sender, EventArgs e)
+        {
+
+            
+            tbtimbang2.Text = ReadData2;
+
+        }
+
+        private void tbtimbang2_TextChanged(object sender, EventArgs e)
+        {
+            if (tbtimbang2.Text != "")
+            {
+                //lbTimbang.Text = tbTimbang.Text.Substring(8,6);
+                //tbTimbang.Text = lbTimbang.Text;
+                lbWeight.Text = ReadData2 + " KG";
+                //lbWeight.Text = textBox1.Text + " KG";
+                timbangan();
+                lbTimbang.Text = "";
+
+
+            }
+
+            tbtimbang2.Clear();
+        }
+
+        private void tbLastReadCodeTemp_TextChanged(object sender, EventArgs e)
+        {
+            //tbLastReadCodeTemp.Text = lbLastReadCodeScan.Text;
+            if(tbLastReadCodeTemp.Text != "")
+            {
+                progressBar1.Minimum = 0;
+                progressBar1.Maximum = Convert.ToInt32(lbQtyCaseTarget.Text);
+
+                progressBar2.Minimum = 0;
+                progressBar2.Maximum = Convert.ToInt32(lbTargetQty.Text);
+
+                vCounterQtyWO++;
+                vCounterLastReadCode++;
+                
+                progressBar2.Value = vCounterQtyWO;
+                //lbActualQtyCase.Text = vCounterLastReadCode.ToString();
+                //saveHistoryScan();
+                check_dataPrint();
+                if (vCounterLastReadCode == Convert.ToInt32(lbQtyCaseTarget.Text))
+                {
+                    MessageBox.Show("Qty Box TerCapai, Silahkan Timbang");
+                    vCounterLastReadCode = 0;
+                    SignalTimbang();
+                    //connect_Timbangan();
+                }
+                //lbLastReadCodeScan.Text = "";
+            }
+            tbLastReadCodeTemp.Clear();
+            
+        }
+
+        private void check_dataPrint()
+        {
+            config.Init_Con();
+            config.con.Open();
+            string sql = "select * from tblhistory_scan where dataScan='"+ lbLastReadCodeScan.Text +"'";
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sql,config.con);
+            DataTable dt3 = new DataTable();
+            dataAdapter.Fill(dt3);
+            if (dt3.Rows.Count == 0)
+            {
+                saveHistoryScan();
+                update_DataAgregate();
+                //loadCountDataAvailable();
+                lbActualQtyCase.Text = vCounterLastReadCode.ToString();
+                progressBar1.Value = vCounterLastReadCode;
+
+            }
+            else
+            {
+
+                //PB_Warning.Visible = true;
+                
+                MessageBox.Show("Data Already Scanned", "Perhatian!!..");
+                //await Task.Delay(1000);
+                //PB_Warning.Visible = false;
+
+            }
+            config.con.Close();
+
+        }
+
+        private void update_DataAgregate()
+        {
+            config.Init_Con();
+            config.con.Open();
+            string sql = "update tblhistory_print set status_agregation=1 where kodeRecipe='" + VdataKodeRecipe + "' and noBatch='" + VdataNoBatch + "' and data_print='" + lbLastReadCodeScan.Text + "'";
+            MySqlCommand cmd = new MySqlCommand(sql, config.con);
+            cmd.ExecuteNonQuery();
+            config.con.Close();
+        }
+
+        private void saveHistoryScan()
+        {
+            config.Init_Con();
+            config.con.Open();
+            string sql = "INSERT INTO  `tblhistory_scan`(idCarton,woNo,noBatch,productName,dataScan,dateCreate)values('" + lb_idCarton.Text + "','" + cbWO.Text + "','" + lbLotNo.Text + "','" + lbProductName.Text + "', '" + lbLastReadCodeScan.Text + "','" + DateTime.Now + "')";
+            MySqlCommand cmd = new MySqlCommand(sql, config.con);
+            cmd.ExecuteNonQuery();
+            config.con.Close();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            FormMain formMain = new FormMain();
+            formMain.Show();
             this.Hide();
+        }
+
+        private void tbScanBarcode_TextChanged(object sender, EventArgs e)
+        {
+            //lbLastReadCodeRealese.Text = tbScanBarcode.Text;
+            //tbScanBarcode.Text = "";
+        }
+
+        private void lbLastReadCodeRealese_TextChanged(object sender, EventArgs e)
+        {
+            saveCartonRealese();
+            kodeotomatis();
+            lbCartonSuccesfull.Text = lbTotalCase.Text;
+            //tbScanBarcode.Text = "";
+        }
+
+        private void saveCartonRealese()
+        {
+            string vDataAction = "CREATE";
+            string vDataActive = "True";
+            config.Init_Con();
+            config.con.Open();
+            string sql = "INSERT INTO  `tblcartonrealease`(idCarton,kodeRecipe, woNo,productName,noBatch,countCarton,dataScanRealese,dateCreate,action,is_Active)values('" + lb_idCarton.Text + "','" + VdataKodeRecipe + "','" + cbWO.Text + "','" + lbProductName.Text + "','" + lbLotNo.Text + "','" + lbTotalCase.Text + "', '" + lbLastReadCodeRealese.Text + "','" + DateTime.Now + "','" + vDataAction + "','" + vDataActive + "')";
+            MySqlCommand cmd = new MySqlCommand(sql, config.con);
+            cmd.ExecuteNonQuery();
+            config.con.Close();
+        }
+
+        private void tbTemp_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void tbTemp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == 13)
+            {
+
+            }
+        }
+
+        private void tbTemp_TextChanged_1(object sender, EventArgs e)
+        {
+            tbLastReadCodeTemp.Text = ReadData;
+        }
+
+        private void tbScanBarcode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //if (e.KeyChar == 13)
+            //{
+                lbLastReadCodeRealese.Text = tbScanBarcode.Text;
+            //}
+        }
+
+        public void SignalTimbang()
+        {
+            if (serialPort1.IsOpen == true)
+            {
+                //serialTimbangan.ReadTimeout = 3000;
+                serialTimbangan.Write("Q" + CR + LF);
+                //tbTimbang.Text = serialPort1.ReadLine();
+            }
+        }
+
+        public void lampu_Merah()
+        {
+            if (serialTowerLamp.IsOpen == true)
+            {
+                serialTowerLamp.Write("NG");
+            }
+        }
+
+        public void lampu_Hijau()
+        {
+            if (serialTowerLamp.IsOpen == true)
+            {
+                serialTowerLamp.Write("OK");
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        public void kodeotomatis()
+        {
+            int tambahsatu;
+            string kode;
+            config.Init_Con();
+            config.con.Open();
+            MySqlCommand cmd = new MySqlCommand("select idCarton from tblcartonrealease where idCarton in(select max(idCarton) from tblcartonrealease) order by idCarton desc", config.con);
+            MySqlDataReader sdr = cmd.ExecuteReader();
+            sdr.Read();
+            if (sdr.HasRows)
+            {
+                tambahsatu = Convert.ToInt32(sdr[0].ToString().Substring(sdr[0].ToString().Length - 4, 4)) + 1;
+                string gabung = "0000" + tambahsatu;
+                kode = "CR" + VdataNoBatch + gabung.Substring(gabung.ToString().Length - 4, 4);
+            }
+            else
+            {
+                kode = "CR" + VdataNoBatch + "0001";
+            }
+            sdr.Close();
+            lb_idCarton.Text = kode;
+            config.con.Close();
+        }
+
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+            btnPause.BackColor = Color.Green;
+            btnStart.BackColor = Color.Gray;
+            btnStop.BackColor = Color.Gray;
+            btnStop.Enabled = false;
+            btnStart.Enabled = true;
+            
+
+        }
+
+        private void tbScanBarcode_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                lbLastReadCodeRealeseTemp.Text = tbScanBarcode.Text;
+                //MessageBox.Show("TES");
+                tbScanBarcode.Text = "";
+            }
+        }
+
+        private void lbLastReadCodeRealeseTemp_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbLastReadCodeRealeseTemp_TextChanged_1(object sender, EventArgs e)
+        {
+            lbLastReadCodeRealese.Text = lbLastReadCodeRealeseTemp.Text;
         }
     }
 }

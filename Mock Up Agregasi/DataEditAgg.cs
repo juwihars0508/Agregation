@@ -95,8 +95,16 @@ namespace Mock_Up_Agregasi
             
 
             btnSave.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnSave.Width, btnSave.Height, 20, 20));
-
+            btnBack.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnBack.Width, btnBack.Height, 20, 20));
             loadDataProduct();
+            disab();
+            varGlobal.GetNilai(varUtility.fileMinRange);
+            tbMinWeight.Text = Nilai.StringNilai;
+            varGlobal.GetNilai(varUtility.fileMaxRange);
+            tbMaxWeight.Text = Nilai.StringNilai;
+            varGlobal.GetNilai(varUtility.fileQtyCase);
+            tbQtyCase.Text = Nilai.StringNilai;
+
 
         }
 
@@ -159,21 +167,53 @@ namespace Mock_Up_Agregasi
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            varGlobal.product = cbProduct.Text;
-            varGlobal.qtyCase = tbQtyCase.Text;
-            varGlobal.qtyTargetInner = tbQtyTargetInBox.Text;
-            varGlobal.stdWieght = tbSTDWeight.Text;
-            varGlobal.minWeight = tbMinWeight.Text;
-            varGlobal.maxWeight = tbMaxWeight.Text;
-            varGlobal.dataPrint = tbDataPrint.Text;
-            MessageBox.Show("Data Teresimpan");
+            
+
+            if (btnSave.Text == "Set")
+            {
+                Enab();
+                btnSave.Text = "Save";
+            }
+            else if (btnSave.Text == "Save")
+            {
+                varGlobal.product = cbProduct.Text;
+                varGlobal.qtyCase = tbQtyCase.Text;
+                varGlobal.stdWieght = tbSTDWeight.Text;
+                varGlobal.minWeight = tbMinWeight.Text;
+                varGlobal.maxWeight = tbMaxWeight.Text;
+                varGlobal.dataPrint = tbDataPrint.Text;
+                Nilai.StringNilai = tbMinWeight.Text;
+                varGlobal.SaveNilai(varUtility.fileMinRange);
+                Nilai.StringNilai = tbMaxWeight.Text;
+                varGlobal.SaveNilai(varUtility.fileMaxRange);
+                Nilai.StringNilai = tbQtyCase.Text;
+                varGlobal.SaveNilai(varUtility.fileQtyCase);
+                MessageBox.Show("Data Ter-Set", "Information");
+                btnSave.Text = "Set";
+                disab();
+            }
+        }
+
+        private void Enab()
+        {
+            cbProduct.Enabled = true;
+            tbQtyCase.Enabled = true;
+
+            tbSTDWeight.Enabled = true;
+            tbMinWeight.Enabled = true;
+            tbMaxWeight.Enabled = true;
+            //btnSave.Enabled = true;
+        }
+
+        private void disab()
+        {
             cbProduct.Enabled = false;
             tbQtyCase.Enabled = false;
-            tbQtyTargetInBox.Enabled = false;
+
             tbSTDWeight.Enabled = false;
             tbMinWeight.Enabled = false;
             tbMaxWeight.Enabled = false;
-            btnSave.Enabled = false;
+            //btnSave.Enabled = false;
         }
 
 
