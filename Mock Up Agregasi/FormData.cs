@@ -174,7 +174,8 @@ namespace Mock_Up_Agregasi
             btnStop.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnStop.Width, btnStop.Height, 20, 20));
             btnStart.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnStart.Width, btnStart.Height, 20, 20));
             btnBack.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnBack.Width, btnBack.Height, 20, 20));
-            
+            btnRevise.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnRevise.Width, btnRevise.Height, 20, 20));
+
             load_DatacbWO();
             disab();
             varGlobal.GetNilai(varUtility.fileQtyCase);
@@ -251,6 +252,26 @@ namespace Mock_Up_Agregasi
             }
 
             dr.Close();
+            config.con.Close();
+        }
+
+        private void checkDataWO()
+        {
+            int flag = 1;
+            config.Init_Con();
+            config.con.Open();
+            string sql = "select * from tblworkorder where VdataWoNo='" + VdataWoNo +"' and kodeRecipe='" + VdataKodeRecipe + "' and status='" + flag + "'";
+            MySqlDataAdapter dataAdapter1 = new MySqlDataAdapter(sql, config.con);
+            DataTable dt = new DataTable();
+            dataAdapter1.Fill(dt);
+            if (dt.Rows.Count != 0)
+            {
+
+            }
+            else
+            {
+
+            }
             config.con.Close();
         }
 
@@ -429,8 +450,8 @@ namespace Mock_Up_Agregasi
             if (cbWO.Text.Length != 0 )
             {
                 Connect_COM();
-                //connect_Timbangan();
-                //connect_Tower();
+                connect_Timbangan();
+                connect_Tower();
                 enab();
             }
             else
@@ -889,11 +910,11 @@ namespace Mock_Up_Agregasi
                     //dataSimpan();
                     //loadData();
                     //saveLastDataCount();
-                    printLabel();
+                    
                     tbScanBarcode.Focus();
                     vCounter = Convert.ToInt32(lbTotalCase.Text);
                     vCounter = vCounter + 1;
-
+                    printLabel();
                     lbTotalCase.Text = (vCounter).ToString().PadLeft(3, '0');
                     
                     //closeTimbangan();
@@ -909,6 +930,7 @@ namespace Mock_Up_Agregasi
                     lbBoxNG.Text = (vCounterNG).ToString().PadLeft(3, '0');
                     lbBoxNG.Text = lbBoxNG.Text;
                     //cetak_NG();
+                    btnRevise.Visible = true;
                     lampu_Merah();
                     //dataSimpan();
                     //loadData();
@@ -985,11 +1007,12 @@ namespace Mock_Up_Agregasi
 
                 //vCounterQtyWO++;
                 //vCounterLastReadCode++;
-                
+
                 //progressBar2.Value = vCounterQtyWO;
                 //lbActualQtyCase.Text = vCounterLastReadCode.ToString();
                 //saveHistoryScan();
-                check_dataPrint();
+                //check_dataPrint();
+                checkdataScan();
                 if (vCounterLastReadCode == Convert.ToInt32(lbQtyCaseTarget.Text))
                 {
                     pbCompleted.Visible = true;
@@ -1005,12 +1028,83 @@ namespace Mock_Up_Agregasi
             tbLastReadCodeTemp.Clear();
             
         }
-
-        private async void check_dataPrint()
+        private void updateFlag()
         {
             config.Init_Con();
             config.con.Open();
-            string sql = "select * from tblhistory_scan where dataScan='"+ lbLastReadCodeScan.Text +"'";
+            string sql = "update tblhistory_scan set flag=1 where dataScan='" + lbLastReadCodeScan.Text + "' and flag=0";
+            MySqlCommand cmd = new MySqlCommand(sql, config.con);
+            cmd.ExecuteNonQuery();
+            config.con.Close();
+        }
+        
+        private void checkdataScan()
+        {
+            config.Init_Con();
+            config.con.Open();
+            string query = "select * from tblhistory_scan where dataScan='" + lbLastReadCodeScan.Text + "'";
+            MySqlDataAdapter dataAdapter1 = new MySqlDataAdapter(query, config.con);
+            DataTable dt2 = new DataTable();
+            dataAdapter1.Fill(dt2);
+
+            if (dt2.Rows.Count != 0)
+            {
+                checkflag();
+            }
+            else
+            {
+                vCounterQtyWO++;
+                vCounterLastReadCode++;
+                saveHistoryScan();
+                update_DataAgregate();
+                loadCountDataAvailable();
+                lbActualQtyCase.Text = vCounterLastReadCode.ToString();
+                progressBar1.Value = vCounterLastReadCode;
+                progressBar2.Value = vCounterQtyWO;
+                //saveHistoryScan();
+            }
+            config.con.Close();
+        }
+        private async void checkflag()
+        {
+            int flagNo = 0;
+            config.Init_Con();
+            config.con.Open();
+            string query = "select * from tblhistory_scan where dataScan='" + lbLastReadCodeScan.Text + "' and flag='" + flagNo + "'";
+            MySqlDataAdapter dataAdapter1 = new MySqlDataAdapter(query, config.con);
+            DataTable dt = new DataTable();
+            dataAdapter1.Fill(dt);
+
+            if (dt.Rows.Count != 0)
+            {
+                updateFlag();
+                vCounterQtyWO++;
+                vCounterLastReadCode++;
+                //saveHistoryScan();
+                //update_DataAgregate();
+                //loadCountDataAvailable();
+                lbActualQtyCase.Text = vCounterLastReadCode.ToString();
+                progressBar1.Value = vCounterLastReadCode;
+                progressBar2.Value = vCounterQtyWO;
+            }
+            else
+            {
+                PB_Warning.Visible = true;
+
+                //MessageBox.Show("Data Already Scanned", "Perhatian!!..");
+                await Task.Delay(1000);
+                PB_Warning.Visible = false;
+                //Already
+            }
+            config.con.Close();
+        }
+        private async void check_dataPrint()
+        {
+            
+            int flag = 1;
+            config.Init_Con();
+            config.con.Open();
+            string sql = "select * from tblhistory_scan where dataScan='"+ lbLastReadCodeScan.Text +"' and flag='"+ flag +"'";
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sql,config.con);
             DataTable dt3 = new DataTable();
             dataAdapter.Fill(dt3);
@@ -1052,9 +1146,10 @@ namespace Mock_Up_Agregasi
 
         private void saveHistoryScan()
         {
+            int flag = 1;
             config.Init_Con();
             config.con.Open();
-            string sql = "INSERT INTO  `tblhistory_scan`(idCarton,woNo,noBatch,productName,dataScan,dateCreate)values('" + lb_idCarton.Text + "','" + cbWO.Text + "','" + lbLotNo.Text + "','" + lbProductName.Text + "', '" + lbLastReadCodeScan.Text + "','" + DateTime.Now + "')";
+            string sql = "INSERT INTO  `tblhistory_scan`(idCarton,woNo,noBatch,productName,dataScan,dateCreate,flag)values('" + lb_idCarton.Text + "','" + cbWO.Text + "','" + lbLotNo.Text + "','" + lbProductName.Text + "', '" + lbLastReadCodeScan.Text + "','" + DateTime.Now + "','" + flag + "')";
             MySqlCommand cmd = new MySqlCommand(sql, config.con);
             cmd.ExecuteNonQuery();
             config.con.Close();
@@ -1181,6 +1276,9 @@ namespace Mock_Up_Agregasi
             btnStop.BackColor = Color.Gray;
             btnStop.Enabled = false;
             btnStart.Enabled = true;
+            closeScanner();
+            closeTimbangan();
+            closeTowerLamp();
             
 
         }
@@ -1208,6 +1306,37 @@ namespace Mock_Up_Agregasi
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void updateFlagZero()
+        {
+            config.Init_Con();
+            config.con.Open();
+            string sql = "update tblhistory_scan set flag=0 where idCarton='" + lb_idCarton.Text + "' and flag=1";
+            MySqlCommand cmd = new MySqlCommand(sql, config.con);
+            cmd.ExecuteNonQuery();
+            config.con.Close();
+        }
+        private void btnRevise_Click(object sender, EventArgs e)
+        {
+            updateFlagZero();
+            btnRevise.Visible = false;
+        }
+
+        private void updateFlagWO()
+        {
+            config.Init_Con();
+            config.con.Open();
+            string sql = "update tblworkorder set status=1 where wo_no='" + cbWO.Text + "' and kodeRecipe='" + VdataKodeRecipe + "'";
+            MySqlCommand cmd = new MySqlCommand(sql, config.con);
+            cmd.ExecuteNonQuery();
+            config.con.Close();
+        }
+
+        private void btnCloseWO_Click(object sender, EventArgs e)
+        {
+            updateFlagWO();
+            MessageBox.Show("Data WO telah ter-Close","Perhatian");
         }
     }
 }
