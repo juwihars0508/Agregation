@@ -96,10 +96,10 @@ namespace Mock_Up_Agregasi
             this.lbWeight = new System.Windows.Forms.Label();
             this.lb_idCarton = new System.Windows.Forms.Label();
             this.lbLastReadCodeRealeseTemp = new System.Windows.Forms.Label();
+            this.btnRevise = new System.Windows.Forms.Button();
             this.pbCompleted = new System.Windows.Forms.PictureBox();
             this.PB_Warning = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnRevise = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel13.SuspendLayout();
@@ -174,7 +174,7 @@ namespace Mock_Up_Agregasi
             this.btnBack.FlatAppearance.BorderSize = 0;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(653, 623);
+            this.btnBack.Location = new System.Drawing.Point(574, 623);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(85, 47);
             this.btnBack.TabIndex = 61;
@@ -277,7 +277,7 @@ namespace Mock_Up_Agregasi
             this.btnStop.FlatAppearance.BorderSize = 0;
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStop.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStop.Location = new System.Drawing.Point(376, 623);
+            this.btnStop.Location = new System.Drawing.Point(297, 623);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(82, 47);
             this.btnStop.TabIndex = 14;
@@ -292,7 +292,7 @@ namespace Mock_Up_Agregasi
             this.btnPause.FlatAppearance.BorderSize = 0;
             this.btnPause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPause.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPause.Location = new System.Drawing.Point(295, 623);
+            this.btnPause.Location = new System.Drawing.Point(28, 641);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(75, 47);
             this.btnPause.TabIndex = 13;
@@ -307,7 +307,7 @@ namespace Mock_Up_Agregasi
             this.btnCloseWO.FlatAppearance.BorderSize = 0;
             this.btnCloseWO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCloseWO.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCloseWO.Location = new System.Drawing.Point(465, 623);
+            this.btnCloseWO.Location = new System.Drawing.Point(386, 623);
             this.btnCloseWO.Name = "btnCloseWO";
             this.btnCloseWO.Size = new System.Drawing.Size(85, 47);
             this.btnCloseWO.TabIndex = 12;
@@ -322,12 +322,13 @@ namespace Mock_Up_Agregasi
             this.btnHistoryLabel.FlatAppearance.BorderSize = 0;
             this.btnHistoryLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHistoryLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHistoryLabel.Location = new System.Drawing.Point(556, 623);
+            this.btnHistoryLabel.Location = new System.Drawing.Point(477, 623);
             this.btnHistoryLabel.Name = "btnHistoryLabel";
             this.btnHistoryLabel.Size = new System.Drawing.Size(91, 47);
             this.btnHistoryLabel.TabIndex = 11;
             this.btnHistoryLabel.Text = "History Gen.\r\nLabel";
             this.btnHistoryLabel.UseVisualStyleBackColor = false;
+            this.btnHistoryLabel.Click += new System.EventHandler(this.btnHistoryLabel_Click);
             // 
             // btnDataEdit
             // 
@@ -531,7 +532,7 @@ namespace Mock_Up_Agregasi
             this.panel8.Controls.Add(this.label11);
             this.panel8.Location = new System.Drawing.Point(207, 264);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(406, 63);
+            this.panel8.Size = new System.Drawing.Size(390, 63);
             this.panel8.TabIndex = 8;
             this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
             // 
@@ -550,7 +551,7 @@ namespace Mock_Up_Agregasi
             // 
             this.progressBar2.Location = new System.Drawing.Point(11, 30);
             this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(391, 13);
+            this.progressBar2.Size = new System.Drawing.Size(359, 16);
             this.progressBar2.TabIndex = 5;
             this.progressBar2.Click += new System.EventHandler(this.progressBar2_Click);
             // 
@@ -608,7 +609,7 @@ namespace Mock_Up_Agregasi
             this.panel6.Controls.Add(this.label9);
             this.panel6.Location = new System.Drawing.Point(207, 194);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(406, 64);
+            this.panel6.Size = new System.Drawing.Size(390, 64);
             this.panel6.TabIndex = 9;
             this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
             // 
@@ -650,7 +651,7 @@ namespace Mock_Up_Agregasi
             // 
             this.progressBar1.Location = new System.Drawing.Point(12, 41);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(390, 10);
+            this.progressBar1.Size = new System.Drawing.Size(357, 10);
             this.progressBar1.TabIndex = 3;
             this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
@@ -671,9 +672,9 @@ namespace Mock_Up_Agregasi
             this.panel5.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panel5.Controls.Add(this.lbProductName);
             this.panel5.Controls.Add(this.label8);
-            this.panel5.Location = new System.Drawing.Point(397, 122);
+            this.panel5.Location = new System.Drawing.Point(397, 135);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(200, 66);
+            this.panel5.Size = new System.Drawing.Size(200, 53);
             this.panel5.TabIndex = 8;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
@@ -682,7 +683,7 @@ namespace Mock_Up_Agregasi
             this.lbProductName.AutoSize = true;
             this.lbProductName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbProductName.ForeColor = System.Drawing.Color.Black;
-            this.lbProductName.Location = new System.Drawing.Point(18, 40);
+            this.lbProductName.Location = new System.Drawing.Point(18, 27);
             this.lbProductName.Name = "lbProductName";
             this.lbProductName.Size = new System.Drawing.Size(14, 19);
             this.lbProductName.TabIndex = 16;
@@ -693,7 +694,7 @@ namespace Mock_Up_Agregasi
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(13, 13);
+            this.label8.Location = new System.Drawing.Point(13, 5);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(118, 19);
             this.label8.TabIndex = 1;
@@ -704,9 +705,9 @@ namespace Mock_Up_Agregasi
             this.panel4.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panel4.Controls.Add(this.lbLotNo);
             this.panel4.Controls.Add(this.label7);
-            this.panel4.Location = new System.Drawing.Point(207, 122);
+            this.panel4.Location = new System.Drawing.Point(207, 134);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(182, 66);
+            this.panel4.Size = new System.Drawing.Size(180, 53);
             this.panel4.TabIndex = 7;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
@@ -715,7 +716,7 @@ namespace Mock_Up_Agregasi
             this.lbLotNo.AutoSize = true;
             this.lbLotNo.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbLotNo.ForeColor = System.Drawing.Color.Black;
-            this.lbLotNo.Location = new System.Drawing.Point(12, 40);
+            this.lbLotNo.Location = new System.Drawing.Point(12, 28);
             this.lbLotNo.Name = "lbLotNo";
             this.lbLotNo.Size = new System.Drawing.Size(14, 19);
             this.lbLotNo.TabIndex = 1;
@@ -726,7 +727,7 @@ namespace Mock_Up_Agregasi
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(9, 13);
+            this.label7.Location = new System.Drawing.Point(9, 4);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(84, 19);
             this.label7.TabIndex = 0;
@@ -881,10 +882,26 @@ namespace Mock_Up_Agregasi
             this.lbLastReadCodeRealeseTemp.Visible = false;
             this.lbLastReadCodeRealeseTemp.TextChanged += new System.EventHandler(this.lbLastReadCodeRealeseTemp_TextChanged_1);
             // 
+            // btnRevise
+            // 
+            this.btnRevise.BackColor = System.Drawing.Color.DarkGray;
+            this.btnRevise.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRevise.FlatAppearance.BorderSize = 0;
+            this.btnRevise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRevise.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRevise.Location = new System.Drawing.Point(833, 422);
+            this.btnRevise.Name = "btnRevise";
+            this.btnRevise.Size = new System.Drawing.Size(85, 47);
+            this.btnRevise.TabIndex = 68;
+            this.btnRevise.Text = "Revise";
+            this.btnRevise.UseVisualStyleBackColor = false;
+            this.btnRevise.Visible = false;
+            this.btnRevise.Click += new System.EventHandler(this.btnRevise_Click);
+            // 
             // pbCompleted
             // 
             this.pbCompleted.Image = global::Mock_Up_Agregasi.Properties.Resources.Completed;
-            this.pbCompleted.Location = new System.Drawing.Point(416, 232);
+            this.pbCompleted.Location = new System.Drawing.Point(416, 316);
             this.pbCompleted.Name = "pbCompleted";
             this.pbCompleted.Size = new System.Drawing.Size(204, 192);
             this.pbCompleted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -912,22 +929,6 @@ namespace Mock_Up_Agregasi
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnRevise
-            // 
-            this.btnRevise.BackColor = System.Drawing.Color.DarkGray;
-            this.btnRevise.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRevise.FlatAppearance.BorderSize = 0;
-            this.btnRevise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRevise.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRevise.Location = new System.Drawing.Point(833, 422);
-            this.btnRevise.Name = "btnRevise";
-            this.btnRevise.Size = new System.Drawing.Size(85, 47);
-            this.btnRevise.TabIndex = 68;
-            this.btnRevise.Text = "Revise";
-            this.btnRevise.UseVisualStyleBackColor = false;
-            this.btnRevise.Visible = false;
-            this.btnRevise.Click += new System.EventHandler(this.btnRevise_Click);
             // 
             // FormData
             // 

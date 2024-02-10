@@ -82,6 +82,7 @@ namespace Mock_Up_Agregasi
         public string VdataQty;
         public string VdataWeight;
         public string VdataPrint;
+        public string VdataWoNoTemp;
         public int vCounterOK;
         public int vCounterNG;
         public int vCounterLastReadCode;
@@ -260,13 +261,19 @@ namespace Mock_Up_Agregasi
             int flag = 1;
             config.Init_Con();
             config.con.Open();
-            string sql = "select * from tblworkorder where VdataWoNo='" + VdataWoNo +"' and kodeRecipe='" + VdataKodeRecipe + "' and status='" + flag + "'";
+            string sql = "select wo_no from tblworkorder where wo_no='" + VdataWoNo +"' and kodeRecipe='" + VdataKodeRecipe + "' and status='" + flag + "'";
             MySqlDataAdapter dataAdapter1 = new MySqlDataAdapter(sql, config.con);
             DataTable dt = new DataTable();
             dataAdapter1.Fill(dt);
             if (dt.Rows.Count != 0)
             {
+                foreach (DataRow row in dt.Rows)
+                {
+                    VdataWoNoTemp = row[0].ToString();
+                    
+                }
 
+                
             }
             else
             {
@@ -285,9 +292,17 @@ namespace Mock_Up_Agregasi
             dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-
-                cbWO.Items.Add(dr[0].ToString());
+                VdataWoNo = dr[0].ToString();
                 VdataKodeRecipe = dr[1].ToString();
+                checkDataWO();
+                if (VdataWoNo != VdataWoNoTemp)
+                {
+                    cbWO.Items.Add(dr[0].ToString());
+                }
+                else
+                {
+                    cbWO.Items.Clear(); 
+                }
 
 
             }
@@ -744,6 +759,18 @@ namespace Mock_Up_Agregasi
             RawPrinterHelper.SendStringToPrinter(vPrinterName, SC1);
             //}
             //}
+            saveHistoryPrintLabel();
+        }
+
+        private void saveHistoryPrintLabel()
+        {
+            config.Init_Con();
+            config.con.Open();
+            string sql = "INSERT INTO `tblhistory_printlabel`(`woNo`, `productCode`, `productName`, `noBatch`, `expDate`, `qtyCarton`, `weightCarton`, `cartonNo`, `dataBarcode`)values('"+ VdataWoNo + "','" + VdataProductKode + "','" + VdataProductName + "', '" + VdataNoBatch + "', '" + VdataExpDate + "','" + VdataQty + "', '" + lbWeight.Text + "', '" + lbTotalCase.Text + "','" + VdataPrint + lb_idCarton.Text + "')";
+            MySqlCommand cmd = new MySqlCommand(sql, config.con);
+            cmd.ExecuteNonQuery();
+            config.con.Close();
+
         }
 
         private void btnDataEdit_Click(object sender, EventArgs e)
@@ -914,9 +941,9 @@ namespace Mock_Up_Agregasi
                     tbScanBarcode.Focus();
                     vCounter = Convert.ToInt32(lbTotalCase.Text);
                     vCounter = vCounter + 1;
-                    printLabel();
-                    lbTotalCase.Text = (vCounter).ToString().PadLeft(3, '0');
                     
+                    lbTotalCase.Text = (vCounter).ToString().PadLeft(3, '0');
+                    printLabel();
                     //closeTimbangan();
                 }
                 else
@@ -1337,6 +1364,11 @@ namespace Mock_Up_Agregasi
         {
             updateFlagWO();
             MessageBox.Show("Data WO telah ter-Close","Perhatian");
+        }
+
+        private void btnHistoryLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
