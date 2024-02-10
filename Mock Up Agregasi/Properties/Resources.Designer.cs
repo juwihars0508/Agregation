@@ -93,6 +93,16 @@ namespace Mock_Up_Agregasi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Completed {
+            get {
+                object obj = ResourceManager.GetObject("Completed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LIGHT_TRANSPARAN {
             get {
                 object obj = ResourceManager.GetObject("LIGHT TRANSPARAN", resourceCulture);
@@ -106,6 +116,16 @@ namespace Mock_Up_Agregasi.Properties {
         internal static System.Drawing.Bitmap minimize_button_icon {
             get {
                 object obj = ResourceManager.GetObject("minimize-button-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NG {
+            get {
+                object obj = ResourceManager.GetObject("NG", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

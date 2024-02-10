@@ -221,9 +221,11 @@ namespace Mock_Up_Agregasi
             while (dr.Read())
             {
 
-                lbTargetQty.Text = dr[0].ToString();
-                VDataTarget = dr[0].ToString();
-
+                string CountData = dr[0].ToString();
+                //VDataTarget = dr[0].ToString();
+                int AvData = Convert.ToInt32(VDataTarget) - Convert.ToInt32(CountData);
+                VDataTarget = AvData.ToString();
+                lbTargetQty.Text = AvData.ToString();
 
             }
 
@@ -368,6 +370,7 @@ namespace Mock_Up_Agregasi
 
                 lbLotNo.Text = dr[5].ToString();
                 lbProductName.Text = dr[4].ToString();
+                VdataNoBatch = dr[4].ToString();
                 //lbTargetQty.Text = dr[8].ToString();
                 //VDataTarget = dr[8].ToString();
                 Vdata_GTINCodeMatrix = dr[9].ToString();
@@ -969,7 +972,7 @@ namespace Mock_Up_Agregasi
             tbtimbang2.Clear();
         }
 
-        private void tbLastReadCodeTemp_TextChanged(object sender, EventArgs e)
+        private async void tbLastReadCodeTemp_TextChanged(object sender, EventArgs e)
         {
             //tbLastReadCodeTemp.Text = lbLastReadCodeScan.Text;
             if(tbLastReadCodeTemp.Text != "")
@@ -980,16 +983,19 @@ namespace Mock_Up_Agregasi
                 progressBar2.Minimum = 0;
                 progressBar2.Maximum = Convert.ToInt32(lbTargetQty.Text);
 
-                vCounterQtyWO++;
-                vCounterLastReadCode++;
+                //vCounterQtyWO++;
+                //vCounterLastReadCode++;
                 
-                progressBar2.Value = vCounterQtyWO;
+                //progressBar2.Value = vCounterQtyWO;
                 //lbActualQtyCase.Text = vCounterLastReadCode.ToString();
                 //saveHistoryScan();
                 check_dataPrint();
                 if (vCounterLastReadCode == Convert.ToInt32(lbQtyCaseTarget.Text))
                 {
-                    MessageBox.Show("Qty Box TerCapai, Silahkan Timbang");
+                    pbCompleted.Visible = true;
+                    //MessageBox.Show("Qty Box TerCapai, Silahkan Timbang");
+                    await Task.Delay(1000);
+                    pbCompleted.Visible = false;
                     vCounterLastReadCode = 0;
                     SignalTimbang();
                     //connect_Timbangan();
@@ -1000,7 +1006,7 @@ namespace Mock_Up_Agregasi
             
         }
 
-        private void check_dataPrint()
+        private async void check_dataPrint()
         {
             config.Init_Con();
             config.con.Open();
@@ -1010,21 +1016,24 @@ namespace Mock_Up_Agregasi
             dataAdapter.Fill(dt3);
             if (dt3.Rows.Count == 0)
             {
+                vCounterQtyWO++;
+                vCounterLastReadCode++;
                 saveHistoryScan();
                 update_DataAgregate();
-                //loadCountDataAvailable();
+                loadCountDataAvailable();
                 lbActualQtyCase.Text = vCounterLastReadCode.ToString();
                 progressBar1.Value = vCounterLastReadCode;
+                progressBar2.Value = vCounterQtyWO;
 
             }
             else
             {
 
-                //PB_Warning.Visible = true;
+                PB_Warning.Visible = true;
                 
-                MessageBox.Show("Data Already Scanned", "Perhatian!!..");
-                //await Task.Delay(1000);
-                //PB_Warning.Visible = false;
+                //MessageBox.Show("Data Already Scanned", "Perhatian!!..");
+                await Task.Delay(1000);
+                PB_Warning.Visible = false;
 
             }
             config.con.Close();
@@ -1194,6 +1203,11 @@ namespace Mock_Up_Agregasi
         private void lbLastReadCodeRealeseTemp_TextChanged_1(object sender, EventArgs e)
         {
             lbLastReadCodeRealese.Text = lbLastReadCodeRealeseTemp.Text;
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
