@@ -123,6 +123,16 @@ namespace Mock_Up_Agregasi.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MinimizeDark {
+            get {
+                object obj = ResourceManager.GetObject("MinimizeDark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap NG {
             get {
                 object obj = ResourceManager.GetObject("NG", resourceCulture);

@@ -944,6 +944,7 @@ namespace Mock_Up_Agregasi
                     
                     lbTotalCase.Text = (vCounter).ToString().PadLeft(3, '0');
                     printLabel();
+                    
                     //closeTimbangan();
                 }
                 else
@@ -1088,6 +1089,8 @@ namespace Mock_Up_Agregasi
                 lbActualQtyCase.Text = vCounterLastReadCode.ToString();
                 progressBar1.Value = vCounterLastReadCode;
                 progressBar2.Value = vCounterQtyWO;
+                int hitungTarget = Convert.ToInt32(VDataTarget) - vCounterQtyWO;
+                lbTargetQty.Text = hitungTarget.ToString();
                 //saveHistoryScan();
             }
             config.con.Close();
@@ -1105,14 +1108,14 @@ namespace Mock_Up_Agregasi
             if (dt.Rows.Count != 0)
             {
                 updateFlag();
-                vCounterQtyWO++;
+                //vCounterQtyWO++;
                 vCounterLastReadCode++;
                 //saveHistoryScan();
                 //update_DataAgregate();
                 //loadCountDataAvailable();
                 lbActualQtyCase.Text = vCounterLastReadCode.ToString();
                 progressBar1.Value = vCounterLastReadCode;
-                progressBar2.Value = vCounterQtyWO;
+                
             }
             else
             {
@@ -1368,7 +1371,9 @@ namespace Mock_Up_Agregasi
 
         private void btnHistoryLabel_Click(object sender, EventArgs e)
         {
-
+            FormHistoryLabel formHistoryLabel = new FormHistoryLabel();
+            formHistoryLabel.Show();
+            this.Close();
         }
     }
 }

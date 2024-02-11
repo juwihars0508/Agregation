@@ -208,6 +208,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="logoProline.ico" />
+    <None Include="Logo\MinimizeDark.png" />
     <None Include="Logo\Completed.png" />
     <None Include="Logo\NG.png" />
     <None Include="Logo\OK.png" />

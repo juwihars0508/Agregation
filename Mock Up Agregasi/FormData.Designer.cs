@@ -30,6 +30,7 @@ namespace Mock_Up_Agregasi
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
             this.tbLastReadCodeTemp = new System.Windows.Forms.TextBox();
@@ -298,6 +299,7 @@ namespace Mock_Up_Agregasi
             this.btnPause.TabIndex = 13;
             this.btnPause.Text = "Pause";
             this.btnPause.UseVisualStyleBackColor = false;
+            this.btnPause.Visible = false;
             this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
             // btnCloseWO
@@ -901,7 +903,7 @@ namespace Mock_Up_Agregasi
             // pbCompleted
             // 
             this.pbCompleted.Image = global::Mock_Up_Agregasi.Properties.Resources.Completed;
-            this.pbCompleted.Location = new System.Drawing.Point(416, 316);
+            this.pbCompleted.Location = new System.Drawing.Point(403, 212);
             this.pbCompleted.Name = "pbCompleted";
             this.pbCompleted.Size = new System.Drawing.Size(204, 192);
             this.pbCompleted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -936,6 +938,7 @@ namespace Mock_Up_Agregasi
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 749);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";

@@ -29,6 +29,7 @@ namespace Mock_Up_Agregasi
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
@@ -202,14 +203,13 @@ namespace Mock_Up_Agregasi
             // btnMin
             // 
             this.btnMin.BackColor = System.Drawing.Color.Transparent;
-            this.btnMin.BackgroundImage = global::Mock_Up_Agregasi.Properties.Resources.minimize_button_icon;
+            this.btnMin.BackgroundImage = global::Mock_Up_Agregasi.Properties.Resources.MinimizeDark;
             this.btnMin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMin.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMin.Location = new System.Drawing.Point(785, 12);
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(41, 23);
             this.btnMin.TabIndex = 17;
-            this.btnMin.Text = "-";
             this.btnMin.UseVisualStyleBackColor = false;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
             // 
@@ -224,6 +224,7 @@ namespace Mock_Up_Agregasi
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnMin);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
