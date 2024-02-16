@@ -54,7 +54,6 @@ namespace Mock_Up_Agregasi
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.btn_Setting);
             this.panel1.Controls.Add(this.btn_EditData);
             this.panel1.Controls.Add(this.btn_MenuAggregation);
             this.panel1.Controls.Add(this.pictureBox2);
@@ -130,12 +129,13 @@ namespace Mock_Up_Agregasi
             this.btn_Setting.FlatAppearance.BorderSize = 0;
             this.btn_Setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Setting.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Setting.Location = new System.Drawing.Point(190, 175);
+            this.btn_Setting.Location = new System.Drawing.Point(634, 344);
             this.btn_Setting.Name = "btn_Setting";
             this.btn_Setting.Size = new System.Drawing.Size(192, 38);
             this.btn_Setting.TabIndex = 16;
             this.btn_Setting.Text = "Setting";
             this.btn_Setting.UseVisualStyleBackColor = false;
+            this.btn_Setting.Visible = false;
             // 
             // btn_EditData
             // 
@@ -183,7 +183,7 @@ namespace Mock_Up_Agregasi
             this.panel3.Controls.Add(this.btn_MenuReport);
             this.panel3.Location = new System.Drawing.Point(170, 65);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(230, 217);
+            this.panel3.Size = new System.Drawing.Size(230, 166);
             this.panel3.TabIndex = 37;
             // 
             // btn_MenuReport
@@ -193,7 +193,7 @@ namespace Mock_Up_Agregasi
             this.btn_MenuReport.FlatAppearance.BorderSize = 0;
             this.btn_MenuReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_MenuReport.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_MenuReport.Location = new System.Drawing.Point(20, 154);
+            this.btn_MenuReport.Location = new System.Drawing.Point(20, 111);
             this.btn_MenuReport.Name = "btn_MenuReport";
             this.btn_MenuReport.Size = new System.Drawing.Size(192, 38);
             this.btn_MenuReport.TabIndex = 17;
@@ -224,6 +224,7 @@ namespace Mock_Up_Agregasi
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.btnMin);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btn_Setting);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.Text = "FormMain";

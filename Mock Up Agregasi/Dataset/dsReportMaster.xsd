@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReportMaster" targetNamespace="http://tempuri.org/dsReportMaster.xsd" xmlns:mstns="http://tempuri.org/dsReportMaster.xsd" xmlns="http://tempuri.org/dsReportMaster.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReportMaster" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsReportMaster" msprop:Generator_UserDSName="dsReportMaster">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dataMasterBox" msprop:Generator_TableClassName="dataMasterBoxDataTable" msprop:Generator_TableVarName="tabledataMasterBox" msprop:Generator_TablePropName="dataMasterBox" msprop:Generator_RowDeletingName="dataMasterBoxRowDeleting" msprop:Generator_RowChangingName="dataMasterBoxRowChanging" msprop:Generator_RowEvHandlerName="dataMasterBoxRowChangeEventHandler" msprop:Generator_RowDeletedName="dataMasterBoxRowDeleted" msprop:Generator_UserTableName="dataMasterBox" msprop:Generator_RowChangedName="dataMasterBoxRowChanged" msprop:Generator_RowEvArgName="dataMasterBoxRowChangeEvent" msprop:Generator_RowClassName="dataMasterBoxRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idCarton" msprop:Generator_ColumnVarNameInTable="columnidCarton" msprop:Generator_ColumnPropNameInRow="idCarton" msprop:Generator_ColumnPropNameInTable="idCartonColumn" msprop:Generator_UserColumnName="idCarton" type="xs:string" minOccurs="0" />
+              <xs:element name="woNo" msprop:Generator_ColumnVarNameInTable="columnwoNo" msprop:Generator_ColumnPropNameInRow="woNo" msprop:Generator_ColumnPropNameInTable="woNoColumn" msprop:Generator_UserColumnName="woNo" type="xs:string" minOccurs="0" />
+              <xs:element name="productName" msprop:Generator_ColumnVarNameInTable="columnproductName" msprop:Generator_ColumnPropNameInRow="productName" msprop:Generator_ColumnPropNameInTable="productNameColumn" msprop:Generator_UserColumnName="productName" type="xs:string" minOccurs="0" />
+              <xs:element name="noBatch" msprop:Generator_ColumnVarNameInTable="columnnoBatch" msprop:Generator_ColumnPropNameInRow="noBatch" msprop:Generator_ColumnPropNameInTable="noBatchColumn" msprop:Generator_UserColumnName="noBatch" type="xs:string" minOccurs="0" />
+              <xs:element name="countCarton" msprop:Generator_ColumnVarNameInTable="columncountCarton" msprop:Generator_ColumnPropNameInRow="countCarton" msprop:Generator_ColumnPropNameInTable="countCartonColumn" msprop:Generator_UserColumnName="countCarton" type="xs:string" minOccurs="0" />
+              <xs:element name="dataScanRealese" msprop:Generator_ColumnVarNameInTable="columndataScanRealese" msprop:Generator_ColumnPropNameInRow="dataScanRealese" msprop:Generator_ColumnPropNameInTable="dataScanRealeseColumn" msprop:Generator_UserColumnName="dataScanRealese" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dataInnerBox" msprop:Generator_TableClassName="dataInnerBoxDataTable" msprop:Generator_TableVarName="tabledataInnerBox" msprop:Generator_TablePropName="dataInnerBox" msprop:Generator_RowDeletingName="dataInnerBoxRowDeleting" msprop:Generator_RowChangingName="dataInnerBoxRowChanging" msprop:Generator_RowEvHandlerName="dataInnerBoxRowChangeEventHandler" msprop:Generator_RowDeletedName="dataInnerBoxRowDeleted" msprop:Generator_UserTableName="dataInnerBox" msprop:Generator_RowChangedName="dataInnerBoxRowChanged" msprop:Generator_RowEvArgName="dataInnerBoxRowChangeEvent" msprop:Generator_RowClassName="dataInnerBoxRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idCarton" msprop:Generator_ColumnVarNameInTable="columnidCarton" msprop:Generator_ColumnPropNameInRow="idCarton" msprop:Generator_ColumnPropNameInTable="idCartonColumn" msprop:Generator_UserColumnName="idCarton" type="xs:string" minOccurs="0" />
+              <xs:element name="dataScan" msprop:Generator_ColumnVarNameInTable="columndataScan" msprop:Generator_ColumnPropNameInRow="dataScan" msprop:Generator_ColumnPropNameInTable="dataScanColumn" msprop:Generator_UserColumnName="dataScan" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="dataMasterBox_dataInnerBox" msdata:parent="dataMasterBox" msdata:child="dataInnerBox" msdata:parentkey="idCarton" msdata:childkey="idCarton" msprop:Generator_UserChildTable="dataInnerBox" msprop:Generator_ChildPropName="GetdataInnerBoxRows" msprop:Generator_UserRelationName="dataMasterBox_dataInnerBox" msprop:Generator_ParentPropName="dataMasterBoxRow" msprop:Generator_RelationVarName="relationdataMasterBox_dataInnerBox" msprop:Generator_UserParentTable="dataMasterBox" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

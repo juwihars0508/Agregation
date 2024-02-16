@@ -58,6 +58,10 @@ namespace Mock_Up_Agregasi
 
         private void FormDataReport_Load(object sender, EventArgs e)
         {
+            btnRptBpom.BackColor = Color.DeepSkyBlue;
+            btnDataReport.BackColor = Color.Gray;
+            pnlReportBPOM.Visible = true;
+
             loadData();
         }
 
@@ -75,6 +79,20 @@ namespace Mock_Up_Agregasi
             FormMain formMain = new FormMain();
             formMain.Show();
             this.Hide();
+        }
+
+        private void btnDataReport_Click(object sender, EventArgs e)
+        {
+            pnlReportBPOM.Visible = false;
+            FormReport formReport = new FormReport();
+            formReport.Show();
+            this.Hide();
+        }
+
+        private void btnRptGnrl_Click(object sender, EventArgs e)
+        {
+            pnlReportBPOM.Visible = true;
+
         }
     }
 }
