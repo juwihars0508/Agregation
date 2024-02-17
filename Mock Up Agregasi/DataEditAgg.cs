@@ -216,6 +216,19 @@ namespace Mock_Up_Agregasi
             //btnSave.Enabled = false;
         }
 
+        private void label6_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

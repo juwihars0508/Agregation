@@ -1375,5 +1375,10 @@ namespace Mock_Up_Agregasi
             formHistoryLabel.Show();
             this.Close();
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

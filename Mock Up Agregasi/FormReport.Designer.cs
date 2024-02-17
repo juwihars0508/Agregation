@@ -42,14 +42,14 @@ namespace Mock_Up_Agregasi
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.btn_Search = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.CRDataAgregate2 = new Mock_Up_Agregasi.CRDataAgregate();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -58,9 +58,9 @@ namespace Mock_Up_Agregasi
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Mock_Up_Agregasi.Properties.Resources.LIGHT_TRANSPARAN;
-            this.pictureBox1.Location = new System.Drawing.Point(2, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(2, 30);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(123, 54);
+            this.pictureBox1.Size = new System.Drawing.Size(114, 33);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 45;
             this.pictureBox1.TabStop = false;
@@ -71,9 +71,9 @@ namespace Mock_Up_Agregasi
             this.panel2.Controls.Add(this.lblTime);
             this.panel2.Controls.Add(this.lblUser);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(131, 30);
+            this.panel2.Location = new System.Drawing.Point(122, 30);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(883, 24);
+            this.panel2.Size = new System.Drawing.Size(892, 24);
             this.panel2.TabIndex = 44;
             // 
             // lblTime
@@ -183,6 +183,33 @@ namespace Mock_Up_Agregasi
             this.panel1.Size = new System.Drawing.Size(1008, 134);
             this.panel1.TabIndex = 52;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(143, 65);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(578, 20);
+            this.textBox1.TabIndex = 56;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(125, 69);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(12, 16);
+            this.label3.TabIndex = 55;
+            this.label3.Text = ":";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(7, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 16);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "Data Aggregate ";
+            // 
             // btn_Search
             // 
             this.btn_Search.BackColor = System.Drawing.Color.DeepSkyBlue;
@@ -239,33 +266,6 @@ namespace Mock_Up_Agregasi
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(7, 68);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 16);
-            this.label2.TabIndex = 54;
-            this.label2.Text = "Data Aggregate ";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(143, 65);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(578, 20);
-            this.textBox1.TabIndex = 56;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(125, 69);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(12, 16);
-            this.label3.TabIndex = 55;
-            this.label3.Text = ":";
             // 
             // FormReport
             // 

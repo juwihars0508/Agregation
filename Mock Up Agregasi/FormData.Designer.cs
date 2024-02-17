@@ -32,6 +32,14 @@ namespace Mock_Up_Agregasi
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRevise = new System.Windows.Forms.Button();
+            this.pbCompleted = new System.Windows.Forms.PictureBox();
+            this.lbLastReadCodeRealeseTemp = new System.Windows.Forms.Label();
+            this.lb_idCarton = new System.Windows.Forms.Label();
+            this.lbWeight = new System.Windows.Forms.Label();
+            this.PB_Warning = new System.Windows.Forms.PictureBox();
+            this.tbTemp = new System.Windows.Forms.TextBox();
+            this.tbScanBarcode = new System.Windows.Forms.TextBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.tbLastReadCodeTemp = new System.Windows.Forms.TextBox();
             this.tbtimbang2 = new System.Windows.Forms.TextBox();
@@ -89,19 +97,13 @@ namespace Mock_Up_Agregasi
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.serialTimbangan = new System.IO.Ports.SerialPort(this.components);
             this.serialTowerLamp = new System.IO.Ports.SerialPort(this.components);
-            this.tbScanBarcode = new System.Windows.Forms.TextBox();
-            this.tbTemp = new System.Windows.Forms.TextBox();
-            this.lbWeight = new System.Windows.Forms.Label();
-            this.lb_idCarton = new System.Windows.Forms.Label();
-            this.lbLastReadCodeRealeseTemp = new System.Windows.Forms.Label();
-            this.btnRevise = new System.Windows.Forms.Button();
-            this.pbCompleted = new System.Windows.Forms.PictureBox();
-            this.PB_Warning = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCompleted)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_Warning)).BeginInit();
             this.panel14.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -114,8 +116,6 @@ namespace Mock_Up_Agregasi
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCompleted)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PB_Warning)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -167,6 +167,101 @@ namespace Mock_Up_Agregasi
             this.panel1.Size = new System.Drawing.Size(984, 749);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnRevise
+            // 
+            this.btnRevise.BackColor = System.Drawing.Color.DarkGray;
+            this.btnRevise.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRevise.FlatAppearance.BorderSize = 0;
+            this.btnRevise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRevise.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRevise.Location = new System.Drawing.Point(833, 422);
+            this.btnRevise.Name = "btnRevise";
+            this.btnRevise.Size = new System.Drawing.Size(85, 47);
+            this.btnRevise.TabIndex = 68;
+            this.btnRevise.Text = "Revise";
+            this.btnRevise.UseVisualStyleBackColor = false;
+            this.btnRevise.Visible = false;
+            this.btnRevise.Click += new System.EventHandler(this.btnRevise_Click);
+            // 
+            // pbCompleted
+            // 
+            this.pbCompleted.Image = global::Mock_Up_Agregasi.Properties.Resources.Completed;
+            this.pbCompleted.Location = new System.Drawing.Point(403, 212);
+            this.pbCompleted.Name = "pbCompleted";
+            this.pbCompleted.Size = new System.Drawing.Size(204, 192);
+            this.pbCompleted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbCompleted.TabIndex = 67;
+            this.pbCompleted.TabStop = false;
+            this.pbCompleted.Visible = false;
+            // 
+            // lbLastReadCodeRealeseTemp
+            // 
+            this.lbLastReadCodeRealeseTemp.AutoSize = true;
+            this.lbLastReadCodeRealeseTemp.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLastReadCodeRealeseTemp.ForeColor = System.Drawing.Color.Black;
+            this.lbLastReadCodeRealeseTemp.Location = new System.Drawing.Point(210, 597);
+            this.lbLastReadCodeRealeseTemp.Name = "lbLastReadCodeRealeseTemp";
+            this.lbLastReadCodeRealeseTemp.Size = new System.Drawing.Size(13, 18);
+            this.lbLastReadCodeRealeseTemp.TabIndex = 66;
+            this.lbLastReadCodeRealeseTemp.Text = "-";
+            this.lbLastReadCodeRealeseTemp.Visible = false;
+            this.lbLastReadCodeRealeseTemp.TextChanged += new System.EventHandler(this.lbLastReadCodeRealeseTemp_TextChanged_1);
+            // 
+            // lb_idCarton
+            // 
+            this.lb_idCarton.AutoSize = true;
+            this.lb_idCarton.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_idCarton.Location = new System.Drawing.Point(16, 392);
+            this.lb_idCarton.Name = "lb_idCarton";
+            this.lb_idCarton.Size = new System.Drawing.Size(13, 18);
+            this.lb_idCarton.TabIndex = 65;
+            this.lb_idCarton.Text = "-";
+            this.lb_idCarton.Visible = false;
+            // 
+            // lbWeight
+            // 
+            this.lbWeight.AutoSize = true;
+            this.lbWeight.BackColor = System.Drawing.Color.White;
+            this.lbWeight.Font = new System.Drawing.Font("Arial", 46F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbWeight.ForeColor = System.Drawing.Color.Black;
+            this.lbWeight.Location = new System.Drawing.Point(567, 406);
+            this.lbWeight.Name = "lbWeight";
+            this.lbWeight.Size = new System.Drawing.Size(51, 72);
+            this.lbWeight.TabIndex = 18;
+            this.lbWeight.Text = "-";
+            // 
+            // PB_Warning
+            // 
+            this.PB_Warning.Image = global::Mock_Up_Agregasi.Properties.Resources.NG;
+            this.PB_Warning.Location = new System.Drawing.Point(283, 285);
+            this.PB_Warning.Name = "PB_Warning";
+            this.PB_Warning.Size = new System.Drawing.Size(209, 111);
+            this.PB_Warning.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PB_Warning.TabIndex = 64;
+            this.PB_Warning.TabStop = false;
+            this.PB_Warning.Visible = false;
+            // 
+            // tbTemp
+            // 
+            this.tbTemp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbTemp.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTemp.Location = new System.Drawing.Point(207, 676);
+            this.tbTemp.Name = "tbTemp";
+            this.tbTemp.Size = new System.Drawing.Size(576, 26);
+            this.tbTemp.TabIndex = 63;
+            this.tbTemp.Visible = false;
+            this.tbTemp.TextChanged += new System.EventHandler(this.tbTemp_TextChanged_1);
+            this.tbTemp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTemp_KeyPress);
+            // 
+            // tbScanBarcode
+            // 
+            this.tbScanBarcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbScanBarcode.Location = new System.Drawing.Point(207, 570);
+            this.tbScanBarcode.Name = "tbScanBarcode";
+            this.tbScanBarcode.Size = new System.Drawing.Size(149, 20);
+            this.tbScanBarcode.TabIndex = 62;
+            this.tbScanBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbScanBarcode_KeyPress_1);
             // 
             // btnBack
             // 
@@ -739,16 +834,16 @@ namespace Mock_Up_Agregasi
             // 
             this.panel3.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panel3.Controls.Add(this.cbWO);
-            this.panel3.Location = new System.Drawing.Point(12, 121);
+            this.panel3.Location = new System.Drawing.Point(12, 134);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(180, 67);
+            this.panel3.Size = new System.Drawing.Size(180, 53);
             this.panel3.TabIndex = 6;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // cbWO
             // 
             this.cbWO.FormattingEnabled = true;
-            this.cbWO.Location = new System.Drawing.Point(9, 23);
+            this.cbWO.Location = new System.Drawing.Point(9, 16);
             this.cbWO.Name = "cbWO";
             this.cbWO.Size = new System.Drawing.Size(155, 21);
             this.cbWO.TabIndex = 7;
@@ -769,11 +864,12 @@ namespace Mock_Up_Agregasi
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(210, 96);
+            this.label5.Location = new System.Drawing.Point(204, 96);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(167, 18);
             this.label5.TabIndex = 4;
             this.label5.Text = "Production Monitoring";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -819,6 +915,16 @@ namespace Mock_Up_Agregasi
             this.label2.TabIndex = 2;
             this.label2.Text = "AGGREGATION STATION";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Mock_Up_Agregasi.Properties.Resources.LIGHT_TRANSPARAN;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 22);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(119, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // serialPort1
             // 
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
@@ -826,111 +932,6 @@ namespace Mock_Up_Agregasi
             // serialTimbangan
             // 
             this.serialTimbangan.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialTimbangan_DataReceived);
-            // 
-            // tbScanBarcode
-            // 
-            this.tbScanBarcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbScanBarcode.Location = new System.Drawing.Point(207, 570);
-            this.tbScanBarcode.Name = "tbScanBarcode";
-            this.tbScanBarcode.Size = new System.Drawing.Size(149, 20);
-            this.tbScanBarcode.TabIndex = 62;
-            this.tbScanBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbScanBarcode_KeyPress_1);
-            // 
-            // tbTemp
-            // 
-            this.tbTemp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbTemp.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTemp.Location = new System.Drawing.Point(207, 676);
-            this.tbTemp.Name = "tbTemp";
-            this.tbTemp.Size = new System.Drawing.Size(576, 26);
-            this.tbTemp.TabIndex = 63;
-            this.tbTemp.Visible = false;
-            this.tbTemp.TextChanged += new System.EventHandler(this.tbTemp_TextChanged_1);
-            this.tbTemp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTemp_KeyPress);
-            // 
-            // lbWeight
-            // 
-            this.lbWeight.AutoSize = true;
-            this.lbWeight.BackColor = System.Drawing.Color.White;
-            this.lbWeight.Font = new System.Drawing.Font("Arial", 46F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbWeight.ForeColor = System.Drawing.Color.Black;
-            this.lbWeight.Location = new System.Drawing.Point(567, 406);
-            this.lbWeight.Name = "lbWeight";
-            this.lbWeight.Size = new System.Drawing.Size(51, 72);
-            this.lbWeight.TabIndex = 18;
-            this.lbWeight.Text = "-";
-            // 
-            // lb_idCarton
-            // 
-            this.lb_idCarton.AutoSize = true;
-            this.lb_idCarton.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_idCarton.Location = new System.Drawing.Point(16, 392);
-            this.lb_idCarton.Name = "lb_idCarton";
-            this.lb_idCarton.Size = new System.Drawing.Size(13, 18);
-            this.lb_idCarton.TabIndex = 65;
-            this.lb_idCarton.Text = "-";
-            this.lb_idCarton.Visible = false;
-            // 
-            // lbLastReadCodeRealeseTemp
-            // 
-            this.lbLastReadCodeRealeseTemp.AutoSize = true;
-            this.lbLastReadCodeRealeseTemp.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLastReadCodeRealeseTemp.ForeColor = System.Drawing.Color.Black;
-            this.lbLastReadCodeRealeseTemp.Location = new System.Drawing.Point(210, 597);
-            this.lbLastReadCodeRealeseTemp.Name = "lbLastReadCodeRealeseTemp";
-            this.lbLastReadCodeRealeseTemp.Size = new System.Drawing.Size(13, 18);
-            this.lbLastReadCodeRealeseTemp.TabIndex = 66;
-            this.lbLastReadCodeRealeseTemp.Text = "-";
-            this.lbLastReadCodeRealeseTemp.Visible = false;
-            this.lbLastReadCodeRealeseTemp.TextChanged += new System.EventHandler(this.lbLastReadCodeRealeseTemp_TextChanged_1);
-            // 
-            // btnRevise
-            // 
-            this.btnRevise.BackColor = System.Drawing.Color.DarkGray;
-            this.btnRevise.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRevise.FlatAppearance.BorderSize = 0;
-            this.btnRevise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRevise.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRevise.Location = new System.Drawing.Point(833, 422);
-            this.btnRevise.Name = "btnRevise";
-            this.btnRevise.Size = new System.Drawing.Size(85, 47);
-            this.btnRevise.TabIndex = 68;
-            this.btnRevise.Text = "Revise";
-            this.btnRevise.UseVisualStyleBackColor = false;
-            this.btnRevise.Visible = false;
-            this.btnRevise.Click += new System.EventHandler(this.btnRevise_Click);
-            // 
-            // pbCompleted
-            // 
-            this.pbCompleted.Image = global::Mock_Up_Agregasi.Properties.Resources.Completed;
-            this.pbCompleted.Location = new System.Drawing.Point(403, 212);
-            this.pbCompleted.Name = "pbCompleted";
-            this.pbCompleted.Size = new System.Drawing.Size(204, 192);
-            this.pbCompleted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbCompleted.TabIndex = 67;
-            this.pbCompleted.TabStop = false;
-            this.pbCompleted.Visible = false;
-            // 
-            // PB_Warning
-            // 
-            this.PB_Warning.Image = global::Mock_Up_Agregasi.Properties.Resources.NG;
-            this.PB_Warning.Location = new System.Drawing.Point(283, 285);
-            this.PB_Warning.Name = "PB_Warning";
-            this.PB_Warning.Size = new System.Drawing.Size(209, 111);
-            this.PB_Warning.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PB_Warning.TabIndex = 64;
-            this.PB_Warning.TabStop = false;
-            this.PB_Warning.Visible = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Mock_Up_Agregasi.Properties.Resources.LIGHT_TRANSPARAN;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(119, 60);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // FormData
             // 
@@ -945,6 +946,8 @@ namespace Mock_Up_Agregasi
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCompleted)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_Warning)).EndInit();
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
             this.panel13.ResumeLayout(false);
@@ -968,8 +971,6 @@ namespace Mock_Up_Agregasi
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCompleted)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PB_Warning)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
