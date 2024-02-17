@@ -36,12 +36,12 @@ namespace Mock_Up_Agregasi
             this.btn_LogOut = new System.Windows.Forms.Button();
             this.lblTime = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_Setting = new System.Windows.Forms.Button();
             this.btn_EditData = new System.Windows.Forms.Button();
             this.btn_MenuAggregation = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_MenuReport = new System.Windows.Forms.Button();
+            this.btn_Setting = new System.Windows.Forms.Button();
             this.btnMin = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -122,21 +122,6 @@ namespace Mock_Up_Agregasi
             this.label1.TabIndex = 36;
             this.label1.Text = "Main Menu";
             // 
-            // btn_Setting
-            // 
-            this.btn_Setting.BackColor = System.Drawing.Color.White;
-            this.btn_Setting.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Setting.FlatAppearance.BorderSize = 0;
-            this.btn_Setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Setting.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Setting.Location = new System.Drawing.Point(634, 344);
-            this.btn_Setting.Name = "btn_Setting";
-            this.btn_Setting.Size = new System.Drawing.Size(192, 38);
-            this.btn_Setting.TabIndex = 16;
-            this.btn_Setting.Text = "Setting";
-            this.btn_Setting.UseVisualStyleBackColor = false;
-            this.btn_Setting.Visible = false;
-            // 
             // btn_EditData
             // 
             this.btn_EditData.BackColor = System.Drawing.Color.White;
@@ -169,10 +154,10 @@ namespace Mock_Up_Agregasi
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Mock_Up_Agregasi.Properties.Resources.LIGHT_TRANSPARAN;
-            this.pictureBox2.Location = new System.Drawing.Point(14, 27);
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(14, 40);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(123, 54);
+            this.pictureBox2.Size = new System.Drawing.Size(123, 41);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -201,6 +186,21 @@ namespace Mock_Up_Agregasi
             this.btn_MenuReport.UseVisualStyleBackColor = false;
             this.btn_MenuReport.Click += new System.EventHandler(this.btn_MenuReport_Click);
             // 
+            // btn_Setting
+            // 
+            this.btn_Setting.BackColor = System.Drawing.Color.White;
+            this.btn_Setting.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Setting.FlatAppearance.BorderSize = 0;
+            this.btn_Setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Setting.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Setting.Location = new System.Drawing.Point(634, 344);
+            this.btn_Setting.Name = "btn_Setting";
+            this.btn_Setting.Size = new System.Drawing.Size(192, 38);
+            this.btn_Setting.TabIndex = 16;
+            this.btn_Setting.Text = "Setting";
+            this.btn_Setting.UseVisualStyleBackColor = false;
+            this.btn_Setting.Visible = false;
+            // 
             // btnMin
             // 
             this.btnMin.BackColor = System.Drawing.Color.Transparent;
@@ -219,7 +219,7 @@ namespace Mock_Up_Agregasi
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::Mock_Up_Agregasi.Properties.Resources.BC_1;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.btnMin);
