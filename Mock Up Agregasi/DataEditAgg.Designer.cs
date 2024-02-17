@@ -148,7 +148,6 @@ namespace Mock_Up_Agregasi
             this.cb_Wo.Name = "cb_Wo";
             this.cb_Wo.Size = new System.Drawing.Size(121, 21);
             this.cb_Wo.TabIndex = 0;
-            this.cb_Wo.Visible = false;
             // 
             // panel6
             // 
@@ -166,7 +165,6 @@ namespace Mock_Up_Agregasi
             this.cb_Date.Name = "cb_Date";
             this.cb_Date.Size = new System.Drawing.Size(121, 21);
             this.cb_Date.TabIndex = 0;
-            this.cb_Date.Visible = false;
             // 
             // label12
             // 
@@ -329,6 +327,7 @@ namespace Mock_Up_Agregasi
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(130, 26);
             this.panel4.TabIndex = 12;
+            this.panel4.Visible = false;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // cbProduct
@@ -467,7 +466,7 @@ namespace Mock_Up_Agregasi
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Mock_Up_Agregasi.Properties.Resources.LIGHT_TRANSPARAN;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 28);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 18);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(103, 33);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

@@ -58,7 +58,7 @@ namespace Mock_Up_Agregasi
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Mock_Up_Agregasi.Properties.Resources.LIGHT_TRANSPARAN;
-            this.pictureBox1.Location = new System.Drawing.Point(2, 30);
+            this.pictureBox1.Location = new System.Drawing.Point(2, 21);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(114, 33);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
