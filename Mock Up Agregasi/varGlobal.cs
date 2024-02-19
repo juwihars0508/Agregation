@@ -197,6 +197,8 @@ namespace Mock_Up_Agregasi
         public static string minWeight;
         public static string maxWeight;
         public static string lastBatch;
+        public static string woNo;
+        public static string dataKodeRecipe;
 
         public static Nilai GetNilai(string path)
         {

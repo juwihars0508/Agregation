@@ -284,32 +284,9 @@ namespace Mock_Up_Agregasi
 
         private void load_DatacbWO()
         {
-            config.Init_Con();
-            config.con.Open();
-            string sql = "SELECT DISTINCT wo_no, kodeRecipe FROM tblhistory_print WHERE STATUS=1";
-            MySqlCommand cmd = new MySqlCommand(sql, config.con);
-            MySqlDataReader dr;
-            dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                VdataWoNo = dr[0].ToString();
-                VdataKodeRecipe = dr[1].ToString();
-                checkDataWO();
-                if (VdataWoNo != VdataWoNoTemp)
-                {
-                    cbWO.Items.Add(dr[0].ToString());
-                }
-                else
-                {
-                    cbWO.Items.Clear(); 
-                }
-
-
-            }
-
-            dr.Close();
-            config.con.Close();
-
+            cbWO.Items.Clear();           
+            cbWO.Items.Add(varGlobal.woNo);
+            VdataKodeRecipe = varGlobal.dataKodeRecipe;
             
         }
 

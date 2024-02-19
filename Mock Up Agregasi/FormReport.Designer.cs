@@ -42,7 +42,7 @@ namespace Mock_Up_Agregasi
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbBarcodeCarton = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_Search = new System.Windows.Forms.Button();
@@ -50,6 +50,7 @@ namespace Mock_Up_Agregasi
             this.btnBack = new System.Windows.Forms.Button();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.CRDataAgregate2 = new Mock_Up_Agregasi.CRDataAgregate();
+            this.cbBatch = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -112,10 +113,11 @@ namespace Mock_Up_Agregasi
             // 
             // tbNo_Batch
             // 
-            this.tbNo_Batch.Location = new System.Drawing.Point(143, 31);
+            this.tbNo_Batch.Location = new System.Drawing.Point(360, 77);
             this.tbNo_Batch.Name = "tbNo_Batch";
             this.tbNo_Batch.Size = new System.Drawing.Size(121, 20);
             this.tbNo_Batch.TabIndex = 51;
+            this.tbNo_Batch.Visible = false;
             // 
             // CbNo_WO
             // 
@@ -168,12 +170,12 @@ namespace Mock_Up_Agregasi
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.cbBatch);
+            this.panel1.Controls.Add(this.tbBarcodeCarton);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btn_Search);
             this.panel1.Controls.Add(this.CbNo_WO);
-            this.panel1.Controls.Add(this.tbNo_Batch);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label10);
@@ -183,12 +185,12 @@ namespace Mock_Up_Agregasi
             this.panel1.Size = new System.Drawing.Size(1008, 134);
             this.panel1.TabIndex = 52;
             // 
-            // textBox1
+            // tbBarcodeCarton
             // 
-            this.textBox1.Location = new System.Drawing.Point(143, 65);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(578, 20);
-            this.textBox1.TabIndex = 56;
+            this.tbBarcodeCarton.Location = new System.Drawing.Point(143, 65);
+            this.tbBarcodeCarton.Name = "tbBarcodeCarton";
+            this.tbBarcodeCarton.Size = new System.Drawing.Size(578, 20);
+            this.tbBarcodeCarton.TabIndex = 56;
             // 
             // label3
             // 
@@ -222,6 +224,7 @@ namespace Mock_Up_Agregasi
             this.btn_Search.TabIndex = 53;
             this.btn_Search.Text = "View Report";
             this.btn_Search.UseVisualStyleBackColor = false;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
             // panel3
             // 
@@ -267,6 +270,14 @@ namespace Mock_Up_Agregasi
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
             // 
+            // cbBatch
+            // 
+            this.cbBatch.FormattingEnabled = true;
+            this.cbBatch.Location = new System.Drawing.Point(142, 38);
+            this.cbBatch.Name = "cbBatch";
+            this.cbBatch.Size = new System.Drawing.Size(121, 21);
+            this.cbBatch.TabIndex = 57;
+            // 
             // FormReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -280,6 +291,7 @@ namespace Mock_Up_Agregasi
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.tbNo_Batch);
             this.Controls.Add(this.crystalReportViewer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -293,6 +305,7 @@ namespace Mock_Up_Agregasi
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -315,8 +328,9 @@ namespace Mock_Up_Agregasi
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbBarcodeCarton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbBatch;
     }
 }

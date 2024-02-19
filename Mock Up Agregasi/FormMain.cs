@@ -52,9 +52,17 @@ namespace Mock_Up_Agregasi
 
         private void btn_MenuAggregation_Click(object sender, EventArgs e)
         {
-            FormData formData = new FormData();
-            formData.Show();
-            this.Hide();
+            if (varGlobal.woNo == null && varGlobal.dataKodeRecipe == null)
+            {
+                MessageBox.Show("Silahkan Input Produk pada Menu Edit","Perhatian!!..", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                FormData formData = new FormData();
+                formData.Show();
+                this.Hide();
+            }
+            
         }
 
         private void btn_LogOut_Click(object sender, EventArgs e)
