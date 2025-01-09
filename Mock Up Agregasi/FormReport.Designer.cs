@@ -29,6 +29,7 @@ namespace Mock_Up_Agregasi
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReport));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -42,6 +43,7 @@ namespace Mock_Up_Agregasi
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbBatch = new System.Windows.Forms.ComboBox();
             this.tbBarcodeCarton = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,7 +52,7 @@ namespace Mock_Up_Agregasi
             this.btnBack = new System.Windows.Forms.Button();
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.CRDataAgregate2 = new Mock_Up_Agregasi.CRDataAgregate();
-            this.cbBatch = new System.Windows.Forms.ComboBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -122,7 +124,7 @@ namespace Mock_Up_Agregasi
             // CbNo_WO
             // 
             this.CbNo_WO.FormattingEnabled = true;
-            this.CbNo_WO.Location = new System.Drawing.Point(143, 3);
+            this.CbNo_WO.Location = new System.Drawing.Point(143, 11);
             this.CbNo_WO.Name = "CbNo_WO";
             this.CbNo_WO.Size = new System.Drawing.Size(121, 21);
             this.CbNo_WO.TabIndex = 50;
@@ -131,7 +133,7 @@ namespace Mock_Up_Agregasi
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(125, 35);
+            this.label10.Location = new System.Drawing.Point(125, 46);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(12, 16);
             this.label10.TabIndex = 49;
@@ -141,7 +143,7 @@ namespace Mock_Up_Agregasi
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(125, 8);
+            this.label9.Location = new System.Drawing.Point(125, 11);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(12, 16);
             this.label9.TabIndex = 48;
@@ -151,7 +153,7 @@ namespace Mock_Up_Agregasi
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(7, 35);
+            this.label1.Location = new System.Drawing.Point(7, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 16);
             this.label1.TabIndex = 47;
@@ -161,7 +163,7 @@ namespace Mock_Up_Agregasi
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(7, 8);
+            this.label6.Location = new System.Drawing.Point(7, 11);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 16);
             this.label6.TabIndex = 46;
@@ -185,32 +187,43 @@ namespace Mock_Up_Agregasi
             this.panel1.Size = new System.Drawing.Size(1008, 134);
             this.panel1.TabIndex = 52;
             // 
+            // cbBatch
+            // 
+            this.cbBatch.FormattingEnabled = true;
+            this.cbBatch.Location = new System.Drawing.Point(142, 46);
+            this.cbBatch.Name = "cbBatch";
+            this.cbBatch.Size = new System.Drawing.Size(121, 21);
+            this.cbBatch.TabIndex = 57;
+            // 
             // tbBarcodeCarton
             // 
-            this.tbBarcodeCarton.Location = new System.Drawing.Point(143, 65);
+            this.tbBarcodeCarton.Location = new System.Drawing.Point(143, 77);
             this.tbBarcodeCarton.Name = "tbBarcodeCarton";
             this.tbBarcodeCarton.Size = new System.Drawing.Size(578, 20);
             this.tbBarcodeCarton.TabIndex = 56;
+            this.tbBarcodeCarton.Visible = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(125, 69);
+            this.label3.Location = new System.Drawing.Point(125, 81);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(12, 16);
             this.label3.TabIndex = 55;
             this.label3.Text = ":";
+            this.label3.Visible = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(7, 68);
+            this.label2.Location = new System.Drawing.Point(7, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(111, 16);
             this.label2.TabIndex = 54;
             this.label2.Text = "Data Aggregate ";
+            this.label2.Visible = false;
             // 
             // btn_Search
             // 
@@ -270,13 +283,9 @@ namespace Mock_Up_Agregasi
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
             // 
-            // cbBatch
+            // timer1
             // 
-            this.cbBatch.FormattingEnabled = true;
-            this.cbBatch.Location = new System.Drawing.Point(142, 38);
-            this.cbBatch.Name = "cbBatch";
-            this.cbBatch.Size = new System.Drawing.Size(121, 21);
-            this.cbBatch.TabIndex = 57;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FormReport
             // 
@@ -332,5 +341,6 @@ namespace Mock_Up_Agregasi
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbBatch;
+        private System.Windows.Forms.Timer timer1;
     }
 }

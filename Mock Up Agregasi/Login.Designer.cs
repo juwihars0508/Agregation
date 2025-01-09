@@ -45,6 +45,7 @@ namespace Mock_Up_Agregasi
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnMin = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -128,6 +129,7 @@ namespace Mock_Up_Agregasi
             // btnIN
             // 
             this.btnIN.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnIN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIN.FlatAppearance.BorderSize = 0;
             this.btnIN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -193,7 +195,7 @@ namespace Mock_Up_Agregasi
             this.btnClose.BackgroundImage = global::Mock_Up_Agregasi.Properties.Resources.CloseDark;
             this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnClose.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(832, 12);
+            this.btnClose.Location = new System.Drawing.Point(1003, 12);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(41, 23);
             this.btnClose.TabIndex = 18;
@@ -206,12 +208,22 @@ namespace Mock_Up_Agregasi
             this.btnMin.BackgroundImage = global::Mock_Up_Agregasi.Properties.Resources.MinimizeDark;
             this.btnMin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMin.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMin.Location = new System.Drawing.Point(785, 12);
+            this.btnMin.Location = new System.Drawing.Point(956, 12);
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(41, 23);
             this.btnMin.TabIndex = 17;
             this.btnMin.UseVisualStyleBackColor = false;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(986, 534);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 18);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Ver.4.5.2";
             // 
             // Login
             // 
@@ -220,7 +232,8 @@ namespace Mock_Up_Agregasi
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(1064, 561);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnMin);
             this.Controls.Add(this.panel1);
@@ -237,6 +250,7 @@ namespace Mock_Up_Agregasi
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -257,5 +271,6 @@ namespace Mock_Up_Agregasi
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnMin;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label6;
     }
 }

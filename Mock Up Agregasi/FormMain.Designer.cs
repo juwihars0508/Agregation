@@ -29,6 +29,7 @@ namespace Mock_Up_Agregasi
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -41,8 +42,10 @@ namespace Mock_Up_Agregasi
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_MenuReport = new System.Windows.Forms.Button();
-            this.btn_Setting = new System.Windows.Forms.Button();
+            this.btn_RePrint = new System.Windows.Forms.Button();
             this.btnMin = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnCloseWO = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -105,7 +108,7 @@ namespace Mock_Up_Agregasi
             this.lblTime.AutoSize = true;
             this.lblTime.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.Color.White;
-            this.lblTime.Location = new System.Drawing.Point(25, 42);
+            this.lblTime.Location = new System.Drawing.Point(10, 42);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(34, 15);
             this.lblTime.TabIndex = 4;
@@ -166,9 +169,10 @@ namespace Mock_Up_Agregasi
             // 
             this.panel3.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.panel3.Controls.Add(this.btn_MenuReport);
+            this.panel3.Controls.Add(this.btn_RePrint);
             this.panel3.Location = new System.Drawing.Point(170, 65);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(230, 166);
+            this.panel3.Size = new System.Drawing.Size(230, 205);
             this.panel3.TabIndex = 37;
             // 
             // btn_MenuReport
@@ -186,20 +190,20 @@ namespace Mock_Up_Agregasi
             this.btn_MenuReport.UseVisualStyleBackColor = false;
             this.btn_MenuReport.Click += new System.EventHandler(this.btn_MenuReport_Click);
             // 
-            // btn_Setting
+            // btn_RePrint
             // 
-            this.btn_Setting.BackColor = System.Drawing.Color.White;
-            this.btn_Setting.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Setting.FlatAppearance.BorderSize = 0;
-            this.btn_Setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Setting.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Setting.Location = new System.Drawing.Point(634, 344);
-            this.btn_Setting.Name = "btn_Setting";
-            this.btn_Setting.Size = new System.Drawing.Size(192, 38);
-            this.btn_Setting.TabIndex = 16;
-            this.btn_Setting.Text = "Setting";
-            this.btn_Setting.UseVisualStyleBackColor = false;
-            this.btn_Setting.Visible = false;
+            this.btn_RePrint.BackColor = System.Drawing.Color.White;
+            this.btn_RePrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_RePrint.FlatAppearance.BorderSize = 0;
+            this.btn_RePrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_RePrint.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_RePrint.Location = new System.Drawing.Point(20, 159);
+            this.btn_RePrint.Name = "btn_RePrint";
+            this.btn_RePrint.Size = new System.Drawing.Size(192, 38);
+            this.btn_RePrint.TabIndex = 16;
+            this.btn_RePrint.Text = "Re-Print";
+            this.btn_RePrint.UseVisualStyleBackColor = false;
+            this.btn_RePrint.Click += new System.EventHandler(this.btn_Setting_Click);
             // 
             // btnMin
             // 
@@ -207,12 +211,32 @@ namespace Mock_Up_Agregasi
             this.btnMin.BackgroundImage = global::Mock_Up_Agregasi.Properties.Resources.MinimizeDark;
             this.btnMin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMin.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMin.Location = new System.Drawing.Point(835, 8);
+            this.btnMin.Location = new System.Drawing.Point(994, 10);
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(41, 23);
             this.btnMin.TabIndex = 37;
             this.btnMin.UseVisualStyleBackColor = false;
             this.btnMin.Click += new System.EventHandler(this.btnMin_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btnCloseWO
+            // 
+            this.btnCloseWO.BackColor = System.Drawing.Color.White;
+            this.btnCloseWO.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCloseWO.FlatAppearance.BorderSize = 0;
+            this.btnCloseWO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCloseWO.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCloseWO.Location = new System.Drawing.Point(687, 370);
+            this.btnCloseWO.Name = "btnCloseWO";
+            this.btnCloseWO.Size = new System.Drawing.Size(192, 38);
+            this.btnCloseWO.TabIndex = 38;
+            this.btnCloseWO.Text = "Close WO";
+            this.btnCloseWO.UseVisualStyleBackColor = false;
+            this.btnCloseWO.Visible = false;
+            this.btnCloseWO.Click += new System.EventHandler(this.btnCloseWO_Click);
             // 
             // FormMain
             // 
@@ -221,10 +245,10 @@ namespace Mock_Up_Agregasi
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(1064, 561);
+            this.Controls.Add(this.btnCloseWO);
             this.Controls.Add(this.btnMin);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btn_Setting);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.Text = "FormMain";
@@ -248,11 +272,13 @@ namespace Mock_Up_Agregasi
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_MenuReport;
-        private System.Windows.Forms.Button btn_Setting;
+        private System.Windows.Forms.Button btn_RePrint;
         private System.Windows.Forms.Button btn_EditData;
         private System.Windows.Forms.Button btn_MenuAggregation;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnMin;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btnCloseWO;
     }
 }

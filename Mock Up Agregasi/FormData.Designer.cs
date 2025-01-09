@@ -32,7 +32,14 @@ namespace Mock_Up_Agregasi
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormData));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRevise = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lbNotifWeight = new System.Windows.Forms.Label();
+            this.cbLastBatch = new System.Windows.Forms.CheckBox();
+            this.lbRXD = new System.Windows.Forms.Label();
+            this.lbTX = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnReadyPrint = new System.Windows.Forms.Button();
             this.pbCompleted = new System.Windows.Forms.PictureBox();
             this.lbLastReadCodeRealeseTemp = new System.Windows.Forms.Label();
             this.lb_idCarton = new System.Windows.Forms.Label();
@@ -95,12 +102,14 @@ namespace Mock_Up_Agregasi
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.serialTimbangan = new System.IO.Ports.SerialPort(this.components);
             this.serialTowerLamp = new System.IO.Ports.SerialPort(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCompleted)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PB_Warning)).BeginInit();
@@ -122,7 +131,14 @@ namespace Mock_Up_Agregasi
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.btnRevise);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.lbNotifWeight);
+            this.panel1.Controls.Add(this.cbLastBatch);
+            this.panel1.Controls.Add(this.lbRXD);
+            this.panel1.Controls.Add(this.lbTX);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.btnReadyPrint);
             this.panel1.Controls.Add(this.pbCompleted);
             this.panel1.Controls.Add(this.lbLastReadCodeRealeseTemp);
             this.panel1.Controls.Add(this.lb_idCarton);
@@ -164,30 +180,121 @@ namespace Mock_Up_Agregasi
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(984, 749);
+            this.panel1.Size = new System.Drawing.Size(1064, 761);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // btnRevise
+            // button2
             // 
-            this.btnRevise.BackColor = System.Drawing.Color.DarkGray;
-            this.btnRevise.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRevise.FlatAppearance.BorderSize = 0;
-            this.btnRevise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRevise.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRevise.Location = new System.Drawing.Point(833, 422);
-            this.btnRevise.Name = "btnRevise";
-            this.btnRevise.Size = new System.Drawing.Size(85, 47);
-            this.btnRevise.TabIndex = 68;
-            this.btnRevise.Text = "Revise";
-            this.btnRevise.UseVisualStyleBackColor = false;
-            this.btnRevise.Visible = false;
-            this.btnRevise.Click += new System.EventHandler(this.btnRevise_Click);
+            this.button2.BackColor = System.Drawing.Color.DarkGray;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(882, 708);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(130, 37);
+            this.button2.TabIndex = 75;
+            this.button2.Text = "lampu Hijua";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Visible = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkGray;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(882, 665);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(130, 37);
+            this.button1.TabIndex = 74;
+            this.button1.Text = "lampu merah";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // lbNotifWeight
+            // 
+            this.lbNotifWeight.AutoSize = true;
+            this.lbNotifWeight.BackColor = System.Drawing.Color.White;
+            this.lbNotifWeight.Font = new System.Drawing.Font("Arial", 46F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNotifWeight.ForeColor = System.Drawing.Color.Black;
+            this.lbNotifWeight.Location = new System.Drawing.Point(617, 134);
+            this.lbNotifWeight.Name = "lbNotifWeight";
+            this.lbNotifWeight.Size = new System.Drawing.Size(51, 72);
+            this.lbNotifWeight.TabIndex = 73;
+            this.lbNotifWeight.Text = "-";
+            this.lbNotifWeight.Click += new System.EventHandler(this.label3_Click_1);
+            // 
+            // cbLastBatch
+            // 
+            this.cbLastBatch.AutoSize = true;
+            this.cbLastBatch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbLastBatch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLastBatch.Location = new System.Drawing.Point(625, 302);
+            this.cbLastBatch.Name = "cbLastBatch";
+            this.cbLastBatch.Size = new System.Drawing.Size(84, 17);
+            this.cbLastBatch.TabIndex = 72;
+            this.cbLastBatch.Text = "Last Batch";
+            this.cbLastBatch.UseVisualStyleBackColor = true;
+            this.cbLastBatch.CheckedChanged += new System.EventHandler(this.cbLastBatch_CheckedChanged);
+            // 
+            // lbRXD
+            // 
+            this.lbRXD.AutoSize = true;
+            this.lbRXD.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRXD.Location = new System.Drawing.Point(416, 582);
+            this.lbRXD.Name = "lbRXD";
+            this.lbRXD.Size = new System.Drawing.Size(56, 18);
+            this.lbRXD.TabIndex = 71;
+            this.lbRXD.Text = "lbRXD";
+            this.lbRXD.Visible = false;
+            // 
+            // lbTX
+            // 
+            this.lbTX.AutoSize = true;
+            this.lbTX.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTX.Location = new System.Drawing.Point(667, 582);
+            this.lbTX.Name = "lbTX";
+            this.lbTX.Size = new System.Drawing.Size(42, 18);
+            this.lbTX.TabIndex = 70;
+            this.lbTX.Text = "lbTX";
+            this.lbTX.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(740, 301);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(111, 26);
+            this.textBox1.TabIndex = 69;
+            this.textBox1.Visible = false;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // btnReadyPrint
+            // 
+            this.btnReadyPrint.BackColor = System.Drawing.Color.DarkGray;
+            this.btnReadyPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReadyPrint.Enabled = false;
+            this.btnReadyPrint.FlatAppearance.BorderSize = 0;
+            this.btnReadyPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReadyPrint.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReadyPrint.Location = new System.Drawing.Point(886, 422);
+            this.btnReadyPrint.Name = "btnReadyPrint";
+            this.btnReadyPrint.Size = new System.Drawing.Size(85, 47);
+            this.btnReadyPrint.TabIndex = 68;
+            this.btnReadyPrint.Text = "Ready Print";
+            this.btnReadyPrint.UseVisualStyleBackColor = false;
+            this.btnReadyPrint.Click += new System.EventHandler(this.btnRevise_Click);
             // 
             // pbCompleted
             // 
             this.pbCompleted.Image = global::Mock_Up_Agregasi.Properties.Resources.Completed;
-            this.pbCompleted.Location = new System.Drawing.Point(403, 212);
+            this.pbCompleted.Location = new System.Drawing.Point(388, 208);
             this.pbCompleted.Name = "pbCompleted";
             this.pbCompleted.Size = new System.Drawing.Size(204, 192);
             this.pbCompleted.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -270,7 +377,7 @@ namespace Mock_Up_Agregasi
             this.btnBack.FlatAppearance.BorderSize = 0;
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(574, 623);
+            this.btnBack.Location = new System.Drawing.Point(489, 623);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(85, 47);
             this.btnBack.TabIndex = 61;
@@ -404,12 +511,13 @@ namespace Mock_Up_Agregasi
             this.btnCloseWO.FlatAppearance.BorderSize = 0;
             this.btnCloseWO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCloseWO.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCloseWO.Location = new System.Drawing.Point(386, 623);
+            this.btnCloseWO.Location = new System.Drawing.Point(593, 623);
             this.btnCloseWO.Name = "btnCloseWO";
             this.btnCloseWO.Size = new System.Drawing.Size(85, 47);
             this.btnCloseWO.TabIndex = 12;
             this.btnCloseWO.Text = "Close WO";
             this.btnCloseWO.UseVisualStyleBackColor = false;
+            this.btnCloseWO.Visible = false;
             this.btnCloseWO.Click += new System.EventHandler(this.btnCloseWO_Click);
             // 
             // btnHistoryLabel
@@ -419,7 +527,7 @@ namespace Mock_Up_Agregasi
             this.btnHistoryLabel.FlatAppearance.BorderSize = 0;
             this.btnHistoryLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHistoryLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHistoryLabel.Location = new System.Drawing.Point(477, 623);
+            this.btnHistoryLabel.Location = new System.Drawing.Point(389, 623);
             this.btnHistoryLabel.Name = "btnHistoryLabel";
             this.btnHistoryLabel.Size = new System.Drawing.Size(91, 47);
             this.btnHistoryLabel.TabIndex = 11;
@@ -884,25 +992,25 @@ namespace Mock_Up_Agregasi
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.lblTime);
             this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.lblUser);
             this.panel2.Location = new System.Drawing.Point(137, 22);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(947, 30);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // label3
+            // lblTime
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(530, 7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(278, 16);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Mawardi ID0010123 Jumat, 12 Januari 2024";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.ForeColor = System.Drawing.Color.White;
+            this.lblTime.Location = new System.Drawing.Point(646, 8);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(34, 15);
+            this.lblTime.TabIndex = 73;
+            this.lblTime.Text = "TIME";
             // 
             // label2
             // 
@@ -914,6 +1022,17 @@ namespace Mock_Up_Agregasi
             this.label2.Size = new System.Drawing.Size(162, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "AGGREGATION STATION";
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.ForeColor = System.Drawing.Color.White;
+            this.lblUser.Location = new System.Drawing.Point(521, 8);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(91, 15);
+            this.lblUser.TabIndex = 72;
+            this.lblUser.Text = "LINA MAWARDI";
             // 
             // pictureBox1
             // 
@@ -933,11 +1052,15 @@ namespace Mock_Up_Agregasi
             // 
             this.serialTimbangan.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialTimbangan_DataReceived);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FormData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 749);
+            this.ClientSize = new System.Drawing.Size(1064, 761);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormData";
@@ -979,7 +1102,6 @@ namespace Mock_Up_Agregasi
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -1047,7 +1169,17 @@ namespace Mock_Up_Agregasi
         private System.Windows.Forms.Label lb_idCarton;
         private System.Windows.Forms.Label lbLastReadCodeRealeseTemp;
         private System.Windows.Forms.PictureBox pbCompleted;
-        private System.Windows.Forms.Button btnRevise;
+        private System.Windows.Forms.Button btnReadyPrint;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lbRXD;
+        private System.Windows.Forms.Label lbTX;
+        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.CheckBox cbLastBatch;
+        private System.Windows.Forms.Label lbNotifWeight;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
     }
 }
 

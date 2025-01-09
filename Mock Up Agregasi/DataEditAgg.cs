@@ -96,7 +96,9 @@ namespace Mock_Up_Agregasi
 
         private void DataEditAgg_Load(object sender, EventArgs e)
         {
-            
+
+            timer1.Start();
+            lblUser.Text = varGlobal.Username;
 
             btnSave.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnSave.Width, btnSave.Height, 20, 20));
             btnBack.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnBack.Width, btnBack.Height, 20, 20));
@@ -217,7 +219,7 @@ namespace Mock_Up_Agregasi
         {
             config.Init_Con();
             config.con.Open();
-            string sql = "SELECT  wo_no, kodeRecipe, Product FROM tblhistory_print WHERE wo_no='" + VdataWoNo + "' and STATUS='1'";
+            string sql = "SELECT  wo_no, kodeRecipe, Product FROM tblhistory_print WHERE wo_no='" + cb_Wo.Text + "' and STATUS='1' GROUP BY wo_no";
             MySqlCommand cmd = new MySqlCommand(sql, config.con);
             MySqlDataReader dr;
             dr = cmd.ExecuteReader();
@@ -225,8 +227,8 @@ namespace Mock_Up_Agregasi
             {
 
                 
-                //vData_wo = dr[0].ToString();
-                ///vData_kodeRecipe = dr[1].ToString();
+                vData_wo = dr[0].ToString();
+                vData_kodeRecipe = dr[1].ToString();
                 tb_Product.Text = dr[2].ToString();
 
             }
@@ -245,7 +247,7 @@ namespace Mock_Up_Agregasi
         {
             config.Init_Con();
             config.con.Open();
-            string sql = "SELECT  GTIN_code FROM tblworkorder WHERE wo_no='" + VdataWoNo + "' and kodeRecipe='" + VdataKodeRecipe +"' ";
+            string sql = "SELECT  GTIN_code FROM tblworkorder WHERE wo_no='" + vData_wo + "' and kodeRecipe='" + vData_kodeRecipe +"' ";
             MySqlCommand cmd = new MySqlCommand(sql, config.con);
             MySqlDataReader dr;
             dr = cmd.ExecuteReader();
@@ -278,6 +280,7 @@ namespace Mock_Up_Agregasi
             {
                 Enab();
                 btnSave.Text = "Save";
+                btnBack.Enabled = false;
             }
             else if (btnSave.Text == "Save")
             {
@@ -303,14 +306,14 @@ namespace Mock_Up_Agregasi
                 }
                 else
                 {
-                    varGlobal.product = cbProduct.Text;
+                    varGlobal.product = tb_Product.Text;
                     varGlobal.qtyCase = tbQtyCase.Text;
                     varGlobal.stdWieght = tbSTDWeight.Text;
                     varGlobal.minWeight = tbMinWeight.Text;
                     varGlobal.maxWeight = tbMaxWeight.Text;
                     varGlobal.dataPrint = tbDataPrint.Text;
                     varGlobal.woNo = cb_Wo.Text;
-                    varGlobal.dataKodeRecipe = VdataKodeRecipe;
+                    varGlobal.dataKodeRecipe = vData_kodeRecipe;
                     Nilai.StringNilai = tbMinWeight.Text;
                     varGlobal.SaveNilai(varUtility.fileMinRange);
                     Nilai.StringNilai = tbMaxWeight.Text;
@@ -319,6 +322,7 @@ namespace Mock_Up_Agregasi
                     varGlobal.SaveNilai(varUtility.fileQtyCase);
                     MessageBox.Show("Data Ter-Set", "Information");
                     btnSave.Text = "Set";
+                    btnBack.Enabled = true;
                     disab();
                 }
                 
@@ -368,13 +372,34 @@ namespace Mock_Up_Agregasi
         {
             vDateTrans = dtp.Value.ToString();
             vDateTrans = vDateTrans.Substring(0, 10);
-            load_DatacbWO();
+            //load_DatacbWO();
         }
 
         private void cb_Wo_SelectedValueChanged(object sender, EventArgs e)
         {
             loadDataProduct();
             loadDataPrint();
+        }
+
+        private void cbLastBatch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbLastBatch.Checked == true)
+            {
+                //tbJmlBotol.Enabled = true;
+                varGlobal.lastBatch = "true";
+                //pnlBotol.Visible = true;
+            }
+            else
+            {
+                //tbJmlBotol.Enabled = false;
+                varGlobal.lastBatch = "false";
+                //pnlBotol.Visible = false;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString();
         }
     }
 }

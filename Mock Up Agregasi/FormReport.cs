@@ -78,7 +78,7 @@ namespace Mock_Up_Agregasi
             string reportname = "CRDataAgregate";
             config.Init_Con();
             config.con.Open();
-            string sql = "select idCarton, woNo, productName, noBatch, countCarton, dataScanRealese from tblcartonrealease where woNo='" + CbNo_WO.Text + "' or noBatch='" + cbBatch.Text + "' or dataScanRealese='" + tbBarcodeCarton.Text + "' ";
+            string sql = "select idCarton, woNo, productName, noBatch, countCarton, dataScanRealese from tblcartonrealease where woNo='" + CbNo_WO.Text + "' and noBatch='" + cbBatch.Text + "'  ";
             MySqlDataAdapter da = new MySqlDataAdapter(sql, config.con);
             DataSet dataReport = new DataSet();
             da.Fill(dataReport, "dataMasterBox");
@@ -108,6 +108,8 @@ namespace Mock_Up_Agregasi
         }
         private void FormReport_Load(object sender, EventArgs e)
         {
+            timer1.Start();
+            lblUser.Text = varGlobal.Username;
             GetDataBatchCarton();
             GetDataWOCarton();
             ////sql = "SELECT * FROM viewdataagregate";
@@ -188,6 +190,11 @@ namespace Mock_Up_Agregasi
         private void btn_Search_Click(object sender, EventArgs e)
         {
             ViewReportAgregate();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblUser.Text = DateTime.Now.ToString();
         }
     }
 }

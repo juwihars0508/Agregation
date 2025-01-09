@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.VisualBasic;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Mock_Up_Agregasi.Includes;
 using MySql.Data.MySqlClient;
+//using Org.BouncyCastle.Utilities;
 
 namespace Mock_Up_Agregasi
 {
@@ -78,19 +80,33 @@ namespace Mock_Up_Agregasi
         public string VdataProductKode;
         public string VdataProductName;
         public string VdataWoNo;
+        public string VdataMfgDate;
         public string VdataExpDate;
         public string VdataQty;
         public string VdataWeight;
         public string VdataPrint;
         public string VdataWoNoTemp;
+        public string VdataKetKemasan;
         public int vCounterOK;
         public int vCounterNG;
         public int vCounterLastReadCode;
         public int vCounterQtyWO;
 
+        //variable Data PLC
+        public string TX;
+        public string FCS;
+        public string RXD;
+
+        public string txt_kirim;
+        public string Txt_terima;
+
 
         SQLConfig config = new SQLConfig();
         usableFunction UsableFunction = new usableFunction();
+
+
+        public delegate void AddDataDelegate(String myString);
+        public AddDataDelegate myDelegate;
 
         delegate void SetLabel(string msg);
 
@@ -99,6 +115,12 @@ namespace Mock_Up_Agregasi
             lbTimbang.Text = msg;
 
         }
+
+        public void AddDataMethod(String myString)
+        {
+            textBox1.AppendText(myString);
+        }
+
 
 
         private void SetLabelText1(Label label, string text)
@@ -161,8 +183,25 @@ namespace Mock_Up_Agregasi
             progressBar2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, progressBar2.Width, progressBar2.Height, 20, 20));
         }
 
+        private void userAkses()
+        {
+            if ( lblUser.Text == "Administrator" || lblUser.Text == "Supervisor")
+            {
+                btnCloseWO.Visible = true;
+            }
+            else
+            {
+                btnCloseWO.Visible = false;
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            timer1.Start();
+            lblUser.Text = varGlobal.Username;
+
+            userAkses();
+
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 
@@ -175,7 +214,7 @@ namespace Mock_Up_Agregasi
             btnStop.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnStop.Width, btnStop.Height, 20, 20));
             btnStart.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnStart.Width, btnStart.Height, 20, 20));
             btnBack.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnBack.Width, btnBack.Height, 20, 20));
-            btnRevise.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnRevise.Width, btnRevise.Height, 20, 20));
+            btnReadyPrint.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnReadyPrint.Width, btnReadyPrint.Height, 20, 20));
 
             load_DatacbWO();
             disab();
@@ -183,7 +222,10 @@ namespace Mock_Up_Agregasi
             lbQtyCaseTarget.Text = Nilai.StringNilai;
             varGlobal.GetNilai(varUtility.fileLastData);
             lbTotalCase.Text = Nilai.StringNilai;
-            
+            lbStatusEcer.Text = varGlobal.lastBatch;
+
+            this.myDelegate = new AddDataDelegate(AddDataMethod);
+
             //lbStatusEcer.Text = varGlobal.vStatusEcer;
             vCounterOK = 0;
             vCounterNG = 0;
@@ -226,7 +268,7 @@ namespace Mock_Up_Agregasi
                 string CountData = dr[0].ToString();
                 //VDataTarget = dr[0].ToString();
                 int AvData = Convert.ToInt32(VDataTarget) - Convert.ToInt32(CountData);
-                VDataTarget = AvData.ToString();
+                //VDataTarget = AvData.ToString();
                 lbTargetQty.Text = AvData.ToString();
 
             }
@@ -395,8 +437,73 @@ namespace Mock_Up_Agregasi
             config.con.Close();
         }
 
+        private void get_qtyCartonRealease()
+        {
+            config.Init_Con();
+            config.con.Open();
+            string sql = "select Max(countCarton) from tblcartonrealease where woNo='" + cbWO.Text + "'";
+            MySqlCommand cmd = new MySqlCommand(sql, config.con);
+            MySqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+
+                lbCartonSuccesfull.Text = dr[0].ToString().PadLeft(3, '0');
+
+            }
+            dr.Close();
+            config.con.Close();
+        }
+
+        private void get_qtyCarton()
+        {
+            config.Init_Con();
+            config.con.Open();
+            string sql = "select cartonNo from tblhistory_printlabel where woNo='" + cbWO.Text + "' order by id desc limit 1";
+            MySqlCommand cmd = new MySqlCommand(sql, config.con);
+            MySqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+
+                lbTotalCase.Text = dr[0].ToString().PadLeft(3, '0');
+                
+            }
+            dr.Close();
+            config.con.Close();
+
+
+        }
+
+        private void loadKetProd()
+        {
+            config.Init_Con();
+            config.con.Open();
+            string sql = "select bentukSediaan from  tblproduk where kodeProduk='" + VdataProductKode + "'";
+            MySqlCommand cmd = new MySqlCommand(sql, config.con);
+            MySqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+
+                VdataKetKemasan = dr[0].ToString();
+                //VdataProductName = dr[3].ToString();
+                //VdataNoBatch = dr[4].ToString();
+                //dataMfgDate_temp = dr[5].ToString();
+                //dataExpDate_temp = dr[6].ToString();
+
+
+
+
+            }
+            dr.Close();
+            config.con.Close();
+        }
+
         private void loadDataForPrint()
         {
+            string dataMfgDate_temp = string.Empty;
+            string dataExpDate_temp = string.Empty;
             config.Init_Con();
             config.con.Open();
             string sql = "select * from  viewdatawo where kodeRecipe='" + VdataKodeRecipe + "'";
@@ -409,7 +516,8 @@ namespace Mock_Up_Agregasi
                 VdataProductKode = dr[2].ToString();
                 VdataProductName = dr[3].ToString();
                 VdataNoBatch = dr[4].ToString();
-                VdataExpDate = dr[5].ToString();
+                dataMfgDate_temp = dr[5].ToString();
+                dataExpDate_temp = dr[6].ToString();
                 
 
 
@@ -417,7 +525,15 @@ namespace Mock_Up_Agregasi
             }
             dr.Close();
             config.con.Close();
-            VdataQty = lbQtyCaseTarget.Text;
+            //VdataQty = lbQtyCaseTarget.Text;
+            string thn_MfgDate = dataMfgDate_temp.Substring(0, 4);
+            string bln_MfgDate = dataMfgDate_temp.Substring(5, 2);
+            string tgl_mfgDate = dataMfgDate_temp.Substring(8,2);
+            VdataMfgDate = bln_MfgDate + "-" + thn_MfgDate;
+            string thn_ExpDate = dataExpDate_temp.Substring(0, 4);
+            string bln_ExpDate = dataExpDate_temp.Substring(5, 2);
+            string tgl_ExpDate = dataExpDate_temp.Substring(8, 2);
+            VdataExpDate =  bln_ExpDate + "-" + thn_ExpDate;
             VdataWoNo = cbWO.Text;
             VdataPrint = varGlobal.dataPrint;
         }
@@ -427,9 +543,11 @@ namespace Mock_Up_Agregasi
 
             loadDataWO();
             loadCountDataPrint();
+            loadKetProd();
             loadDataForPrint();
             kodeotomatis();
-           
+            get_qtyCarton();
+            get_qtyCartonRealease();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -443,7 +561,7 @@ namespace Mock_Up_Agregasi
             {
                 Connect_COM();
                 connect_Timbangan();
-                connect_Tower();
+                //connect_Tower();
                 enab();
             }
             else
@@ -463,6 +581,7 @@ namespace Mock_Up_Agregasi
             btnPause.BackColor = Color.Gray;
             btnStop.BackColor = Color.Gray;
             cbWO.Enabled = true;
+            btnBack.Enabled = true;
         }
     
 
@@ -475,6 +594,7 @@ namespace Mock_Up_Agregasi
             btnPause.BackColor = Color.Gray;
             btnStop.BackColor = Color.Gray;
             cbWO.Enabled = false;
+            btnBack.Enabled = false;
         }
 
         private void closeTimbangan()
@@ -507,7 +627,7 @@ namespace Mock_Up_Agregasi
         {
             closeTimbangan();
             closeScanner();
-            closeTowerLamp();
+            //closeTowerLamp();
             disab();
         }
 
@@ -623,14 +743,22 @@ namespace Mock_Up_Agregasi
             
         }
 
-        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private async void  serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            ReadData = serialPort1.ReadExisting();
+            //ReadData = serialPort1.ReadExisting();
             //SetText(ReadData);
             //ReadData2 = ReadData.Substring(7, 4);
             //ReadData2 = ReadData.Substring(6, 6);
-            SetLabelText(lbLastReadCodeScan, ReadData);
-            SetText(ReadData);
+            //SetLabelText(lbLastReadCodeScan, ReadData);
+            //SetText(ReadData);
+
+            SerialPort sp = (SerialPort)sender;
+            string s = sp.ReadExisting();
+            string plainText = s.Replace("\n", "").Replace("\r", "");
+            //string s = sp.ReadLine();
+            await Task.Delay(50);
+            textBox1.Invoke(this.myDelegate, new Object[] { plainText });
+            
         }
 
         private void printLabel()
@@ -639,6 +767,8 @@ namespace Mock_Up_Agregasi
             string vPrinterName = Nilai.StringNilai;
             varGlobal.GetNilai(varUtility.fileFileNamePrn);
             string vDataPrint = Nilai.StringNilai;
+
+            VdataQty = lbActualQtyCase.Text;
 
             string fileprn = @"Data\" + vDataPrint + ".prn";
             string s = "^XA" +
@@ -701,42 +831,81 @@ namespace Mock_Up_Agregasi
                          "^XA" +
                          "^MMT" +
                          "^PW831" +
-                         "^LL799" +
+                         "^LL639" +
                          "^LS0" +
-                         "^FO20,14^GB804,777,8^FS" +
-                         "^FT68,292^A0N,28,28^FH\"^CI28^FDProduct Name^FS^CI27" +
-                         "^FT68,348^A0N,28,28^FH\"^CI28^FDProduct Code^FS^CI27" +
-                         "^FT68,393^A0N,28,28^FH\"^CI28^FDBatch No^FS^CI27" +
-                         "^FT68,444^A0N,28,28^FH\"^CI28^FDExp Date^FS^CI27" +
-                         "^FT68,494^A0N,28,28^FH\"^CI28^FDQty^FS^CI27" +
-                         "^FT73,552^A0N,28,28^FH\"^CI28^FDWeight^FS^CI27" +
-                         "^FT256,292^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
-                         "^FT256,348^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
-                         "^FT256,393^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
-                         "^FT256,442^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
-                         "^FT256,494^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
-                         "^FT256,552^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
-                         "^FT284,292^A0N,28,28^FH\"^CI28^FD" + VdataProductName + "^FS^CI27" +
-                         "^FT284,348^A0N,28,28^FH\"^CI28^FD" + VdataProductKode + "^FS^CI27" +
-                         "^FT284,401^A0N,28,28^FH\"^CI28^FD" + VdataNoBatch + "^FS^CI27" +
-                         "^FT284,444^A0N,28,28^FH\"^CI28^FD" + VdataExpDate + "^FS^CI27" +
-                         "^FT284,494^A0N,28,28^FH\"^CI28^FD" + VdataQty + "^FS^CI27" +
-                         "^FT284,552^A0N,28,28^FH\"^CI28^FD" + lbWeight.Text + "^FS^CI27" +
-                         "^FT579,753^BXN,6,200,0,0,1,_,1" +
+                         "^FO7,5^GB820,632,8^FS" +
+                         //"^FT68,293^A0N,28,28^FH\"^CI28^FDProduct Code^FS^CI27" +
+                         "^FT68,215^A0N,28,28^FH\"^CI28^FDBatch No^FS^CI27" +
+                         "^FT68,262^A0N,28,28^FH\"^CI28^FDMfg Date^FS^CI27" +
+                         "^FT68,310^A0N,28,28^FH\"^CI28^FDExp Date^FS^CI27" +
+                         "^FT68,417^A0N,28,28^FH\"^CI28^FDQty^FS^CI27" +
+                         "^FT68,367^A0N,28,28^FH\"^CI28^FDWeight^FS^CI27" +
+                         //"^FT256,292^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT256,215^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT256,262^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT256,310^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT256,367^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT256,417^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         //"^FT290,293^A0N,28,28^FH\"^CI28^FD" + VdataProductKode + "^FS^CI27" +
+                         "^FT290,215^A0N,28,28^FH\"^CI28^FD" + VdataNoBatch + "^FS^CI27" +
+                         "^FT290,262^A0N,28,28^FH\"^CI28^FD" + VdataMfgDate + "^FS^CI27" +
+                         "^FT290,310^A0N,28,28^FH\"^CI28^FD" + VdataExpDate + "^FS^CI27" +
+                         "^FT290,417^A0N,28,28^FH\"^CI28^FD" + VdataQty + "^FS^CI27" +
+                         "^FT290,367^A0N,28,28^FH\"^CI28^FD" + lbWeight.Text + "^FS^CI27" +
+                         "^FT579,606^BXN,6,200,0,0,1,_,1" +
                          "^FH\"^FD" + VdataPrint + lb_idCarton.Text + "^FS" +
                          "^FT51,110^A0N,51,51^FH\"^CI28^FD" + VdataProductName + "^FS^CI27" +
-                         "^FT51,165^A0N,42,43^FH\"^CI28^FD" + VdataWoNo + "^FS^CI27" +
-                         "^FT68,607^A0N,28,28^FH\"^CI28^FDCarton No.^FS^CI27" +
-                         "^FT256,607^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
-                         "^FT290,607^A0N,28,28^FH\"^CI28^FD" + lbTotalCase.Text + "^FS^CI27" +
+                         //"^FT51,165^A0N,42,43^FH\"^CI28^FD" + VdataWoNo + "^FS^CI27" +
+                         "^FT68,474^A0N,28,28^FH\"^CI28^FDCarton No.^FS^CI27" +
+                         "^FT256,474^A0N,28,28^FH\"^CI28^FD:^FS^CI27" +
+                         "^FT290,474^A0N,28,28^FH\"^CI28^FD" + lbTotalCase.Text + "^FS^CI27" +
                          "^PQ1,,,Y" +
                          "^XZ";
+            string SC2 = "~SD15" +
+                          "^JUS" +
+                          "^LRN" +
+                          "^CI27" +
+                          "^PA0,1,1,0" +
+                          "^XZ" +
+                          "^XA" +
+                          "^MMT" +
+                          "^PW831" +
+                          "^LL639" +
+                          "^LS0" +
+                          "^FT20,265^A0N,85,86^FH\"^CI28^FDNo. Batch^FS^CI27" +
+                          "^FT248,391^A0N,34,33^FH\"^CI28^FDED^FS^CI27" +
+                          "^FT248,497^A0N,34,33^FH\"^CI28^FDIsi^FS^CI27" +
+                          "^FT248,448^A0N,34,33^FH\"^CI28^FDBerat^FS^CI27" +
+                          "^FT374,265^A0N,85,162^FH\"^CI28^FD:^FS^CI27" +
+                          "^FT314,340^A0N,34,33^FH\"^CI28^FD:^FS^CI27" +
+                          "^FT314,389^A0N,34,33^FH\"^CI28^FD:^FS^CI27" +
+                          "^FT314,448^A0N,34,33^FH\"^CI28^FD:^FS^CI27" +
+                          "^FT314,497^A0N,34,33^FH\"^CI28^FD:^FS^CI27" +
+                          "^FT444,265^A0N,85,86^FH\"^CI28^FD" + VdataNoBatch + "^FS^CI27" +  // Batch
+                          "^FT338,391^A0N,34,33^FH\"^CI28^FD" + VdataExpDate + "^FS^CI27" + // Exp Date
+                          "^FT338,497^A0N,34,33^FH\"^CI28^FD" + VdataQty + "^FS^CI27" +    // Qty
+                          "^FT338,448^A0N,34,33^FH\"^CI28^FD" + lbWeight.Text + "^FS^CI27" + // Weight
+                          "^FT37,494^BXN,8,200,0,0,1,_,1" +
+                          "^FH\"^FD" + VdataPrint + lb_idCarton.Text + "^FS" + // Datamatrix
+                          "^FT24,108^A0N,85,86^FH\"^CI28^FD" + VdataProductName + "^FS^CI27" + // Product Name
+                          "^FT575,451^A0N,102,101^FH\"^CI28^FD" + lbTotalCase.Text + "^FS^CI27" + // No. karton
+                          "^FT248,343^A0N,34,33^FH\"^CI28^FDMD^FS^CI27" +
+                          "^FT338,343^A0N,34,33^FH\"^CI28^FD" + VdataMfgDate + "^FS^CI27" +  //MFG Date
+                          "^FO7,5^GB820,632,8^FS" +
+                          "^FO507,310^GB284,202,6^FS" +
+                          "^FT32,173^A0N,51,51^FH\"^CI28^FD" + VdataKetKemasan +"^FS^CI27" +
+                          "^PQ1,,,Y" +
+                          "^XZ";
+                          
+
 
             //RawPrinterHelper.SendFileToPrinter(vPrinterName, fileprn);
-            RawPrinterHelper.SendStringToPrinter(vPrinterName, SC1);
+            RawPrinterHelper.SendStringToPrinter(vPrinterName, SC2);
             //}
             //}
             saveHistoryPrintLabel();
+            saveCartonRealese();
+            kodeotomatis();
         }
 
         private void saveHistoryPrintLabel()
@@ -842,11 +1011,14 @@ namespace Mock_Up_Agregasi
         private void serialTimbangan_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             ReadData = serialTimbangan.ReadLine();
+            //ReadData = serialTimbangan.ReadExisting();
             //SetText(ReadData);
-            ReadData2 = ReadData.Substring(7, 4);
+            ReadData2 = ReadData.Substring(7, 5);  //before (7,4)
             //ReadData2 = ReadData.Substring(6, 6);
             SetLabelText1(lbTimbang , ReadData2);
-            
+
+            //SetLabelText1(lbTimbang, ReadData);
+
             //SetLabelText(tbtimbang2, ReadData2);
         }
 
@@ -886,9 +1058,19 @@ namespace Mock_Up_Agregasi
                 lbTotalCase.Text = (vCounter).ToString().PadLeft(3, '0');
                 lbCartonSuccesfull.Text = lbTotalCase.Text;
 
+                vCounterOK++;
+                lbBoxGood.Text = (vCounterOK).ToString().PadLeft(3, '0');
+                lbBoxGood.Text = lbBoxGood.Text;
+
+                pnlOK.Visible = true;
+                pnlNG.Visible = false;
+                lbNotifWeight.Text = "";
+
+                btnReadyPrint.Enabled = true;
+
                 //dataCounter = lbCount.Text;
                 //cetak_OK();
-                lampu_Hijau();
+                //lampu_Hijau();
                 //dataSimpan();
                 //loadData();
                 //saveLastDataCount();
@@ -920,8 +1102,8 @@ namespace Mock_Up_Agregasi
                     vCounter = vCounter + 1;
                     
                     lbTotalCase.Text = (vCounter).ToString().PadLeft(3, '0');
-                    printLabel();
-                    
+                    //printLabel();
+                    btnReadyPrint.Enabled = true;
                     //closeTimbangan();
                 }
                 else
@@ -935,8 +1117,8 @@ namespace Mock_Up_Agregasi
                     lbBoxNG.Text = (vCounterNG).ToString().PadLeft(3, '0');
                     lbBoxNG.Text = lbBoxNG.Text;
                     //cetak_NG();
-                    btnRevise.Visible = true;
-                    lampu_Merah();
+                    btnReadyPrint.Enabled = false;
+                    //lampu_Merah();
                     //dataSimpan();
                     //loadData();
 
@@ -955,12 +1137,14 @@ namespace Mock_Up_Agregasi
             Vdata_minRange = Nilai.StringNilai;
             varGlobal.GetNilai(varUtility.fileMaxRange);
             Vdata_maxRange = Nilai.StringNilai;
-            string Vweight = lbWeight.Text.Substring(0, 4);
+            string Vweight = lbWeight.Text.Substring(0, 5);  // before (0,4)
             double weight = Convert.ToDouble(Vweight);
-            if (Convert.ToDouble(Vdata_minRange) < weight && Convert.ToDouble(Vdata_maxRange) > weight)
+            if (Convert.ToDouble(Vdata_minRange) <= weight && Convert.ToDouble(Vdata_maxRange) >= weight)
             {
                 pnlOK.Visible = true;
                 pnlNG.Visible = false;
+                lbNotifWeight.Visible = false;
+                lbNotifWeight.Text = "";
                 //lbCount1.ForeColor = Color.Green;
                 //Thread.Sleep(3000);
                 //lbCount1.ForeColor = Color.Black;
@@ -969,6 +1153,17 @@ namespace Mock_Up_Agregasi
             {
                 pnlOK.Visible = false;
                 pnlNG.Visible = true;
+                lbNotifWeight.Visible = true;
+                if(Convert.ToDouble(Vdata_minRange) >= weight)
+                {
+                    lbNotifWeight.Text = "Lower";
+                    lampu_Merah();
+                }
+                else if (Convert.ToDouble(Vdata_maxRange) <= weight)
+                {
+                    lbNotifWeight.Text = "Upper";
+                    lampu_Merah();
+                }
             }
 
 
@@ -1008,7 +1203,7 @@ namespace Mock_Up_Agregasi
                 progressBar1.Maximum = Convert.ToInt32(lbQtyCaseTarget.Text);
 
                 progressBar2.Minimum = 0;
-                progressBar2.Maximum = Convert.ToInt32(lbTargetQty.Text);
+                progressBar2.Maximum = Convert.ToInt32(VDataTarget);
 
                 //vCounterQtyWO++;
                 //vCounterLastReadCode++;
@@ -1022,10 +1217,11 @@ namespace Mock_Up_Agregasi
                 {
                     pbCompleted.Visible = true;
                     //MessageBox.Show("Qty Box TerCapai, Silahkan Timbang");
+                    lampu_Hijau();
                     await Task.Delay(1000);
                     pbCompleted.Visible = false;
                     vCounterLastReadCode = 0;
-                    SignalTimbang();
+                    //SignalTimbang();
                     //connect_Timbangan();
                 }
                 //lbLastReadCodeScan.Text = "";
@@ -1043,38 +1239,34 @@ namespace Mock_Up_Agregasi
             config.con.Close();
         }
         
-        private void checkdataScan()
+        private async void checkdataScan()
         {
             config.Init_Con();
             config.con.Open();
-            string query = "select * from tblhistory_scan where dataScan='" + lbLastReadCodeScan.Text + "'";
+            string query = "select * from tblhistory_print where data_print='" + lbLastReadCodeScan.Text + "'";
             MySqlDataAdapter dataAdapter1 = new MySqlDataAdapter(query, config.con);
             DataTable dt2 = new DataTable();
             dataAdapter1.Fill(dt2);
 
             if (dt2.Rows.Count != 0)
             {
-                checkflag();
+                checkDoubleData();
             }
             else
             {
-                vCounterQtyWO++;
-                vCounterLastReadCode++;
-                saveHistoryScan();
-                update_DataAgregate();
-                loadCountDataAvailable();
-                lbActualQtyCase.Text = vCounterLastReadCode.ToString();
-                progressBar1.Value = vCounterLastReadCode;
-                progressBar2.Value = vCounterQtyWO;
-                int hitungTarget = Convert.ToInt32(VDataTarget) - vCounterQtyWO;
-                lbTargetQty.Text = hitungTarget.ToString();
+                
+                //PB_Warning.Visible = true;
+
+                MessageBox.Show("Data Tidak Terbaca Kamera", "Perhatian!!..");
+                await Task.Delay(10);
+                //PB_Warning.Visible = false;
                 //saveHistoryScan();
             }
             config.con.Close();
         }
-        private async void checkflag()
+        private async void checkDoubleData()
         {
-            int flagNo = 0;
+            int flagNo = 1;
             config.Init_Con();
             config.con.Open();
             string query = "select * from tblhistory_scan where dataScan='" + lbLastReadCodeScan.Text + "' and flag='" + flagNo + "'";
@@ -1084,23 +1276,38 @@ namespace Mock_Up_Agregasi
 
             if (dt.Rows.Count != 0)
             {
-                updateFlag();
+                //dt count != (not null) NG (Data Has ready Save)
+                //PB_Warning.Visible = true;
+                MessageBox.Show("Data Sudah Pernah Ter-scan", "Perhatian!!..");
+
+                await Task.Delay(10);
+                //PB_Warning.Visible = false;
+                //updateFlag();
                 //vCounterQtyWO++;
-                vCounterLastReadCode++;
+                //vCounterLastReadCode++;
                 //saveHistoryScan();
                 //update_DataAgregate();
                 //loadCountDataAvailable();
-                lbActualQtyCase.Text = vCounterLastReadCode.ToString();
-                progressBar1.Value = vCounterLastReadCode;
+                //lbActualQtyCase.Text = vCounterLastReadCode.ToString();
+                //progressBar1.Value = vCounterLastReadCode;
                 
             }
             else
             {
-                PB_Warning.Visible = true;
+                //dt count == (null) OK (Data Save)
+                vCounterQtyWO++;
+                vCounterLastReadCode++;
+                saveHistoryScan();
+                update_DataAgregate();
+                loadCountDataAvailable();
+                lbActualQtyCase.Text = vCounterLastReadCode.ToString();
+                progressBar1.Value = vCounterLastReadCode;
+                progressBar2.Value = vCounterQtyWO;
 
-                //MessageBox.Show("Data Already Scanned", "Perhatian!!..");
-                await Task.Delay(1000);
-                PB_Warning.Visible = false;
+                int hitungTarget = Convert.ToInt32(VDataTarget) - vCounterQtyWO;
+                lbTargetQty.Text = hitungTarget.ToString();
+                
+               
                 //Already
             }
             config.con.Close();
@@ -1177,8 +1384,8 @@ namespace Mock_Up_Agregasi
 
         private void lbLastReadCodeRealese_TextChanged(object sender, EventArgs e)
         {
-            saveCartonRealese();
-            kodeotomatis();
+            //saveCartonRealese();
+            //kodeotomatis();
             lbCartonSuccesfull.Text = lbTotalCase.Text;
             //tbScanBarcode.Text = "";
         }
@@ -1186,10 +1393,10 @@ namespace Mock_Up_Agregasi
         private void saveCartonRealese()
         {
             string vDataAction = "CREATE";
-            string vDataActive = "True";
+            string vDataActive = "TRUE";
             config.Init_Con();
             config.con.Open();
-            string sql = "INSERT INTO  `tblcartonrealease`(idCarton,kodeRecipe, woNo,productName,noBatch,countCarton,dataScanRealese,dateCreate,action,is_Active)values('" + lb_idCarton.Text + "','" + VdataKodeRecipe + "','" + cbWO.Text + "','" + lbProductName.Text + "','" + lbLotNo.Text + "','" + lbTotalCase.Text + "', '" + lbLastReadCodeRealese.Text + "','" + DateTime.Now + "','" + vDataAction + "','" + vDataActive + "')";
+            string sql = "INSERT INTO  `tblcartonrealease`(idCarton,kodeRecipe, woNo,productName,noBatch,countCarton,dataScanRealese,dateCreate,action,is_Active)values('" + lb_idCarton.Text + "','" + VdataKodeRecipe + "','" + cbWO.Text + "','" + lbProductName.Text + "','" + lbLotNo.Text + "','" + lbTotalCase.Text + "', '" + VdataPrint + lb_idCarton.Text + "','" + DateTime.Now + "','" + vDataAction + "','" + vDataActive + "')";
             MySqlCommand cmd = new MySqlCommand(sql, config.con);
             cmd.ExecuteNonQuery();
             config.con.Close();
@@ -1233,18 +1440,26 @@ namespace Mock_Up_Agregasi
 
         public void lampu_Merah()
         {
-            if (serialTowerLamp.IsOpen == true)
-            {
-                serialTowerLamp.Write("NG");
-            }
+            txt_kirim = "00SC02";
+            WritePLC();
+            txt_kirim = "00WD" + "1000" + "0001";
+            WritePLC();
+            //if (serialTowerLamp.IsOpen == true)
+            //{
+            //    serialTowerLamp.Write("NG");
+            //}
         }
 
         public void lampu_Hijau()
         {
-            if (serialTowerLamp.IsOpen == true)
-            {
-                serialTowerLamp.Write("OK");
-            }
+            txt_kirim = "00SC02";
+            WritePLC();
+            txt_kirim = "00WD" + "0100" + "0001";
+            WritePLC();
+            //if (serialTowerLamp.IsOpen == true)
+            //{
+            //    serialTowerLamp.Write("OK");
+            //}
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -1265,11 +1480,11 @@ namespace Mock_Up_Agregasi
             {
                 tambahsatu = Convert.ToInt32(sdr[0].ToString().Substring(sdr[0].ToString().Length - 4, 4)) + 1;
                 string gabung = "0000" + tambahsatu;
-                kode = "CR" + VdataNoBatch + gabung.Substring(gabung.ToString().Length - 4, 4);
+                kode = "CR" +  gabung.Substring(gabung.ToString().Length - 4, 4);
             }
             else
             {
-                kode = "CR" + VdataNoBatch + "0001";
+                kode = "CR" +  "0001";
             }
             sdr.Close();
             lb_idCarton.Text = kode;
@@ -1326,8 +1541,13 @@ namespace Mock_Up_Agregasi
         }
         private void btnRevise_Click(object sender, EventArgs e)
         {
-            updateFlagZero();
-            btnRevise.Visible = false;
+            //updateFlagZero();
+            loadKetProd();
+            printLabel();
+            //saveCartonRealese();
+            //kodeotomatis();
+            btnReadyPrint.Enabled = false;
+            tbScanBarcode.Focus();
         }
 
         private void updateFlagWO()
@@ -1356,6 +1576,173 @@ namespace Mock_Up_Agregasi
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private async void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if(textBox1.Text != "")
+            {
+
+                progressBar1.Minimum = 0;
+                progressBar1.Maximum = Convert.ToInt32(lbQtyCaseTarget.Text);
+
+                progressBar2.Minimum = 0;
+                progressBar2.Maximum = Convert.ToInt32(VDataTarget);
+
+                lbLastReadCodeScan.Text = textBox1.Text;
+                checkdataScan();
+                if (vCounterLastReadCode == Convert.ToInt32(lbQtyCaseTarget.Text))
+                {
+                    pbCompleted.Visible = true;
+                    MessageBox.Show("Qty Box TerCapai, Silahkan Timbang");
+                    await Task.Delay(1000);
+                    pbCompleted.Visible = false;
+                    vCounterLastReadCode = 0;
+                    //SignalTimbang();
+                    //connect_Timbangan();
+                }
+
+            }
+
+            textBox1.Clear();
+        }
+
+        private void WritePLC()
+        {
+            //string bufferRXD = null;
+            //string buffer_TX = null;
+            connect_Tower();
+            //"00WD" + "1010" + "000A"
+            TX = "@" + txt_kirim;
+            GetFCS();
+            lbTX.Text = TX + FCS + "*";
+            communicate();
+
+            serialTowerLamp.Close();
+            lbRXD.Text = RXD;
+        }
+
+
+        private void GetFCS()
+        {
+            //This will calculate the FCS value for the communications
+            int L = 0;
+            string A = null;
+            string TJ = null;
+            L = TX.Length;
+            A = "0";
+            for (var J = 1; J <= L; J++)
+            {
+                TJ = TX.Substring(J - 1, 1);
+                A = (Strings.Asc(TJ) ^ Convert.ToInt32(A)).ToString();
+
+            }
+            FCS = Convert.ToString(Convert.ToInt64(A), 16).ToUpper();
+            if (FCS.Length == 1)
+            {
+                FCS = "0" + FCS;
+            }
+        }
+        private void GetFCSOld()
+        {
+            //This will calculate the FCS value for the communications
+            int L = 0;
+            string A = null;
+            string TJ = null;
+            L = TX.Length;
+            A = "0";
+            for (var J = 1; J <= L; J++)
+            {
+                TJ = TX.Substring(J - 1, 1);
+                A = (Microsoft.VisualBasic.Strings.Asc(TJ) ^ Convert.ToInt32(A)).ToString();
+
+            }
+            FCS = Convert.ToString(Convert.ToInt64(A), 16).ToUpper();
+            if (FCS.Length == 1)
+            {
+                FCS = "0" + FCS;
+            }
+        }
+
+        private void communicate()
+        {
+            //This will communicate to the Omron PLC
+            string BufferTX = null;
+            string fcs_rxd = null;
+            try
+            {
+                RXD = "";
+                BufferTX = TX + FCS + "*" + "\r";
+                //Send the information out the serial port
+                serialTowerLamp.Write(BufferTX);
+                //Sleep for 50 msec so the information can be sent on the port
+                System.Threading.Thread.Sleep(50);
+                //Set the timeout for the serial port at 100 msec
+                serialTowerLamp.ReadTimeout = 100;
+                //Read up to the carriage return
+                RXD = (serialTowerLamp.ReadTo("\r"));
+            }
+            catch (Exception)
+            {
+                //If an error occurs then indicate communication error
+                RXD = "Communication Error";
+            }
+            //Get the FCS of the returned information
+            fcs_rxd = RXD.Substring(RXD.Length - 3, 2);
+            if (RXD.Substring(0, 1) == "@")
+            {
+                TX = RXD.Substring(0, RXD.Length - 3);
+            }
+            else if (RXD.Substring(2, 1) == "@")
+            {
+                TX = RXD.Substring(2, RXD.Length - 5);
+                RXD = RXD.Substring(2, RXD.Length - 1);
+            }
+            //Check the FCS of the return information. If they are not the same then an error has occurred.
+            GetFCS();
+            if (FCS != fcs_rxd)
+            {
+                RXD = "Communication Error";
+            }
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString();
+        }
+
+        private void cbLastBatch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbLastBatch.Checked == true)
+            {
+                //tbJmlBotol.Enabled = true;
+                varGlobal.lastBatch = "true";
+                lbStatusEcer.Text = "true";
+                //pnlBotol.Visible = true;
+            }
+            else
+            {
+                //tbJmlBotol.Enabled = false;
+                varGlobal.lastBatch = "false";
+                lbStatusEcer.Text = "false";
+                //pnlBotol.Visible = false;
+            }
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            lampu_Merah();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            lampu_Hijau();
         }
     }
 }

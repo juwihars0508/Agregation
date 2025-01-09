@@ -35,7 +35,14 @@ namespace Mock_Up_Agregasi
 
         private void FormHistoryLabel_Load(object sender, EventArgs e)
         {
+            timer1.Start();
+            lblUser.Text = varGlobal.Username;
             loadDataHistoryLabel();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString();
         }
     }
 }
